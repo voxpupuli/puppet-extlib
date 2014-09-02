@@ -1,0 +1,16 @@
+{
+  "name": "brainsware-resources_deep_merge",
+  "version": "0.9.0",
+  "source": "https://github.com/Brainsware/puppet-resources_deep_merge",
+  "author": "brainsware",
+  "license": "Apache 2.0",
+  "summary": "provides a function deep-merges every memeber of one hash1 with hash2",
+  "description": "provides a function deep-merges every memeber of one hash1 with hash2",
+  "project_page": "https://github.com/Brainsware/puppet-resources_deep_merge",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 3.2.1"
+    }
+  ]
+}
