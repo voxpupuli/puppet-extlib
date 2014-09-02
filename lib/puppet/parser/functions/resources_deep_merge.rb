@@ -12,77 +12,70 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-# Extend for create_resources() merging of the defaults hash, to deep-merge
-# hashes. n.b.: stdlib's deep_merge does not.
-
 Puppet::Parser::Functions::newfunction(:resources_deep_merge, :type => :rvalue, :doc => <<-EOS
-Returns a deep-merged resource hash (hash of hashes).
+Deeply merge a "defaults" hash into a "resources" hash like the ones expected
+by create_resources(). Internally calls the puppetlabs-stdlib function
+deep_merge(). In case of duplicate keys the "resources" hash keys win over the
+"defaults" hash keys.
 
 Example:
-$tcresource_defaults = {
-  ensure     => 'present',
-  type       => 'javax.sql.DataSource',
-  attributes => {
-    driverClassName => 'org.postgresql.Driver',
-    maxActive       => '20',
-    maxIdle         => '10',
-    maxWait         => '-1',
-    testOnBorrow    => true,
-    validationQuery => 'SELECT 1',
+
+$defaults_hash = {
+  'one'   => '1',
+  'two'   => '2',
+  'three' => '3',
+  'four'  => {
+    'five'  => '5',
+    'six'   => '6',
+    'seven' => '7',
   }
 }
 
-$tcresources = {
-  'app1:jdbc/db1' => {
-    attributes => {
-      url      => 'jdbc:postgresql://localhost:5432/db1',
-      username => 'user1',
-      password => 'pass1',
-    },
+$numbers_hash = {
+  'german' => {
+    'one'   => 'eins'
+    'three' => 'drei',
+    'four'  => {
+      'six' => 'sechs',
+    }
   },
-  'app2:jdbc/db2' => {
-    attributes => {
-      url      => 'jdbc:postgresql://localhost:5432/db2',
-      username => 'user2',
-      password => 'pass2',
-    },
+  'french' => {
+    'one' => 'un',
+    'two' => 'deux',
+    'four' => {
+      'five'  => 'cinq',
+      'seven' => 'sept',
+    }
   }
 }
 
-$result = resources_deep_merge($tcresources, $tcresource_defaults)
+$result_hash = resources_deep_merge($numbers_hash, $defaults_hash)
 
-# {
-#  'app1:jdbc/db1' => {
-#    ensure     => 'present',
-#    type       => 'javax.sql.DataSource',
-#    attributes => {
-#      url      => 'jdbc:postgresql://localhost:5432/db1',
-#      username => 'user1',
-#      password => 'pass1',
-#      driverClassName => 'org.postgresql.Driver',
-#      maxActive       => '20',
-#      maxIdle         => '10',
-#      maxWait         => '-1',
-#      testOnBorrow    => true,
-#      validationQuery => 'SELECT 1',
-#    },
-#  },
-#  'app2:jdbc/db2' => {
-#    ensure     => 'present',
-#    type       => 'javax.sql.DataSource',
-#    attributes => {
-#      url      => 'jdbc:postgresql://localhost:5432/db2',
-#      username => 'user2',
-#      password => 'pass2',
-#      driverClassName => 'org.postgresql.Driver',
-#      maxActive       => '20',
-#      maxIdle         => '10',
-#      maxWait         => '-1',
-#      testOnBorrow    => true,
-#      validationQuery => 'SELECT 1',
-#    },
-#  }
+The $result_hash then looks like this:
+
+# $result_hash = {
+#   'german' => {
+#     'one'   => 'eins',
+#     'two'   => '2',
+#     'three' => 'drei',
+#     'four'  => {
+#       'five'  => '5',
+#       'six'   => 'sechs',
+#       'seven' => '7',
+#     }
+#   },
+#   'french' => {
+#     'one'   => 'un',
+#     'two'   => 'deux',
+#     'three' => '3',
+#     'four'  => {
+#       'five'  => 'cinq',
+#       'six'   => '6',
+#       'seven' => 'sept',
+#     }
+#   }
 # }
+
 EOS
 ) do |args|
   Puppet::Parser::Functions.function('deep_merge')
