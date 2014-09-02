@@ -28,6 +28,7 @@ Returns a [deep-merged](#deep_merge) resource hash (hash of hashes).
 
 *Examples:*
 
+```puppet
     $tcresource_defaults = {
       ensure     => 'present',
       attributes => {
@@ -49,12 +50,17 @@ Returns a [deep-merged](#deep_merge) resource hash (hash of hashes).
         },
       }
     }
+```
 
 When called as:
 
+```puppet
     $result = resources_deep_merge($tcresources, $tcresource_defaults)
+```
 
 will return:
+
+```puppet
     {
      'app1:jdbc/db1' => {
        ensure     => 'present',
@@ -73,6 +79,7 @@ will return:
        },
      }
     }
+```
 
 - *Type*: rvalue
 
