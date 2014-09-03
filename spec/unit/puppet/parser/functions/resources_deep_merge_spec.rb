@@ -59,8 +59,8 @@ describe Puppet::Parser::Functions.function(:resources_deep_merge) do
         }
       }
       result = scope.function_resources_deep_merge([resources, defaults])
-      result['one'].should == {'ensure' => 'present', 'attributes' => {'type'=>'psql', 'user' => '1', 'pass' => '1'}}
-      result['two'].should == {'ensure' => 'present', 'attributes' => {'type'=>'psql', 'user' => '2', 'pass' => '2'}}
+      expect(result['one']).to eq({'ensure' => 'present', 'attributes' => {'type'=>'psql', 'user' => '1', 'pass' => '1'}})
+      expect(result['two']).to eq({'ensure' => 'present', 'attributes' => {'type'=>'psql', 'user' => '2', 'pass' => '2'}})
     end
   end
 
