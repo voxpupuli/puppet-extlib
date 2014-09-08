@@ -1,22 +1,21 @@
 ####Table of Contents
 
 1. [Overview](#overview)
-3. [Setup - The basics of getting started with resources_deep_merge](#setup)
+3. [Setup - The basics of getting started with extlib](#setup)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
 ##Overview
 
-This module provides the function `resources_deep_merge`. It's based on
-[stdlib](https://github.com/puppetlabs/puppetlabs-stdlib) `deep_merge()`
-function. Its intended use to provide hashes, such as those passed to
-`create_resources()` with default values.
+This module provides functions that are out of scope out of scope for
+[stdlib](https://github.com/puppetlabs/puppetlabs-stdlib). Some of them are
+even intristically tied to stdlib.
 
 ##Setup
 
 ```console
- % puppet module install brainsware-resources_deep_merge
+ % puppet module install puppetcommunity-extlib
 ```
 
 ##Usage
@@ -90,6 +89,6 @@ was introduced.
 
 ##Development
 
-This module uses blacksmith for releasing and rspec for tests.
-All contributions are highly welcome, especially if they include documentation
-and tests.
+This module uses [blacksmith](https://github.com/maestrodev/puppet-blacksmith)
+for releasing and rspec for tests. All contributions are highly welcome,
+especially if they include documentation and tests.
