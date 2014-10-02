@@ -9,7 +9,7 @@
   "project_page": "https://github.com/puppet-community/puppetcommunity-extlib",
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
+      "name": "puppetlabs/stdlib",
       "version_range": ">= 3.2.1"
     }
   ]
