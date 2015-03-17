@@ -15,7 +15,7 @@ even intristically tied to stdlib.
 ##Setup
 
 ```console
- % puppet module install puppetcommunity-extlib
+ % puppet module install puppet-extlib
 ```
 
 ##Usage
