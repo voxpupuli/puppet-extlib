@@ -22,12 +22,12 @@ group :test do
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
   gem "rspec", "< 3.2.0", { "platforms" => ["ruby_18"] }
+  gem "puppet-blacksmith", "> 3.3.0", { "platforms" => ["ruby_19", "ruby_20", "ruby_21"] }
 end
 
 group :development do
   gem "travis"
   gem "travis-lint"
-  gem "puppet-blacksmith"
   gem "guard-rake"
 end
 
