@@ -1,5 +1,5 @@
 [![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
-[![Build Status](https://img.shields.io/travis/puppet-community/puppetcommunity-extlib/master.svg)](https://travis-ci.org/puppet-community/puppetcommunity-extlib)
+[![Build Status](https://img.shields.io/travis/puppet-community/puppet-extlib/master.svg)](https://travis-ci.org/puppet-community/puppet-extlib)
 
 ####Table of Contents
 
