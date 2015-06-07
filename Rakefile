@@ -15,6 +15,7 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
+require 'metadata-json-lint/rake_task'
 
 # These two gems aren't always present, for instance
 # on Travis with --without development
@@ -47,10 +48,11 @@ RSpec::Core::RakeTask.new(:acceptance) do |t|
   t.pattern = 'spec/acceptance'
 end
 
-desc "Run syntax, lint, and spec tests."
+desc "Run metadata_lint, lint, syntax, and spec tests."
 task :test => [
-  :syntax,
+  :metadata_lint,
   :lint,
+  :syntax,
   :spec,
 ]
 
