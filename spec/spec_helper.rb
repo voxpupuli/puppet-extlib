@@ -18,3 +18,9 @@ require 'puppetlabs_spec_helper/module_spec_helper'
 # Make stdlib (i.e. its functions) available to rspec so our own functions that
 # require stdlib functions can load them.
 $:.unshift File.join(File.dirname(__FILE__),  'fixtures', 'modules', 'stdlib', 'lib')
+
+RSpec.configure do |configuration|
+  configuration.mock_with :rspec do |configuration|
+    configuration.syntax = :expect
+  end
+end
