@@ -118,6 +118,25 @@ echo($v7) # no comment here
 # My structure (Hash) {"b"=>["1", "2", "3"]}
 # (String) "12345"
 ```
+
+###cache_data
+
+Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist. Useful for having data that's randomly generated once on the master side (e.g. a password), but then stays the same on subsequent runs. The `cache_data` takes three parameters:
+
+ * namespace: the folder under Puppet's vardir that the data is placed (e.g. mysql becomes /var/lib/puppet/mysql)
+ * data_name: the filename to store the data as (e.g. mysql_password becomes /var/lib/puppet/mysql/mysql_password)
+ * initial_data: the data to store and cache in the data_name file 
+
+*Examples:*
+
+```
+class mymodule::params {
+
+  $password = cache_data('mysql', 'mysql_password', 'this_is_my_password')
+
+}
+```
+
 ##Limitations
 
 This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`
