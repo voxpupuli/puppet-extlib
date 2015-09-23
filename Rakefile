@@ -48,12 +48,19 @@ RSpec::Core::RakeTask.new(:acceptance) do |t|
   t.pattern = 'spec/acceptance'
 end
 
-desc "Run metadata_lint, lint, syntax, and spec tests."
+desc "Verify that there are no duplicate functions in stdlib/extlib"
+task :no_duplicate do
+  sh "spec/no_duplicate.rb"
+end
+
+
+desc "Run metadata_lint, lint, syntax, spec and no_duplicate tests."
 task :test => [
   :metadata_lint,
   :lint,
   :syntax,
   :spec,
+  :no_duplicate,
 ]
 
 if RUBY_VERSION >= "1.9.0" then
