@@ -137,6 +137,36 @@ class mymodule::params {
 }
 ```
 
+###random_password
+
+Returns a string of arbitrary length that contains randomly selected characters.
+
+*Examples:*
+
+```
+Prototype:
+
+    random_password(n)
+
+Where n is a non-negative numeric value that denotes length of the desired password.
+
+Given the following statements:
+
+  $a = 4
+  $b = 8
+  $c = 16
+
+  notice random_password($a)
+  notice random_password($b)
+  notice random_password($c)
+
+The result will be as follows:
+
+  notice: Scope(Class[main]): fNDC
+  notice: Scope(Class[main]): KcKDLrjR
+  notice: Scope(Class[main]): FtvfvkS9j9wXLsd6
+```
+
 ##Limitations
 
 This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`
