@@ -167,6 +167,67 @@ The result will be as follows:
   notice: Scope(Class[main]): FtvfvkS9j9wXLsd6
 ```
 
+This functions is not "pure" and will return different value on every call.
+If you are running Puppet as a service or by the cron and are using this
+function to generate passwords, they will be modified randomly on every Puppet run.
+
+Perhaps, you should use "fqdn_rand_string" instead. It will generate always the
+same random string for every host name.
+
+###setvar
+
+This function is the sibling of the "getvar" function. With its help you can
+actually *change* the value of a variable in the local scope. Yes, it have
+always been impossible to modify variables, but now you can.
+
+*Examples:*
+```ruby
+$var = '1'
+# $var = '1'
+setvar('var', '2')
+# $var = '2'
+```
+
+This function is limited only to variables local to the scope it's being used.
+If the variable you are modifying is being used as a reference by other classes
+it can lead to unexpected behaviour because the variable value will become parse
+order dependant, that should not usually happen nad does not work well at all with
+the declarative nature of the Puppet language. Yes, there are reasons you could
+not modify variables in the first place. So you can use this functions only when
+you know that it will not break anything.
+
+###try_set_value
+
+This function is the sibling of "try_get_value" function. Instead of retrieving
+the value from the complex structure it tries to set the value. It returns true
+if the value was set successfully and false if not.
+
+- *Type*: rvalue
+
+```ruby
+$data = {
+  'a' => {
+    'b' => [
+      'b1',
+      'b2',
+      'b3',
+    ]
+  }
+}
+
+$success = try_set_value($data, 'a/b/2', 'new_value', '/')
+
+# $data = {
+#   'a' => {
+#   'b' => [
+#       'b1',
+#       'b2',
+#       'new_value',
+#     ]
+#   }
+# }
+```
+
 ##Limitations
 
 This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`
