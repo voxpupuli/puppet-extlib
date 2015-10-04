@@ -7,19 +7,22 @@ will likely make it into a release a little quicker.
 
 1. Fork the repo.
 
-2. Create a separate branch for your change.
+1. Create a separate branch for your change.
 
-2. Run the tests. We only take pull requests with passing tests, and
-   it's great to know that you have a clean slate
+1. Run the tests. We only take pull requests with passing tests, and
+   documentation.
 
-3. Add a test for your change. Only refactoring and documentation
+1. Add a test for your change. Only refactoring and documentation
    changes require no new tests. If you are adding functionality
    or fixing a bug, please add a test.
 
-4. Make the test pass.
+1. Squash your commits down into logical components. Make sure to rebase
+   against the current master.
 
-5. Push the branch to your fork and submit a pull request.
+1. Push the branch to your fork and submit a pull request.
 
+Please be prepared to repeat some of these steps as our contributors review
+your code.
 
 ## Dependencies
 
@@ -51,10 +54,10 @@ check various syntax and style things. You can run these locally with:
 The unit test suite covers most of the code, as mentioned above please
 add tests if you're adding new functionality. If you've not used
 [rspec-puppet](http://rspec-puppet.com/) before then feel free to ask
-about how best to test your new feature. Running the test suite is done
-with:
+about how best to test your new feature. To run your specific spec test
+you can pass it to `SPEC`:
 
-    bundle exec rake spec
+    bundle exec rake spec SPEC=spec/foo_spec.rb
 
 ## Integration tests
 
