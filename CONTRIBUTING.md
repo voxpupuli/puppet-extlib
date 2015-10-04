@@ -7,6 +7,8 @@ will likely make it into a release a little quicker.
 
 1. Fork the repo.
 
+2. Create a separate branch for your change.
+
 2. Run the tests. We only take pull requests with passing tests, and
    it's great to know that you have a clean slate
 
@@ -16,7 +18,7 @@ will likely make it into a release a little quicker.
 
 4. Make the test pass.
 
-5. Push to your fork and submit a pull request.
+5. Push the branch to your fork and submit a pull request.
 
 
 ## Dependencies
@@ -30,7 +32,7 @@ By default the tests use a baseline version of Puppet.
 If you have Ruby 2.x or want a specific version of Puppet,
 you must set an environment variable such as:
 
-    export PUPPET_VERSION="~> 3.2.0"
+    export PUPPET_VERSION="~> 4.2.0"
 
 Install the dependencies like so...
 
@@ -42,8 +44,7 @@ The test suite will run [Puppet Lint](http://puppet-lint.com/) and
 [Puppet Syntax](https://github.com/gds-operations/puppet-syntax) to
 check various syntax and style things. You can run these locally with:
 
-    bundle exec rake lint
-    bundle exec rake syntax
+    bundle exec rake test
 
 ## Running the unit tests
 
@@ -54,10 +55,6 @@ about how best to test your new feature. Running the test suite is done
 with:
 
     bundle exec rake spec
-
-Note also you can run the syntax, style and unit tests in one go with:
-
-    bundle exec rake test
 
 ## Integration tests
 
