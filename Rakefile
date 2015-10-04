@@ -16,17 +16,14 @@ require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
 require 'metadata-json-lint/rake_task'
+require 'puppet_blacksmith/rake_tasks'
+require 'rubocop/rake_task'
 
-# These two gems aren't always present, for instance
-# on Travis with --without development
-begin
-  require 'puppet_blacksmith/rake_tasks'
-rescue LoadError
-end
+RuboCop::RakeTask.new
 
 PuppetLint.configuration.relative = true
-PuppetLint.configuration.send("disable_80chars")
-PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
+PuppetLint.configuration.send('disable_80chars')
+PuppetLint.configuration.log_format = '%{path}:%{linenumber}:%{check}:%{KIND}:%{message}'
 PuppetLint.configuration.fail_on_warnings = true
 
 # Forsake support for Puppet 2.6.2 for the benefit of cleaner code.
@@ -36,31 +33,25 @@ PuppetLint.configuration.send('disable_class_parameter_defaults')
 PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 
 exclude_paths = [
-  "pkg/**/*",
-  "vendor/**/*",
-  "spec/**/*",
+  'pkg/**/*',
+  'vendor/**/*',
+  'spec/**/*'
 ]
 PuppetLint.configuration.ignore_paths = exclude_paths
 PuppetSyntax.exclude_paths = exclude_paths
 
-desc "Run acceptance tests"
+desc 'Run acceptance tests'
 RSpec::Core::RakeTask.new(:acceptance) do |t|
   t.pattern = 'spec/acceptance'
 end
 
-desc "Verify that there are no duplicate functions in stdlib/extlib"
-task :no_duplicate do
-  sh "spec/no_duplicate.rb"
-end
-
-
-desc "Run metadata_lint, lint, syntax, spec and no_duplicate tests."
-task :test => [
+desc 'Run metadata_lint, lint, syntax, and spec tests.'
+task test: [
   :metadata_lint,
   :lint,
   :syntax,
+  :rubocop,
   :spec,
-  :no_duplicate,
 ]
 
 Blacksmith::RakeTask.new do |t|
@@ -68,17 +59,16 @@ Blacksmith::RakeTask.new do |t|
   # just do the tagging [:clean, :tag, :bump_commit]
 end
 
-
-desc "Offload release process to Travis."
-task :travis_release => [
+desc 'Offload release process to Travis.'
+task travis_release: [
   :check_changelog,  # check that the changelog contains an entry for the current release
   :"module:release", # do everything except build / push to forge, travis will do that for us
 ]
 
-desc "Check Changelog."
+desc 'Check Changelog.'
 task :check_changelog do
   v = Blacksmith::Modulefile.new.version
-  if File.readlines('CHANGELOG.md').grep("Releasing #{v}").size == 0 then
+  if File.readlines('CHANGELOG.md').grep("Releasing #{v}").size == 0
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
 end
