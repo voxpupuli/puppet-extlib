@@ -11,20 +11,20 @@ require 'etc'
 # Example: $password = cache_data('mysql', 'mysql_password', 'this_is_my_password')
 module Puppet::Parser::Functions
   newfunction(:cache_data, :type => :rvalue) do |args|
-    raise Puppet::ParseError, 'Usage: cache_data(namespace, name, initial_data)' unless args.size == 3
+    fail Puppet::ParseError, 'Usage: cache_data(namespace, name, initial_data)' unless args.size == 3
 
     namespace = args[0]
-    raise Puppet::ParseError, 'Must provide namespace' if namespace.empty?
+    fail Puppet::ParseError, 'Must provide namespace' if namespace.empty?
 
     name = args[1]
-    raise Puppet::ParseError, 'Must provide data name' if name.empty?
+    fail Puppet::ParseError, 'Must provide data name' if name.empty?
 
     initial_data = args[2]
 
     cache_dir = File.join(Puppet[:vardir], namespace)
     cache = File.join(cache_dir, name)
 
-    if File.exists? cache
+    if File.exist? cache
       YAML.load(File.read(cache))
     else
       FileUtils.mkdir_p(cache_dir)

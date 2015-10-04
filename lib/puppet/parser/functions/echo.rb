@@ -1,4 +1,4 @@
-Puppet::Parser::Functions::newfunction(:echo, :arity => -2, :doc => <<-EOS
+Puppet::Parser::Functions.newfunction(:echo, :arity => -2, :doc => <<-EOS
 This function output the variable content and its type to the
 debug log. It's similiar to the "notice" function but provides
 a better output format useful to trace variable types and values
@@ -30,7 +30,7 @@ echo($v7) # no comment here
 # My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x"=>"y", "z"=>["1", "2", "3", "4", "5", "6"]}
 # (String) "12345"
 EOS
-) do |argv|
+                                     ) do |argv|
   value = argv[0]
   comment = argv[1]
   message = "(#{value.class}) #{value.inspect}"

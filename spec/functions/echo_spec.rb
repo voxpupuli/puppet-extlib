@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe 'echo' do
-
   describe 'signature validation' do
     it 'should exist' do
       is_expected.not_to be_nil
     end
     it 'should require at least one argument' do
-      is_expected.to run.with_params().and_raise_error /wrong number of arguments/i
+      is_expected.to run.with_params.and_raise_error /wrong number of arguments/i
     end
   end
 
@@ -26,7 +25,7 @@ describe 'echo' do
     end
     it 'a hash' do
       expect(scope).to receive(:debug).with 'My Hash (Hash) {"a"=>"1"}'
-      is_expected.to run.with_params({'a' => '1'}, 'My Hash')
+      is_expected.to run.with_params({ 'a' => '1' }, 'My Hash')
     end
     it 'a boolean value' do
       expect(scope).to receive(:debug).with 'My Boolean (FalseClass) false'
@@ -37,5 +36,4 @@ describe 'echo' do
       is_expected.to run.with_params(nil, 'Undefined Value')
     end
   end
-
 end
