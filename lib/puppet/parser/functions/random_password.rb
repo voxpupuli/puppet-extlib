@@ -44,7 +44,7 @@ For example:
     notice: Scope(Class[main]): KcKDLrjR
     notice: Scope(Class[main]): FtvfvkS9j9wXLsd6
     EOS
-  ) do |*arguments|
+             ) do |*arguments|
     #
     # This is to ensure that whenever we call this function from within
     # the Puppet manifest or alternatively form a template it will always
@@ -52,24 +52,22 @@ For example:
     #
     arguments = arguments.shift if arguments.first.is_a?(Array)
 
-    raise Puppet::ParseError, "random_password(): Wrong number of arguments " +
+    fail Puppet::ParseError, 'random_password(): Wrong number of arguments ' \
       "given (#{arguments.size} for 1)" if arguments.size < 1
 
     size = arguments.shift
 
     # This should cover all the generic numeric types present in Puppet ...
-    unless size.class.ancestors.include?(Numeric) or size.is_a?(String)
-      raise Puppet::ParseError, 'random_password(): Requires a numeric ' +
+    unless size.class.ancestors.include?(Numeric) || size.is_a?(String)
+      fail Puppet::ParseError, 'random_password(): Requires a numeric ' \
         'type to work with'
     end
 
     # Numbers in Puppet are often string-encoded which is troublesome ...
-    if size.is_a?(String) and size.match(/^\d+$/)
-      size = size.to_i
-    end
+    size = size.to_i if size.is_a?(String) && size.match(/^\d+$/)
 
     if !size.is_a?(Numeric) || size < 0
-      raise Puppet::ParseError, 'random_password(): Requires a non-negative ' +
+      fail Puppet::ParseError, 'random_password(): Requires a non-negative ' \
         'integer value to work with'
     end
 
@@ -77,11 +75,11 @@ For example:
     ambiguous_characters = %w(0 1 O I l)
 
     # Get allowed characters set ...
-    set = ('a' .. 'z').to_a + ('A' .. 'Z').to_a + ('0' .. '9').to_a
-    set = set - ambiguous_characters
+    set = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
+    set -= ambiguous_characters
 
     # Shuffle characters in the set at random and return desired number of them ...
-    size.times.collect {|i| set[rand(set.size)] }.join
+    size.times.collect { |_i| set[rand(set.size)] }.join
   end
 end
 
