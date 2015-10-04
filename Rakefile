@@ -50,7 +50,6 @@ task test: [
   :metadata_lint,
   :lint,
   :syntax,
-  :rubocop,
   :spec,
 ]
 
