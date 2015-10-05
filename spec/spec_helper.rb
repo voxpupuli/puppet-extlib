@@ -20,7 +20,7 @@ require 'puppetlabs_spec_helper/module_spec_helper'
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'fixtures', 'modules', 'stdlib', 'lib')
 
 RSpec.configure do |configuration|
-  configuration.mock_with :rspec do |configuration|
-    configuration.syntax = :expect
+  configuration.mock_with :rspec do |c|
+    c.syntax = :expect
   end
 end

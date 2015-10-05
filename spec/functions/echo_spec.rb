@@ -6,7 +6,7 @@ describe 'echo' do
       is_expected.not_to be_nil
     end
     it 'should require at least one argument' do
-      is_expected.to run.with_params.and_raise_error /wrong number of arguments/i
+      is_expected.to run.with_params.and_raise_error(/wrong number of arguments/i)
     end
   end
 
