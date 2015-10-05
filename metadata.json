@@ -1,6 +1,6 @@
 {
   "name": "puppet-extlib",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "source": "https://github.com/puppet-community/puppetcommunity-extlib",
   "author": "puppetcommunity",
   "license": "Apache-2.0",
