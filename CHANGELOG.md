@@ -1,3 +1,7 @@
+# Releasing 0.10.1
+
+* Exercising build pipeline
+
 # Releasing 0.10.0
 
 * add more functions:
