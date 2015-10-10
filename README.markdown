@@ -11,7 +11,7 @@
 
 ##Overview
 
-This module provides functions that are out of scope out of scope for
+This module provides functions that are out of scope for 
 [stdlib](https://github.com/puppetlabs/puppetlabs-stdlib). Some of them are
 even intristically tied to stdlib.
 
@@ -86,7 +86,7 @@ will return:
 
 ###echo
 
-This function output the variable content and its type to the
+This function outputs the variable content and its type to the
 debug log. It's similiar to the "notice" function but provides
 a better output format useful to trace variable types and values
 in the manifests.
