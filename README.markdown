@@ -11,7 +11,7 @@
 
 ##Overview
 
-This module provides functions that are out of scope 
+This module provides functions that are out of scope for 
 [stdlib](https://github.com/puppetlabs/puppetlabs-stdlib). Some of them are
 even intristically tied to stdlib.
 
