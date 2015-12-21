@@ -12,10 +12,11 @@ module Puppet::Parser::Functions
     content = args[0]
     template_name = args[1]
 
-    Puppet::Parser::Functions.autoloader.loadall
+    # Load template function from puppet
+    Puppet::Parser::Functions.function('template')
 
     return content if content != ''
-    return function_template(template_name) if template_name
+    return function_template([template_name]) if template_name
 
     return nil
   end
