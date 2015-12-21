@@ -2,11 +2,16 @@ module Puppet::Parser::Functions
   Puppet::Parser::Functions.newfunction(:default_content,
                                         :type => :rvalue,
                                         :doc => <<-'ENDOFDOC'
-  Takes an optional content and an optional template name to calculate the actual
+  Takes an optional content and an optional template name and returns the
   contents of a file.
 
-  This small function abbreviates the default initialisation boilerplate of
-  stdmod modules.
+  Examples:
+
+      $config_file_content = default_content($config_file_string, $config_file_template)
+      file { '/tmp/x':
+        ensure  => 'file',
+        content => $config_file_content,
+      }
   ENDOFDOC
   ) do |args|
     content = args[0]
