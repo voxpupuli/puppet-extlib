@@ -15,7 +15,7 @@ module Puppet::Parser::Functions
     Puppet::Parser::Functions.autoloader.loadall
 
     return content if content != ''
-    return function_template(template_name) if template_name
+    return function_template([template_name]) if template_name
 
     return nil
   end
