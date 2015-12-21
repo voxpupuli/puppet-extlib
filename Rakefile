@@ -2,7 +2,7 @@ require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
 require 'metadata-json-lint/rake_task'
-require 'puppet_blacksmith/rake_tasks'
+require 'puppet_blacksmith'
 require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
@@ -36,16 +36,47 @@ task test: [
   :spec,
 ]
 
-Blacksmith::RakeTask.new do |t|
-  t.build = false # do not build the module nor push it to the Forge
-  # just do the tagging [:clean, :tag, :bump_commit]
+
+def blacksmith_freestyle_bump!(new_version)
+  m = Blacksmith::Modulefile.new
+  path = m.path
+  text = File.read(path)
+  text = m.replace_version(text, new_version)
+  File.open(path, "w") {|file| file.puts text}
+  new_version
 end
 
-desc 'Offload release process to Travis.'
-task travis_release: [
-  :check_changelog,  # check that the changelog contains an entry for the current release
-  :"module:release", # do everything except build / push to forge, travis will do that for us
-]
+desc 'release new version through Travis-ci'
+task "travis_release" do
+
+  require 'puppet_blacksmith/rake_tasks'
+  Blacksmith::RakeTask.new do |t|
+    t.build = false # do not build the module nor push it to the Forge
+    # just do the tagging [:clean, :tag, :bump_commit]
+  end
+
+  # always get a fresh version
+  v = Blacksmith::Modulefile.new.version.split(/-/)[0]
+  # "bump" version to something without the -pre release
+  blacksmith_freestyle_bump!(v)
+
+  g = Blacksmith::Git.new
+
+  # check that the changelog contains an entry for the current release
+  Rake::Task[:check_changelog].invoke
+  # do a "manual" module:release
+  Rake::Task["module:clean"].invoke
+  # idempotently create tags
+  Rake::Task["module:tag"].invoke unless g.exec_git("tag -l v#{v}").strip == "v#{v}"
+  Rake::Task["module:bump"].invoke
+
+  puts "Appending pre-release marker -rc0 to version"
+  v = Blacksmith::Modulefile.new.version.split(/-/)[0]
+  blacksmith_freestyle_bump!("#{v}-rc0")
+  # push it out, and let travis do the release:
+  g.commit_modulefile!("#{v}-rc0")
+  g.push!
+end
 
 desc 'Check Changelog.'
 task :check_changelog do
