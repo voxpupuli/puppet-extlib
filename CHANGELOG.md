@@ -1,3 +1,8 @@
+# Releasing 0.10.4
+
+* make default_content puppet 4 compatible
+* streamline release process
+
 # Releasing 0.10.1
 
 * Exercising build pipeline
