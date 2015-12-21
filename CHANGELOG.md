@@ -1,6 +1,7 @@
-# Releasing 0.10.4
+# Releasing 0.10.5
 
 * make default_content puppet 4 compatible
+* document default_content!
 * streamline release process
 
 # Releasing 0.10.1
