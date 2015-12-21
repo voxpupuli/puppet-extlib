@@ -1,4 +1,4 @@
-source ENV['GEM_SOURCE'] || 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
 def location_for(place, fake_version = nil)
   if place =~ /^(git[:@][^#]*)#(.*)/
@@ -9,15 +9,6 @@ def location_for(place, fake_version = nil)
     [place, { :require => false }]
   end
 end
-
-if facterversion = ENV['FACTER_GEM_VERSION']
-gem 'facter', facterversion.to_s, :require => false, :groups => [:test]
-else
-gem 'facter', :require => false, :groups => [:test]
-end
-
-ENV['PUPPET_VERSION'].nil? ? puppetversion = '3.8.4' : puppetversion = ENV['PUPPET_VERSION'].to_s
-gem 'puppet', puppetversion, :require => false, :groups => [:test]
 
 group :test do
   gem 'rake',                                                       :require => false
@@ -46,7 +37,7 @@ group :development do
 end
 
 group :system_tests do
-  gem 'beaker',        :require => false
+  gem 'beaker',                        :require => false
   if beaker_version = ENV['BEAKER_VERSION']
     gem 'beaker', *location_for(beaker_version)
   end
@@ -55,6 +46,18 @@ group :system_tests do
   else
     gem 'beaker-rspec',  :require => false
   end
+  gem 'beaker-puppet_install_helper',  :require => false
 end
+
+
+
+if facterversion = ENV['FACTER_GEM_VERSION']
+gem 'facter', facterversion.to_s, :require => false, :groups => [:test]
+else
+gem 'facter', :require => false, :groups => [:test]
+end
+
+ENV['PUPPET_VERSION'].nil? ? puppetversion = '3.8.4' : puppetversion = ENV['PUPPET_VERSION'].to_s
+gem 'puppet', puppetversion, :require => false, :groups => [:test]
 
 # vim:ft=ruby
