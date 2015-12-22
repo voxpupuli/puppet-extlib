@@ -1,4 +1,4 @@
-# Releasing 0.10.5
+# Releasing 0.10.6
 
 * make default_content puppet 4 compatible
 * document default_content!
