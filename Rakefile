@@ -36,16 +36,6 @@ task test: [
   :spec,
 ]
 
-
-def blacksmith_freestyle_bump!(new_version)
-  m = Blacksmith::Modulefile.new
-  path = m.path
-  text = File.read(path)
-  text = m.replace_version(text, new_version)
-  File.open(path, "w") {|file| file.puts text}
-  new_version
-end
-
 desc 'release new version through Travis-ci'
 task "travis_release" do
 
@@ -55,26 +45,26 @@ task "travis_release" do
     # just do the tagging [:clean, :tag, :bump_commit]
   end
 
-  # always get a fresh version
-  v = Blacksmith::Modulefile.new.version.split(/-/)[0]
-  # "bump" version to something without the -pre release
-  blacksmith_freestyle_bump!(v)
+  m = Blacksmith::Modulefile.new
+  v = m.version
+  raise "Refusing to release an RC or build-release (#{v}).\n" +
+        "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
 
-  g = Blacksmith::Git.new
-
-  # check that the changelog contains an entry for the current release
   Rake::Task[:check_changelog].invoke
-  # do a "manual" module:release
+  # do a "manual" module:release (clean, tag, bump, commit, push tags)
   Rake::Task["module:clean"].invoke
-  # idempotently create tags
-  Rake::Task["module:tag"].invoke unless g.exec_git("tag -l v#{v}").strip == "v#{v}"
-  Rake::Task["module:bump"].invoke
 
-  puts "Appending pre-release marker -rc0 to version"
-  v = Blacksmith::Modulefile.new.version.split(/-/)[0]
-  blacksmith_freestyle_bump!("#{v}-rc0")
+  # idempotently create tags
+  g = Blacksmith::Git.new
+  Rake::Task["module:tag"].invoke unless g.exec_git("tag -l v#{v}").strip == "v#{v}"
+
+  v_inc = m.increase_version(v)
+  v_new = "#{v_inc}-rc0"
+  ENV['BLACKSMITH_FULL_VERSION'] = v_new
+  Rake::Task["module:bump:full"].invoke
+
   # push it out, and let travis do the release:
-  g.commit_modulefile!("#{v}-rc0")
+  g.commit_modulefile!(v_new)
   g.push!
 end
 

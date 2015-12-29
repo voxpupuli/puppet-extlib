@@ -17,7 +17,7 @@ group :test do
   gem 'metadata-json-lint',                                         :require => false
   gem 'rspec-puppet-facts',                                         :require => false
   gem 'rspec',                                                      :require => false
-  gem 'puppet-blacksmith',                                          :require => false
+  gem 'puppet-blacksmith',                                          :require => false, :git => 'https://github.com/puppet-community/puppet-blacksmith.git'
   gem 'rubocop',                                                    :require => false
   gem 'rspec-puppet-utils',                                         :require => false
   gem 'puppetlabs_spec_helper',                                     :require => false
