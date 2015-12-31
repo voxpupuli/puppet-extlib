@@ -174,7 +174,7 @@ Takes an optional content and an optional template name and returns the contents
 *Examples:*
 
 ```puppet
-$config_file_content = default_content($config_file_string, $config_file_template)
+$config_file_content = default_content($file_content, $template_location)
 file { '/tmp/x':
   ensure  => 'file',
   content => $config_file_content,
