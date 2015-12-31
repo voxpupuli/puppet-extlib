@@ -1,3 +1,7 @@
+# Releasing 0.11.0
+
+* default_content() now handles empty templates properly and has working rspec tests.
+
 # Releasing 0.10.7
 
 * make default_content puppet 4 compatible
