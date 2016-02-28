@@ -8,13 +8,13 @@ describe 'resources_deep_merge' do
       'one' => {
         'attributes' => {
           'user' => '1',
-          'pass' => '1',
+          'pass' => '1'
         }
       },
       'two' => {
         'attributes' => {
           'user' => '2',
-          'pass' => '2',
+          'pass' => '2'
         }
       }
     }
@@ -24,7 +24,7 @@ describe 'resources_deep_merge' do
     {
       'ensure' => 'present',
       'attributes' => {
-        'type' => 'psql',
+        'type' => 'psql'
       }
     }
   end
@@ -36,7 +36,7 @@ describe 'resources_deep_merge' do
         'attributes' => {
           'type' => 'psql',
           'user' => '1',
-          'pass' => '1',
+          'pass' => '1'
         }
       },
       'two' => {
@@ -44,9 +44,9 @@ describe 'resources_deep_merge' do
         'attributes' => {
           'type' => 'psql',
           'user' => '2',
-          'pass' => '2',
+          'pass' => '2'
         }
-      },
+      }
     }
   end
 

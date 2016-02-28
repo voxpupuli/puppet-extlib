@@ -66,10 +66,10 @@ EOS
                                      ) do |args|
   Puppet::Parser::Functions.function('deep_merge')
 
-  fail ArgumentError, ("resources_deep_merge(): wrong number of arguments (#{args.length} for 2)") if args.length != 2
+  raise ArgumentError, "resources_deep_merge(): wrong number of arguments (#{args.length} for 2)" if args.length != 2
   resources, defaults = args
-  fail ArgumentError, ('resources_deep_merge(): first argument must be a hash')  unless resources.is_a?(Hash)
-  fail ArgumentError, ('resources_deep_merge(): second argument must be a hash') unless defaults.is_a?(Hash)
+  raise ArgumentError, 'resources_deep_merge(): first argument must be a hash'  unless resources.is_a?(Hash)
+  raise ArgumentError, 'resources_deep_merge(): second argument must be a hash' unless defaults.is_a?(Hash)
 
   deep_merged_resources = {}
   resources.each do |title, params|
