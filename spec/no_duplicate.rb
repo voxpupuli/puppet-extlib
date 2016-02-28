@@ -25,7 +25,7 @@ puts 'Duplicate functions:'
 puts duplicate_functions
 puts ''
 
-if duplicate_functions.length > 0
+if !duplicate_functions.length.empty?
   puts 'Duplicate function(s) found! Please have unique function names between'
   puts 'stdlib and extlib'
   puts 'Test failed'

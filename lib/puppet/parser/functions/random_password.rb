@@ -51,14 +51,14 @@ EOS
   #
   arguments = arguments.shift if arguments.first.is_a?(Array)
 
-  fail Puppet::ParseError, 'random_password(): Wrong number of arguments ' \
+  raise Puppet::ParseError, 'random_password(): Wrong number of arguments ' \
     "given (#{arguments.size} for 1)" if arguments.size < 1
 
   size = arguments.shift
 
   # This should cover all the generic numeric types present in Puppet ...
   unless size.class.ancestors.include?(Numeric) || size.is_a?(String)
-    fail Puppet::ParseError, 'random_password(): Requires a numeric ' \
+    raise Puppet::ParseError, 'random_password(): Requires a numeric ' \
       'type to work with'
   end
 
@@ -66,7 +66,7 @@ EOS
   size = size.to_i if size.is_a?(String) && size.match(/^\d+$/)
 
   if !size.is_a?(Numeric) || size < 0
-    fail Puppet::ParseError, 'random_password(): Requires a non-negative ' \
+    raise Puppet::ParseError, 'random_password(): Requires a non-negative ' \
       'integer value to work with'
   end
 
@@ -78,7 +78,9 @@ EOS
   set -= ambiguous_characters
 
   # Shuffle characters in the set at random and return desired number of them ...
-  size.times.collect { |_i| set[rand(set.size)] }.join
+  Array.new(size) do |_i|
+    set[rand(set.size)]
+  end.join
 end
 
 # vim: set ts=2 sw=2 et :
