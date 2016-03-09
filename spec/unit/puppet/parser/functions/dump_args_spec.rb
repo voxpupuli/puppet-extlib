@@ -4,6 +4,6 @@ describe 'dump_args' do
   let(:scope) { PuppetlabsSpec::PuppetInternals.scope }
 
   it 'should exist' do
-    Puppet::Parser::Functions.function('dump_args').should == 'function_dump_args'
+    expect(Puppet::Parser::Functions.function('dump_args')).to eq('function_dump_args')
   end
 end
