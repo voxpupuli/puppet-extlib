@@ -1,5 +1,9 @@
+# extlib
+
 [![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
-[![Build Status](https://img.shields.io/travis/voxpupuli/puppet-extlib/master.svg)](https://travis-ci.org/puppet-community/puppet-extlib)
+[![Puppet Forge downloads](https://img.shields.io/puppetforge/dt/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
+[![Puppet Forge score](https://img.shields.io/puppetforge/f/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-extlib.png)](https://travis-ci.org/voxpupuli/puppet-extlib)
 
 #### Table of Contents
 
