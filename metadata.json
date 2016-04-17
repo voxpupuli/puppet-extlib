@@ -1,6 +1,6 @@
 {
   "name": "puppet-extlib",
-  "version": "0.11.1-rc0",
+  "version": "0.11.1",
   "source": "https://github.com/voxpupuli/puppet-extlib.git",
   "project_page": "https://github.com/voxpupuli/puppet-extlib",
   "issues_url": "https://github.com/voxpupuli/puppet-extlib/issues",
@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "summary": "extlib provides functions out of scope puppetlabs/stdlib",
   "description": "extlib provides functions out of scope puppetlabs/stdlib",
-  "tags": [ "voxpupuli", "extlib" ],
+  "tags": [ "voxpupuli", "extlib", "stdlib" ],
   "requirements": [
     {
       "name": "puppet",

@@ -1,3 +1,7 @@
+# Releasing 0.11.1
+
+* add ip_to_cron from theforeman/puppet-puppet
+
 # Releasing 0.11.0
 
 * default_content() now handles empty templates properly and has working rspec tests.
