@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe 'echo' do
   describe 'signature validation' do
-    it 'should exist' do
+    it 'exists' do
       is_expected.not_to be_nil
     end
-    it 'should require at least one argument' do
+    it 'requires at least one argument' do
       is_expected.to run.with_params.and_raise_error(%r{wrong number of arguments}i)
     end
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'default_content' do
   describe 'signature validation' do
-    it 'should exist' do
+    it 'exists' do
       is_expected.not_to be_nil
     end
   end
