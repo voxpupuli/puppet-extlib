@@ -1,4 +1,4 @@
-Puppet::Parser::Functions.newfunction(:echo, :arity => -2, :doc => <<-EOS
+Puppet::Parser::Functions.newfunction(:echo, arity: -2, doc: <<-EOS
 This function output the variable content and its type to the
 debug log. It's similiar to the "notice" function but provides
 a better output format useful to trace variable types and values

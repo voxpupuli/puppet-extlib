@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-Puppet::Parser::Functions.newfunction(:random_password, :type => :rvalue, :doc => <<-EOS
+Puppet::Parser::Functions.newfunction(:random_password, type: :rvalue, doc: <<-EOS
 Returns a string of arbitrary length that contains randomly selected characters.
 
 Prototype:

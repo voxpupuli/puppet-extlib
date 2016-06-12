@@ -9,7 +9,7 @@ require 'etc'
 #
 # Usage: cache_data(namespace, name, initial_data)
 # Example: $password = cache_data('mysql', 'mysql_password', 'this_is_my_password')
-Puppet::Parser::Functions.newfunction(:cache_data, :type => :rvalue) do |args|
+Puppet::Parser::Functions.newfunction(:cache_data, type: :rvalue) do |args|
   raise Puppet::ParseError, 'Usage: cache_data(namespace, name, initial_data)' unless args.size == 3
 
   namespace = args[0]

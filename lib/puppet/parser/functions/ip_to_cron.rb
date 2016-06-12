@@ -7,7 +7,7 @@
 # ip_to_cron(1800) - returns [ '*', an array of two values between 0..59 ]
 # ip_to_cron(7200) - returns [ an array of twelve values between 0..23, one value between 0..59 ]
 module Puppet::Parser::Functions
-  newfunction(:ip_to_cron, :type => :rvalue) do |args|
+  newfunction(:ip_to_cron, type: :rvalue) do |args|
     runinterval = (args[0] || 30).to_i
     ip          = lookupvar('ipaddress').to_s.split('.')[3].to_i
     if runinterval <= 3600
