@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'cache_data' do
+describe 'cache_data', type: :puppet_function do
   include Mocha::ParameterMatchers
 
   let(:initial_data) { 'my_password' }
