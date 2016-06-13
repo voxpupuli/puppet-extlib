@@ -6,6 +6,8 @@ include RspecPuppetFacts
 # require stdlib functions can load them.
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'fixtures', 'modules', 'stdlib', 'lib')
 
+FIXTURES_PATH = File.expand_path(File.join(__FILE__, '..', 'fixtures'))
+
 RSpec.configure do |configuration|
   configuration.mock_with :rspec do |c|
     c.syntax = :expect
