@@ -1,6 +1,6 @@
 Puppet::Parser::Functions.newfunction(:default_content,
-                                      :type => :rvalue,
-                                      :doc => <<-'ENDOFDOC'
+                                      type: :rvalue,
+                                      doc: <<-'ENDOFDOC'
 Takes an optional content and an optional template name and returns the
 contents of a file.
 

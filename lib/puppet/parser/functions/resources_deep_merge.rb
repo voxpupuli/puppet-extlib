@@ -1,4 +1,4 @@
-Puppet::Parser::Functions.newfunction(:resources_deep_merge, :type => :rvalue, :doc => <<-EOS
+Puppet::Parser::Functions.newfunction(:resources_deep_merge, type: :rvalue, doc: <<-EOS
 Deeply merge a "defaults" hash into a "resources" hash like the ones expected
 by create_resources(). Internally calls the puppetlabs-stdlib function
 deep_merge(). In case of duplicate keys the "resources" hash keys win over the
