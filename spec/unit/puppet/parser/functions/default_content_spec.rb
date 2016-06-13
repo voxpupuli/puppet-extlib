@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'default_content' do
+describe 'default_content', type: :puppet_function do
   describe 'signature validation' do
     it 'exists' do
       is_expected.not_to be_nil
