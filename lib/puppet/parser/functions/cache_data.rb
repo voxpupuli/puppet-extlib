@@ -27,7 +27,7 @@ Puppet::Parser::Functions.newfunction(:cache_data, type: :rvalue) do |args|
     YAML.load(File.read(cache))
   else
     FileUtils.mkdir_p(cache_dir)
-    File.open(cache, 'w', 0600) do |c|
+    File.open(cache, 'w', 0o600) do |c|
       c.write(YAML.dump(initial_data))
     end
     File.chown(File.stat(Puppet[:vardir]).uid, nil, cache)
