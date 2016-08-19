@@ -12,7 +12,7 @@ Examples:
       content => $config_file_content,
     }
 ENDOFDOC
-) do |args|
+                                     ) do |args|
   content = args[0]
   template_name = args[1]
 
