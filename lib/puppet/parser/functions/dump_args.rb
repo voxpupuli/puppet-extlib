@@ -8,6 +8,6 @@ Puppet::Parser::Functions.newfunction(:dump_args, type: :statement, doc: <<-EOS
      conjunction with a rspec-puppet unit test.  Otherwise the output will
      be shown during a puppet run when verbose/debug options are enabled.
   EOS
-) do |args|
+                                     ) do |args|
   puts JSON.pretty_generate(args)
 end
