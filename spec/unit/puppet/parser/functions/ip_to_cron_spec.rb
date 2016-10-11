@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable RSpec/MultipleExpectations
 describe 'ip_to_cron', type: :puppet_function do
   it 'exists' do
     expect(Puppet::Parser::Functions.function('ip_to_cron')).to eq('function_ip_to_cron')
@@ -84,3 +85,4 @@ describe 'ip_to_cron', type: :puppet_function do
     end
   end
 end
+# rubocop:enable RSpec/MultipleExpectations
