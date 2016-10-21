@@ -6,6 +6,11 @@ include RspecPuppetFacts
 # require stdlib functions can load them.
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'fixtures', 'modules', 'stdlib', 'lib')
 
+unless RUBY_VERSION =~ %r{^1.9}
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 FIXTURES_PATH = File.expand_path(File.join(__FILE__, '..', 'fixtures'))
 
 RSpec.configure do |configuration|
