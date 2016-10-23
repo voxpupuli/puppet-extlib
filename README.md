@@ -1,4 +1,4 @@
-# extlib
+# Extlib module for Puppet
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
 [![Puppet Forge downloads](https://img.shields.io/puppetforge/dt/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
@@ -15,25 +15,22 @@
 
 ## Overview
 
-This module provides functions that are out of scope for 
-[stdlib](https://github.com/puppetlabs/puppetlabs-stdlib). Some of them are
-even intrinsically tied to stdlib.
+This module provides functions that are out of scope for [stdlib](https://github.com/puppetlabs/puppetlabs-stdlib).
+Some of them are even intrinsically tied to stdlib.
 
-##Setup
+## Setup
 
 ```console
  % puppet module install puppet-extlib
 ```
 
-##Usage
+## Usage
 
 ### resources_deep_merge
 
 - *Type*: rvalue
 
 Returns a [deep-merged](#deep_merge) resource hash (hash of hashes).
-
-*Examples:*
 
 ```puppet
     $tcresource_defaults = {
@@ -125,13 +122,15 @@ echo($v7) # no comment here
 
 ### cache_data
 
-Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist. Useful for having data that's randomly generated once on the master side (e.g. a password), but then stays the same on subsequent runs. The `cache_data` takes three parameters:
+Retrieves data from a cache file, or creates it with supplied data if the file
+doesn't exist. Useful for having data that's randomly generated once on the
+master side (e.g. a password), but then stays the same on subsequent runs. The
+`cache_data` takes three parameters:
 
- * namespace: the folder under Puppet's vardir that the data is placed (e.g. mysql becomes /var/lib/puppet/mysql)
- * data_name: the filename to store the data as (e.g. mysql_password becomes /var/lib/puppet/mysql/mysql_password)
- * initial_data: the data to store and cache in the data_name file 
-
-*Examples:*
+* namespace: the folder under Puppet's vardir that the data is placed (e.g. mysql
+  becomes /var/lib/puppet/mysql)
+* data_name: the filename to store the data as (e.g. mysql_password becomes /var/lib/puppet/mysql/mysql_password)
+* initial_data: the data to store and cache in the data_name file
 
 ```puppet
 class mymodule::params {
@@ -144,8 +143,6 @@ class mymodule::params {
 ### random_password
 
 Returns a string of arbitrary length that contains randomly selected characters.
-
-*Examples:*
 
 ```
 Prototype:
@@ -173,9 +170,8 @@ The result will be as follows:
 
 ### default_content
 
-Takes an optional content and an optional template name and returns the contents of a file.
-
-*Examples:*
+Takes an optional content and an optional template name and returns the contents
+of a file.
 
 ```puppet
 $config_file_content = default_content($file_content, $template_location)
@@ -185,7 +181,7 @@ file { '/tmp/x':
 }
 ```
 
-##Limitations
+## Limitations
 
 This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`
 was introduced.
