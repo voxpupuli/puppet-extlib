@@ -1,9 +1,11 @@
 # Extlib module for Puppet
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
-[![Puppet Forge downloads](https://img.shields.io/puppetforge/dt/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
-[![Puppet Forge score](https://img.shields.io/puppetforge/f/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
-[![Build Status](https://travis-ci.org/voxpupuli/puppet-extlib.png)](https://travis-ci.org/voxpupuli/puppet-extlib)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-extlib.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-extlib)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-extlib/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-extlib)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
 
 #### Table of Contents
 
