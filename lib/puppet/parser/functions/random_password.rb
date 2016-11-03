@@ -51,8 +51,10 @@ EOS
   #
   arguments = arguments.shift if arguments.first.is_a?(Array)
 
-  raise Puppet::ParseError, 'random_password(): Wrong number of arguments ' \
-    "given (#{arguments.size} for 1)" if arguments.empty?
+  if arguments.empty?
+    raise Puppet::ParseError, 'random_password(): Wrong number of arguments ' \
+      "given (#{arguments.size} for 1)"
+  end
 
   size = arguments.shift
 
