@@ -21,7 +21,7 @@ describe 'echo', type: :puppet_function do
     end
     it 'and array' do
       allow(scope).to receive(:debug).with 'My Array (Array) ["1", "2", "3"]'
-      is_expected.to run.with_params(%w(1 2 3), 'My Array')
+      is_expected.to run.with_params(%w[1 2 3], 'My Array')
     end
     it 'a hash' do
       allow(scope).to receive(:debug).with 'My Hash (Hash) {"a"=>"1"}'

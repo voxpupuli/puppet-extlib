@@ -8,6 +8,7 @@ describe 'ip_to_cron', type: :puppet_function do
 
   describe 'when runinterval is 1 hour' do
     let(:runinterval) { 3600 }
+
     result = nil
     context 'and IP address is 10.0.0.150' do
       before do
@@ -41,6 +42,7 @@ describe 'ip_to_cron', type: :puppet_function do
 
   describe 'when runinterval is 30 minutes' do
     let(:runinterval) { 1800 }
+
     before do
       allow(scope).to receive(:lookupvar).with('ipaddress').and_return('10.0.0.1')
     end
@@ -61,6 +63,7 @@ describe 'ip_to_cron', type: :puppet_function do
 
   describe 'when runinterval is 2 hours' do
     let(:runinterval) { 7200 }
+
     before do
       allow(scope).to receive(:lookupvar).with('ipaddress').and_return('10.0.0.1')
     end
