@@ -53,11 +53,9 @@ describe 'ip_to_cron', type: :puppet_function do
       minutes = subject.call([runinterval])[1]
       expect(minutes).to be_an Array
       expect(minutes.size).to eq(2)
-      minutes.each do |minute|
-        expect(minute).to be_an Integer
-        expect(minute).to be >= 0
-        expect(minute).to be < 60
-      end
+      expect(minutes).to all(be_an(Integer))
+      expect(minutes).to all(be >= 0)
+      expect(minutes).to all(be < 60)
     end
   end
 
@@ -71,11 +69,9 @@ describe 'ip_to_cron', type: :puppet_function do
       hours = subject.call([runinterval])[0]
       expect(hours).to be_an Array
       expect(hours.size).to eq(12)
-      hours.each do |hour|
-        expect(hour).to be_an Integer
-        expect(hour).to be >= 0
-        expect(hour).to be < 24
-      end
+      expect(hours).to all(be_an(Integer))
+      expect(hours).to all(be >= 0)
+      expect(hours).to all(be < 24)
     end
   end
 
