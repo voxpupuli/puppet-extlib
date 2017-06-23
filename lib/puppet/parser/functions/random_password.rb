@@ -73,7 +73,7 @@ EOS
   end
 
   # These are quite often confusing ...
-  ambiguous_characters = %w(0 1 O I l)
+  ambiguous_characters = %w[0 1 O I l]
 
   # Get allowed characters set ...
   set = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a

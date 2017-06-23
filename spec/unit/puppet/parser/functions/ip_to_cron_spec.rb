@@ -8,6 +8,7 @@ describe 'ip_to_cron', type: :puppet_function do
 
   describe 'when runinterval is 1 hour' do
     let(:runinterval) { 3600 }
+
     result = nil
     context 'and IP address is 10.0.0.150' do
       before do
@@ -41,6 +42,7 @@ describe 'ip_to_cron', type: :puppet_function do
 
   describe 'when runinterval is 30 minutes' do
     let(:runinterval) { 1800 }
+
     before do
       allow(scope).to receive(:lookupvar).with('ipaddress').and_return('10.0.0.1')
     end
@@ -51,16 +53,15 @@ describe 'ip_to_cron', type: :puppet_function do
       minutes = subject.call([runinterval])[1]
       expect(minutes).to be_an Array
       expect(minutes.size).to eq(2)
-      minutes.each do |minute|
-        expect(minute).to be_an Integer
-        expect(minute).to be >= 0
-        expect(minute).to be < 60
-      end
+      expect(minutes).to all(be_an(Integer))
+      expect(minutes).to all(be >= 0)
+      expect(minutes).to all(be < 60)
     end
   end
 
   describe 'when runinterval is 2 hours' do
     let(:runinterval) { 7200 }
+
     before do
       allow(scope).to receive(:lookupvar).with('ipaddress').and_return('10.0.0.1')
     end
@@ -68,11 +69,9 @@ describe 'ip_to_cron', type: :puppet_function do
       hours = subject.call([runinterval])[0]
       expect(hours).to be_an Array
       expect(hours.size).to eq(12)
-      hours.each do |hour|
-        expect(hour).to be_an Integer
-        expect(hour).to be >= 0
-        expect(hour).to be < 24
-      end
+      expect(hours).to all(be_an(Integer))
+      expect(hours).to all(be >= 0)
+      expect(hours).to all(be < 24)
     end
   end
 
