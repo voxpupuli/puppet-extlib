@@ -4,12 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.0.1](https://github.com/voxpupuli/puppet-extlib/tree/v2.0.1) (2017-12-18)
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.0.0...v2.0.1)
+
+**Merged pull requests:**
+
+- declare compatible with Puppet 5.x [\#89](https://github.com/voxpupuli/puppet-extlib/pull/89) ([mmoll](https://github.com/mmoll))
+
 ## [v2.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v2.0.0) (2017-10-11)
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v1.1.0...v2.0.0)
 
 **Fixed bugs:**
 
 - Fix stdlib version requirement in metadata [\#83](https://github.com/voxpupuli/puppet-extlib/pull/83) ([oranenj](https://github.com/oranenj))
+
+**Merged pull requests:**
+
+- release 2.0.0 [\#86](https://github.com/voxpupuli/puppet-extlib/pull/86) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [v1.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v1.1.0) (2017-01-13)
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v1.0.0...v1.1.0)
