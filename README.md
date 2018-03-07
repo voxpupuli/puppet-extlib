@@ -183,6 +183,10 @@ file { '/tmp/x':
 }
 ```
 
+### extlib::has\_module
+
+See [REFERENCE.md](REFERENCE.md#extlibhas_module)
+
 ## Limitations
 
 This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`
