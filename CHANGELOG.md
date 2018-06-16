@@ -4,7 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v2.1.0) (2018-06-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.0.1...v2.1.0)
+
+**Implemented enhancements:**
+
+- Add has\_module function [\#92](https://github.com/voxpupuli/puppet-extlib/pull/92) ([alexjfisher](https://github.com/alexjfisher))
+
+**Merged pull requests:**
+
+- Remove docker nodesets [\#96](https://github.com/voxpupuli/puppet-extlib/pull/96) ([bastelfreak](https://github.com/bastelfreak))
+- drop EOL OSs; fix puppet version range [\#94](https://github.com/voxpupuli/puppet-extlib/pull/94) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.0.1](https://github.com/voxpupuli/puppet-extlib/tree/v2.0.1) (2017-12-18)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.0.0...v2.0.1)
 
 **Merged pull requests:**
@@ -12,26 +26,24 @@ These should not affect the functionality of the module.
 - declare compatible with Puppet 5.x [\#89](https://github.com/voxpupuli/puppet-extlib/pull/89) ([mmoll](https://github.com/mmoll))
 
 ## [v2.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v2.0.0) (2017-10-11)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v1.1.0...v2.0.0)
 
 **Fixed bugs:**
 
 - Fix stdlib version requirement in metadata [\#83](https://github.com/voxpupuli/puppet-extlib/pull/83) ([oranenj](https://github.com/oranenj))
 
-**Merged pull requests:**
-
-- release 2.0.0 [\#86](https://github.com/voxpupuli/puppet-extlib/pull/86) ([bastelfreak](https://github.com/bastelfreak))
-
 ## [v1.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v1.1.0) (2017-01-13)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v1.0.0...v1.1.0)
 
 **Merged pull requests:**
 
-- release 1.1.0 [\#77](https://github.com/voxpupuli/puppet-extlib/pull/77) ([bastelfreak](https://github.com/bastelfreak))
 - Bump min version\_requirement for Puppet + dep [\#75](https://github.com/voxpupuli/puppet-extlib/pull/75) ([juniorsysadmin](https://github.com/juniorsysadmin))
 - Add missing badges [\#70](https://github.com/voxpupuli/puppet-extlib/pull/70) ([dhoppe](https://github.com/dhoppe))
 
 ## [v1.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v1.0.0) (2016-08-19)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.11.3...v1.0.0)
 
 **Closed issues:**
@@ -47,6 +59,7 @@ These should not affect the functionality of the module.
 - Move function spec tests [\#61](https://github.com/voxpupuli/puppet-extlib/pull/61) ([alexjfisher](https://github.com/alexjfisher))
 
 ## [v0.11.3](https://github.com/voxpupuli/puppet-extlib/tree/v0.11.3) (2016-04-17)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.11.2...v0.11.3)
 
 **Merged pull requests:**
@@ -54,9 +67,11 @@ These should not affect the functionality of the module.
 - bump again [\#56](https://github.com/voxpupuli/puppet-extlib/pull/56) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [v0.11.2](https://github.com/voxpupuli/puppet-extlib/tree/v0.11.2) (2016-04-17)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.11.1...v0.11.2)
 
 ## [v0.11.1](https://github.com/voxpupuli/puppet-extlib/tree/v0.11.1) (2016-04-17)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.11.0...v0.11.1)
 
 **Closed issues:**
@@ -73,6 +88,7 @@ These should not affect the functionality of the module.
 - Added dump\_args statement function for debugging puppet code [\#30](https://github.com/voxpupuli/puppet-extlib/pull/30) ([logicminds](https://github.com/logicminds))
 
 ## [v0.11.0](https://github.com/voxpupuli/puppet-extlib/tree/v0.11.0) (2015-12-31)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.7...v0.11.0)
 
 **Merged pull requests:**
@@ -81,21 +97,19 @@ These should not affect the functionality of the module.
 - fix\(default\_content\) don't call template\(\) on empty template\_name [\#44](https://github.com/voxpupuli/puppet-extlib/pull/44) ([igalic](https://github.com/igalic))
 
 ## [v0.10.7](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.7) (2015-12-29)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.6...v0.10.7)
 
 **Merged pull requests:**
 
-- prepare for 0.10.7 release [\#43](https://github.com/voxpupuli/puppet-extlib/pull/43) ([igalic](https://github.com/igalic))
 - feat \(release\) more solid way to release \(thru travis\) [\#42](https://github.com/voxpupuli/puppet-extlib/pull/42) ([igalic](https://github.com/igalic))
 
 ## [v0.10.6](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.6) (2015-12-22)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.5...v0.10.6)
 
-**Merged pull requests:**
-
-- prepare for 0.10.6 release [\#41](https://github.com/voxpupuli/puppet-extlib/pull/41) ([igalic](https://github.com/igalic))
-
 ## [v0.10.5](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.5) (2015-12-21)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.3...v0.10.5)
 
 **Closed issues:**
@@ -114,18 +128,23 @@ These should not affect the functionality of the module.
 - Add default\_content function [\#4](https://github.com/voxpupuli/puppet-extlib/pull/4) ([alvagante](https://github.com/alvagante))
 
 ## [v0.10.3](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.3) (2015-10-05)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.2...v0.10.3)
 
 ## [v0.10.2](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.2) (2015-10-05)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/0.10.1...v0.10.2)
 
 ## [0.10.1](https://github.com/voxpupuli/puppet-extlib/tree/0.10.1) (2015-10-05)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.1...0.10.1)
 
 ## [v0.10.1](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.1) (2015-10-05)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.0...v0.10.1)
 
 ## [v0.10.0](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.0) (2015-10-05)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.9.3...v0.10.0)
 
 **Closed issues:**
@@ -147,6 +166,7 @@ These should not affect the functionality of the module.
 - further distill matrix, following @camptocamp's example [\#11](https://github.com/voxpupuli/puppet-extlib/pull/11) ([igalic](https://github.com/igalic))
 
 ## [v0.9.3](https://github.com/voxpupuli/puppet-extlib/tree/v0.9.3) (2015-03-17)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.9.2...v0.9.3)
 
 **Merged pull requests:**
@@ -157,6 +177,7 @@ These should not affect the functionality of the module.
 - test more puppet versions [\#6](https://github.com/voxpupuli/puppet-extlib/pull/6) ([igalic](https://github.com/igalic))
 
 ## [v0.9.2](https://github.com/voxpupuli/puppet-extlib/tree/v0.9.2) (2015-03-16)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.9.1...v0.9.2)
 
 **Merged pull requests:**
@@ -165,6 +186,7 @@ These should not affect the functionality of the module.
 - Fix name for puppetlabs/stdlib in metadata.json [\#3](https://github.com/voxpupuli/puppet-extlib/pull/3) ([antaflos](https://github.com/antaflos))
 
 ## [v0.9.1](https://github.com/voxpupuli/puppet-extlib/tree/v0.9.1) (2014-09-03)
+
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.9.0...v0.9.1)
 
 **Closed issues:**
@@ -177,5 +199,8 @@ These should not affect the functionality of the module.
 
 ## [v0.9.0](https://github.com/voxpupuli/puppet-extlib/tree/v0.9.0) (2014-09-02)
 
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/977744d6d05ed5801a20aa9672a80cced1092d00...v0.9.0)
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
