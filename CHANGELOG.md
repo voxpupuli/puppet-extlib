@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.2.0](https://github.com/voxpupuli/puppet-extlib/tree/v2.2.0) (2018-07-24)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.1.0...v2.2.0)
+
+**Implemented enhancements:**
+
+- Add sort\_by\_version function [\#99](https://github.com/voxpupuli/puppet-extlib/pull/99) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v2.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v2.1.0) (2018-06-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.0.1...v2.1.0)
