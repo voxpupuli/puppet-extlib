@@ -1,0 +1,33 @@
+Puppet::Functions.create_function(:default_content) do
+  # @summary Takes an optional content and an optional template name and
+  # returns the contents of a file.
+  # @param :content
+  # @param :template_name
+  # @return [String]
+  # @example:
+  #   $config_file_content = default_content($file_content, $template_location)
+  #   file { '/tmp/x':
+  #     ensure  => 'file',
+  #     content => $config_file_content,
+  #   }
+  dispatch :default_content do
+    param 'Variant[Undef,String]', :content
+    param 'Variant[Undef,String]', :template_name
+    return_type 'Variant[Undef,String]'
+  end
+
+  def emptyish(x)
+    x.nil? || x.empty? || x == :undef
+  end
+
+  def default_content(content = :undef, template_name = :undef)
+    return content unless emptyish(content)
+
+    unless emptyish(template_name)
+      return call_function('template', template_name) unless template_name.end_with?('.epp')
+      return call_function('epp', template_name)
+    end
+
+    :undef
+  end
+end
