@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.3.1](https://github.com/voxpupuli/puppet-extlib/tree/v2.3.1) (2018-08-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.3.0...v2.3.1)
+
+**Merged pull requests:**
+
+- allow puppetlabs/stdlib 5.x [\#106](https://github.com/voxpupuli/puppet-extlib/pull/106) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.3.0](https://github.com/voxpupuli/puppet-extlib/tree/v2.3.0) (2018-07-29)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.2.0...v2.3.0)
