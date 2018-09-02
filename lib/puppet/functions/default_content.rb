@@ -1,10 +1,16 @@
 Puppet::Functions.create_function(:default_content) do
-  # @summary Takes an optional content and an optional template name and
-  # returns the contents of a file.
-  # @param :content
-  # @param :template_name
+  # @summary Takes an optional content and an optional template name and returns the contents of a file.
+  #
+  # @param content
+  # @param template_name
+  #   The path to an .erb or .epp template file or `undef`.
   # @return [String]
-  # @example:
+  #   Returns the value of the content parameter if it's a non empty string.
+  #   Otherwise returns the rendered output from `template_name`.
+  # @return [Undef]
+  #   Returns `undef` if both `content` and `template_name` are `undef`.
+  #
+  # @example Using the function with a file resource.
   #   $config_file_content = default_content($file_content, $template_location)
   #   file { '/tmp/x':
   #     ensure  => 'file',
