@@ -8,7 +8,7 @@
 * [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist  Useful for having data that's randomly generate
 * [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`dump_args`](#dump_args): dump_args - prints the args to STDOUT in Pretty JSON format.  Useful for debugging purposes only. Ideally you would use this in conjunction w
-* [`echo`](#echo): This function output the variable content and its type to the debug log. It's similiar to the "notice" function but provides a better output 
+* [`echo`](#echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
 * [`ip_to_cron`](#ip_to_cron): 
@@ -89,14 +89,14 @@ Returns: `Any`
 
 ### echo
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-This function output the variable content and its type to the
-debug log. It's similiar to the "notice" function but provides
+This function outputs the variable content and its type to the
+debug log. It's similiar to the `notice` function but provides
 a better output format useful to trace variable types and values
 in the manifests.
 
-Example:
+```
 $v1 = 'test'
 $v2 = ["1", "2", "3"]
 $v3 = {"a"=>"1", "b"=>"2"}
@@ -112,24 +112,24 @@ echo($v4, 'My boolean')
 echo($v5, 'My undef')
 echo($v6, 'My structure')
 echo($v7) # no comment here
+debug log output
+My string (String) "test"
+My array (Array) ["1", "2", "3"]
+My hash (Hash) {"a"=>"1", "b"=>"2"}
+My boolean (TrueClass) true
+My undef (String) ""
+My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x"=>"y", "z"=>["1", "2", "3", "4", "5", "6"]}
+(String) "12345"
+```
 
-# debug log output
-# My string (String) "test"
-# My array (Array) ["1", "2", "3"]
-# My hash (Hash) {"a"=>"1", "b"=>"2"}
-# My boolean (TrueClass) true
-# My undef (String) ""
-# My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x"=>"y", "z"=>["1", "2", "3", "4", "5", "6"]}
-# (String) "12345"
+#### `echo(Any $value, Optional[String] $comment)`
 
-#### `echo()`
-
-This function output the variable content and its type to the
-debug log. It's similiar to the "notice" function but provides
+This function outputs the variable content and its type to the
+debug log. It's similiar to the `notice` function but provides
 a better output format useful to trace variable types and values
 in the manifests.
 
-Example:
+```
 $v1 = 'test'
 $v2 = ["1", "2", "3"]
 $v3 = {"a"=>"1", "b"=>"2"}
@@ -145,17 +145,29 @@ echo($v4, 'My boolean')
 echo($v5, 'My undef')
 echo($v6, 'My structure')
 echo($v7) # no comment here
+debug log output
+My string (String) "test"
+My array (Array) ["1", "2", "3"]
+My hash (Hash) {"a"=>"1", "b"=>"2"}
+My boolean (TrueClass) true
+My undef (String) ""
+My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x"=>"y", "z"=>["1", "2", "3", "4", "5", "6"]}
+(String) "12345"
+```
 
-# debug log output
-# My string (String) "test"
-# My array (Array) ["1", "2", "3"]
-# My hash (Hash) {"a"=>"1", "b"=>"2"}
-# My boolean (TrueClass) true
-# My undef (String) ""
-# My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x"=>"y", "z"=>["1", "2", "3", "4", "5", "6"]}
-# (String) "12345"
+Returns: `Undef` Returns nothing.
 
-Returns: `Any`
+##### `value`
+
+Data type: `Any`
+
+The value you want to inspect.
+
+##### `comment`
+
+Data type: `Optional[String]`
+
+An optional comment to prepend to the debug output.
 
 ### extlib::has_module
 
