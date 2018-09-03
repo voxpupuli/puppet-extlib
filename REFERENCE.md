@@ -6,7 +6,7 @@
 **Functions**
 
 * [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist  Useful for having data that's randomly generate
-* [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.  Examples:      $config_file_content = default_co
+* [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`dump_args`](#dump_args): dump_args - prints the args to STDOUT in Pretty JSON format.  Useful for debugging purposes only. Ideally you would use this in conjunction w
 * [`echo`](#echo): This function output the variable content and its type to the debug log. It's similiar to the "notice" function but provides a better output 
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
@@ -43,33 +43,29 @@ Returns: `Any`
 
 ### default_content
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-Takes an optional content and an optional template name and returns the
-contents of a file.
+Takes an optional content and an optional template name and returns the contents of a file.
 
-Examples:
+#### `default_content(Variant[Undef,String] $content, Variant[Undef,String] $template_name)`
 
-    $config_file_content = default_content($file_content, $template_location)
-    file { '/tmp/x':
-      ensure  => 'file',
-      content => $config_file_content,
-    }
+The default_content function.
 
-#### `default_content()`
+Returns: `Variant[Undef,String]` Returns the value of the content parameter if it's a non empty string.
+Otherwise returns the rendered output from `template_name`.
+Returns `undef` if both `content` and `template_name` are `undef`.
 
-Takes an optional content and an optional template name and returns the
-contents of a file.
+##### `content`
 
-Examples:
+Data type: `Variant[Undef,String]`
 
-    $config_file_content = default_content($file_content, $template_location)
-    file { '/tmp/x':
-      ensure  => 'file',
-      content => $config_file_content,
-    }
 
-Returns: `Any`
+
+##### `template_name`
+
+Data type: `Variant[Undef,String]`
+
+The path to an .erb or .epp template file or `undef`.
 
 ### dump_args
 
