@@ -4,10 +4,9 @@ Puppet::Functions.create_function(:default_content) do
   # @param content
   # @param template_name
   #   The path to an .erb or .epp template file or `undef`.
-  # @return [String]
+  # @return
   #   Returns the value of the content parameter if it's a non empty string.
   #   Otherwise returns the rendered output from `template_name`.
-  # @return [Undef]
   #   Returns `undef` if both `content` and `template_name` are `undef`.
   #
   # @example Using the function with a file resource.

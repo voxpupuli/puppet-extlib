@@ -53,6 +53,7 @@ The default_content function.
 
 Returns: `Variant[Undef,String]` Returns the value of the content parameter if it's a non empty string.
 Otherwise returns the rendered output from `template_name`.
+Returns `undef` if both `content` and `template_name` are `undef`.
 
 ##### `content`
 
