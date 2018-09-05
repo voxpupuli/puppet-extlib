@@ -6,7 +6,7 @@ describe 'echo', type: :puppet_function do
       is_expected.not_to be_nil
     end
     it 'requires at least one argument' do
-      is_expected.to run.with_params.and_raise_error(%r{wrong number of arguments}i)
+      is_expected.to run.with_params.and_raise_error(ArgumentError)
     end
   end
 
