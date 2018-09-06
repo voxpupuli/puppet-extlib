@@ -183,6 +183,10 @@ file { '/tmp/x':
 }
 ```
 
+### ip\_to\_cron
+
+See [REFERENCE.md](REFERENCE.md#ip_to_cron)
+
 ### extlib::has\_module
 
 See [REFERENCE.md](REFERENCE.md#extlibhas_module)
