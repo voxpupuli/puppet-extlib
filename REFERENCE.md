@@ -11,7 +11,7 @@
 * [`echo`](#echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
-* [`ip_to_cron`](#ip_to_cron): 
+* [`ip_to_cron`](#ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`random_password`](#random_password): Returns a string of arbitrary length that contains randomly selected characters.  Prototype:      random_password(n)  Where n is a non-negati
 * [`resources_deep_merge`](#resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by create_resources(). Internally calls the puppetlabs-stdlib f
 
@@ -208,15 +208,39 @@ An array of version strings you want sorted
 
 ### ip_to_cron
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-The ip_to_cron function.
+Provides a "random" value to cron based on the last bit of the machine IP address.
+used to avoid starting a certain cron job at the same time on all servers.
+Takes the runinterval in seconds as parameter and returns an array of [hour, minute]
 
-#### `ip_to_cron()`
+example usage
+```
+ip_to_cron(3600) - returns [ '*', one value between 0..59 ]
+ip_to_cron(1800) - returns [ '*', an array of two values between 0..59 ]
+ip_to_cron(7200) - returns [ an array of twelve values between 0..23, one value between 0..59 ]
+```
 
-The ip_to_cron function.
+#### `ip_to_cron(Optional[Integer[1]] $runinterval)`
 
-Returns: `Any`
+Provides a "random" value to cron based on the last bit of the machine IP address.
+used to avoid starting a certain cron job at the same time on all servers.
+Takes the runinterval in seconds as parameter and returns an array of [hour, minute]
+
+example usage
+```
+ip_to_cron(3600) - returns [ '*', one value between 0..59 ]
+ip_to_cron(1800) - returns [ '*', an array of two values between 0..59 ]
+ip_to_cron(7200) - returns [ an array of twelve values between 0..23, one value between 0..59 ]
+```
+
+Returns: `Array`
+
+##### `runinterval`
+
+Data type: `Optional[Integer[1]]`
+
+The number of seconds to use as the run interval
 
 ### random_password
 
