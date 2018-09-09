@@ -12,7 +12,7 @@
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
 * [`ip_to_cron`](#ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
-* [`random_password`](#random_password): Returns a string of arbitrary length that contains randomly selected characters.  Prototype:      random_password(n)  Where n is a non-negati
+* [`random_password`](#random_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`resources_deep_merge`](#resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by create_resources(). Internally calls the puppetlabs-stdlib f
 
 ## Functions
@@ -244,63 +244,21 @@ The number of seconds to use as the run interval
 
 ### random_password
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-Returns a string of arbitrary length that contains randomly selected characters.
+A function to return a string of arbitrary length that contains randomly selected characters.
 
-Prototype:
+#### `random_password(Integer[1] $length)`
 
-    random_password(n)
+A function to return a string of arbitrary length that contains randomly selected characters.
 
-Where n is a non-negative numeric value that denotes length of the desired password.
+Returns: `String` The random string returned consists of alphanumeric characters excluding 'look-alike' characters.
 
-For example:
+##### `length`
 
-  Given the following statements:
+Data type: `Integer[1]`
 
-    $a = 4
-    $b = 8
-    $c = 16
-
-    notice random_password($a)
-    notice random_password($b)
-    notice random_password($c)
-
-  The result will be as follows:
-
-    notice: Scope(Class[main]): fNDC
-    notice: Scope(Class[main]): KcKDLrjR
-    notice: Scope(Class[main]): FtvfvkS9j9wXLsd6
-
-#### `random_password()`
-
-Returns a string of arbitrary length that contains randomly selected characters.
-
-Prototype:
-
-    random_password(n)
-
-Where n is a non-negative numeric value that denotes length of the desired password.
-
-For example:
-
-  Given the following statements:
-
-    $a = 4
-    $b = 8
-    $c = 16
-
-    notice random_password($a)
-    notice random_password($b)
-    notice random_password($c)
-
-  The result will be as follows:
-
-    notice: Scope(Class[main]): fNDC
-    notice: Scope(Class[main]): KcKDLrjR
-    notice: Scope(Class[main]): FtvfvkS9j9wXLsd6
-
-Returns: `Any`
+The length of random password you want generated.
 
 ### resources_deep_merge
 
