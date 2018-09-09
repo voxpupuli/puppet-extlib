@@ -5,7 +5,7 @@
 
 **Functions**
 
-* [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist  Useful for having data that's randomly generate
+* [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`dump_args`](#dump_args): dump_args - prints the args to STDOUT in Pretty JSON format.  Useful for debugging purposes only. Ideally you would use this in conjunction w
 * [`echo`](#echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
@@ -19,27 +19,45 @@
 
 ### cache_data
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
+Retrieves data from a cache file, or creates it with supplied data if the
+file doesn't exist
 
-Useful for having data that's randomly generated once on the master side (e.g. a password), but
-then stays the same on subsequent runs.
+Useful for having data that's randomly generated once on the master side
+(e.g. a password), but then stays the same on subsequent runs. Because it's
+stored on the master on disk, it doesn't work when you use mulitple Puppet
+masters that don't share their vardir.
 
-Usage: cache_data(namespace, name, initial_data)
-Example: $password = cache_data('mysql', 'mysql_password', 'this_is_my_password')
+#### `cache_data(String[1] $namespace, String[1] $name, Any $initial_data)`
 
-#### `cache_data()`
+Retrieves data from a cache file, or creates it with supplied data if the
+file doesn't exist
 
-Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
+Useful for having data that's randomly generated once on the master side
+(e.g. a password), but then stays the same on subsequent runs. Because it's
+stored on the master on disk, it doesn't work when you use mulitple Puppet
+masters that don't share their vardir.
 
-Useful for having data that's randomly generated once on the master side (e.g. a password), but
-then stays the same on subsequent runs.
+Returns: `Any` The cached value when it exists. The initial data when no cache exists
 
-Usage: cache_data(namespace, name, initial_data)
-Example: $password = cache_data('mysql', 'mysql_password', 'this_is_my_password')
+##### `namespace`
 
-Returns: `Any`
+Data type: `String[1]`
+
+Namespace for the cache
+
+##### `name`
+
+Data type: `String[1]`
+
+Cache key within the namespace
+
+##### `initial_data`
+
+Data type: `Any`
+
+The data for when there is no cache yet
 
 ### default_content
 
