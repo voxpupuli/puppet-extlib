@@ -28,64 +28,9 @@ Some of them are even intrinsically tied to stdlib.
 
 ## Usage
 
-### resources_deep_merge
+### resources\_deep\_merge
 
-- *Type*: rvalue
-
-Returns a [deep-merged](#deep_merge) resource hash (hash of hashes).
-
-```puppet
-    $tcresource_defaults = {
-      ensure     => 'present',
-      attributes => {
-        driverClassName => 'org.postgresql.Driver',
-      }
-    }
-
-    $tcresources = {
-      'app1:jdbc/db1' => {
-        attributes => {
-          url      => 'jdbc:postgresql://localhost:5432/db1',
-          userpass => 'user1:pass1',
-        },
-      },
-      'app2:jdbc/db2' => {
-        attributes => {
-          url      => 'jdbc:postgresql://localhost:5432/db2',
-          userpass => 'user2:pass2',
-        },
-      }
-    }
-```
-
-When called as:
-
-```puppet
-    $result = resources_deep_merge($tcresources, $tcresource_defaults)
-```
-
-will return:
-
-```puppet
-    {
-     'app1:jdbc/db1' => {
-       ensure     => 'present',
-       attributes => {
-         url      => 'jdbc:postgresql://localhost:5432/db1',
-         userpass => 'user1:pass1',
-         driverClassName => 'org.postgresql.Driver',
-       },
-     },
-     'app2:jdbc/db2' => {
-       ensure     => 'present',
-       attributes => {
-         url      => 'jdbc:postgresql://localhost:5432/db2',
-         userpass => 'user2:pass2',
-         driverClassName => 'org.postgresql.Driver',
-       },
-     }
-    }
-```
+See [REFERENCE.md](REFERENCE.md#resources_deep_merge)
 
 ### echo
 

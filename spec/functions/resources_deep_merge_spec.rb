@@ -1,8 +1,6 @@
-#! /usr/bin/env ruby -S rspec
-
 require 'spec_helper'
 
-describe 'resources_deep_merge', type: :puppet_function do
+describe 'resources_deep_merge' do
   let(:resources) do
     {
       'one' => {
