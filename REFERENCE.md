@@ -13,7 +13,7 @@
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
 * [`ip_to_cron`](#ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`random_password`](#random_password): A function to return a string of arbitrary length that contains randomly selected characters.
-* [`resources_deep_merge`](#resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by create_resources(). Internally calls the puppetlabs-stdlib f
+* [`resources_deep_merge`](#resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 
 ## Functions
 
@@ -280,15 +280,15 @@ The length of random password you want generated.
 
 ### resources_deep_merge
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-Deeply merge a "defaults" hash into a "resources" hash like the ones expected
-by create_resources(). Internally calls the puppetlabs-stdlib function
-deep_merge(). In case of duplicate keys the "resources" hash keys win over the
-"defaults" hash keys.
+Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 
-Example:
+Internally calls the puppetlabs-stdlib function `deep_merge()`. In case of
+duplicate keys the `resources` hash keys win over the `defaults` hash keys.
 
+Example
+```puppet
 $defaults_hash = {
   'one'   => '1',
   'two'   => '2',
@@ -302,11 +302,11 @@ $defaults_hash = {
 
 $numbers_hash = {
   'german' => {
-    'one'   => 'eins'
+    'one'   => 'eins',
     'three' => 'drei',
     'four'  => {
       'six' => 'sechs',
-    }
+    },
   },
   'french' => {
     'one' => 'un',
@@ -314,46 +314,49 @@ $numbers_hash = {
     'four' => {
       'five'  => 'cinq',
       'seven' => 'sept',
-    }
+    },
   }
 }
 
 $result_hash = resources_deep_merge($numbers_hash, $defaults_hash)
+```
 
 The $result_hash then looks like this:
 
-# $result_hash = {
-#   'german' => {
-#     'one'   => 'eins',
-#     'two'   => '2',
-#     'three' => 'drei',
-#     'four'  => {
-#       'five'  => '5',
-#       'six'   => 'sechs',
-#       'seven' => '7',
-#     }
-#   },
-#   'french' => {
-#     'one'   => 'un',
-#     'two'   => 'deux',
-#     'three' => '3',
-#     'four'  => {
-#       'five'  => 'cinq',
-#       'six'   => '6',
-#       'seven' => 'sept',
-#     }
-#   }
-# }
+```puppet
+$result_hash = {
+  'german' => {
+    'one'   => 'eins',
+    'two'   => '2',
+    'three' => 'drei',
+    'four'  => {
+      'five'  => '5',
+      'six'   => 'sechs',
+      'seven' => '7',
+    }
+  },
+  'french' => {
+    'one'   => 'un',
+    'two'   => 'deux',
+    'three' => '3',
+    'four'  => {
+      'five'  => 'cinq',
+      'six'   => '6',
+      'seven' => 'sept',
+    }
+  }
+}
+```
 
-#### `resources_deep_merge()`
+#### `resources_deep_merge(Hash $resources, Hash $defaults)`
 
-Deeply merge a "defaults" hash into a "resources" hash like the ones expected
-by create_resources(). Internally calls the puppetlabs-stdlib function
-deep_merge(). In case of duplicate keys the "resources" hash keys win over the
-"defaults" hash keys.
+Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 
-Example:
+Internally calls the puppetlabs-stdlib function `deep_merge()`. In case of
+duplicate keys the `resources` hash keys win over the `defaults` hash keys.
 
+Example
+```puppet
 $defaults_hash = {
   'one'   => '1',
   'two'   => '2',
@@ -367,11 +370,11 @@ $defaults_hash = {
 
 $numbers_hash = {
   'german' => {
-    'one'   => 'eins'
+    'one'   => 'eins',
     'three' => 'drei',
     'four'  => {
       'six' => 'sechs',
-    }
+    },
   },
   'french' => {
     'one' => 'un',
@@ -379,36 +382,51 @@ $numbers_hash = {
     'four' => {
       'five'  => 'cinq',
       'seven' => 'sept',
-    }
+    },
   }
 }
 
 $result_hash = resources_deep_merge($numbers_hash, $defaults_hash)
+```
 
 The $result_hash then looks like this:
 
-# $result_hash = {
-#   'german' => {
-#     'one'   => 'eins',
-#     'two'   => '2',
-#     'three' => 'drei',
-#     'four'  => {
-#       'five'  => '5',
-#       'six'   => 'sechs',
-#       'seven' => '7',
-#     }
-#   },
-#   'french' => {
-#     'one'   => 'un',
-#     'two'   => 'deux',
-#     'three' => '3',
-#     'four'  => {
-#       'five'  => 'cinq',
-#       'six'   => '6',
-#       'seven' => 'sept',
-#     }
-#   }
-# }
+```puppet
+$result_hash = {
+  'german' => {
+    'one'   => 'eins',
+    'two'   => '2',
+    'three' => 'drei',
+    'four'  => {
+      'five'  => '5',
+      'six'   => 'sechs',
+      'seven' => '7',
+    }
+  },
+  'french' => {
+    'one'   => 'un',
+    'two'   => 'deux',
+    'three' => '3',
+    'four'  => {
+      'five'  => 'cinq',
+      'six'   => '6',
+      'seven' => 'sept',
+    }
+  }
+}
+```
 
-Returns: `Any`
+Returns: `Hash` Returns the merged hash.
+
+##### `resources`
+
+Data type: `Hash`
+
+The hash of resources.
+
+##### `defaults`
+
+Data type: `Hash`
+
+The hash of defaults to merge.
 
