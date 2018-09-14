@@ -16,9 +16,9 @@ Puppet::Functions.create_function(:default_content) do
   #     content => $config_file_content,
   #   }
   dispatch :default_content do
-    param 'Variant[Undef,String]', :content
-    param 'Variant[Undef,String]', :template_name
-    return_type 'Variant[Undef,String]'
+    param 'Optional[String]', :content
+    param 'Optional[String]', :template_name
+    return_type 'Optional[String]'
   end
 
   def emptyish(x)

@@ -47,23 +47,23 @@ Type: Ruby 4.x API
 
 Takes an optional content and an optional template name and returns the contents of a file.
 
-#### `default_content(Variant[Undef,String] $content, Variant[Undef,String] $template_name)`
+#### `default_content(Optional[String] $content, Optional[String] $template_name)`
 
 The default_content function.
 
-Returns: `Variant[Undef,String]` Returns the value of the content parameter if it's a non empty string.
+Returns: `Optional[String]` Returns the value of the content parameter if it's a non empty string.
 Otherwise returns the rendered output from `template_name`.
 Returns `undef` if both `content` and `template_name` are `undef`.
 
 ##### `content`
 
-Data type: `Variant[Undef,String]`
+Data type: `Optional[String]`
 
 
 
 ##### `template_name`
 
-Data type: `Variant[Undef,String]`
+Data type: `Optional[String]`
 
 The path to an .erb or .epp template file or `undef`.
 
