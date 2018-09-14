@@ -96,6 +96,10 @@ See [REFERENCE.md](REFERENCE.md#ip_to_cron)
 
 See [REFERENCE.md](REFERENCE.md#extlibhas_module)
 
+### dump\_args
+
+See [REFERENCE.md](REFERENCE.md#dump_args)
+
 ## Limitations
 
 This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`

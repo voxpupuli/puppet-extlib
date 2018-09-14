@@ -7,7 +7,7 @@
 
 * [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.
-* [`dump_args`](#dump_args): dump_args - prints the args to STDOUT in Pretty JSON format.  Useful for debugging purposes only. Ideally you would use this in conjunction w
+* [`dump_args`](#dump_args): Prints the args to STDOUT in Pretty JSON format.
 * [`echo`](#echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
@@ -87,23 +87,29 @@ The path to an .erb or .epp template file or `undef`.
 
 ### dump_args
 
-Type: Ruby 3.x API
+Type: Ruby 4.x API
 
-dump_args - prints the args to STDOUT in Pretty JSON format.
-
-Useful for debugging purposes only. Ideally you would use this in
-conjunction with a rspec-puppet unit test.  Otherwise the output will
-be shown during a puppet run when verbose/debug options are enabled.
-
-#### `dump_args()`
-
-dump_args - prints the args to STDOUT in Pretty JSON format.
+Prints the args to STDOUT in Pretty JSON format.
 
 Useful for debugging purposes only. Ideally you would use this in
 conjunction with a rspec-puppet unit test.  Otherwise the output will
 be shown during a puppet run when verbose/debug options are enabled.
 
-Returns: `Any`
+#### `dump_args(Any $args)`
+
+Prints the args to STDOUT in Pretty JSON format.
+
+Useful for debugging purposes only. Ideally you would use this in
+conjunction with a rspec-puppet unit test.  Otherwise the output will
+be shown during a puppet run when verbose/debug options are enabled.
+
+Returns: `Undef` Returns nothing.
+
+##### `args`
+
+Data type: `Any`
+
+The data you want to dump as pretty JSON.
 
 ### echo
 
