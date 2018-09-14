@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'cache_data', type: :puppet_function do
+describe 'cache_data' do
   let(:initial_data) { 'original_password' }
   let(:data_name) { 'mysql_password' }
   let(:namespace) { 'data_cache' }
@@ -8,9 +8,9 @@ describe 'cache_data', type: :puppet_function do
 
   it { expect(subject).not_to eq(nil) }
   it { is_expected.not_to eq(nil) }
-  it { is_expected.to run.with_params(data_name).and_raise_error(Puppet::ParseError) }
-  it { is_expected.to run.with_params('', initial_data).and_raise_error(Puppet::ParseError) }
-  it { is_expected.to run.with_params('', 'mysql_password', initial_data).and_raise_error(Puppet::ParseError) }
+  it { is_expected.to run.with_params(data_name).and_raise_error(ArgumentError) }
+  it { is_expected.to run.with_params('', initial_data).and_raise_error(ArgumentError) }
+  it { is_expected.to run.with_params('', 'mysql_password', initial_data).and_raise_error(ArgumentError) }
 
   describe 'data caching' do
     before do
