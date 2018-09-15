@@ -1,20 +1,11 @@
-require 'json'
-
-# @summary Prints the args to STDOUT in Pretty JSON format.
-#
-# Prints the args to STDOUT in Pretty JSON format.
-#
-# Useful for debugging purposes only. Ideally you would use this in
-# conjunction with a rspec-puppet unit test.  Otherwise the output will
-# be shown during a puppet run when verbose/debug options are enabled.
+# @summary DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
+# DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
 Puppet::Functions.create_function(:dump_args) do
-  # @param args The data you want to dump as pretty JSON.
-  # @return [Undef] Returns nothing.
-  dispatch :dump_args do
-    param 'Any', :args
+  dispatch :deprecation_gen do
+    repeated_param 'Any', :args
   end
-
-  def dump_args(args)
-    puts JSON.pretty_generate(args)
+  def deprecation_gen(*args)
+    call_function('deprecation', 'dump_args', 'This method is deprecated, please use extlib::dump_args instead.')
+    call_function('extlib::dump_args', *args)
   end
 end

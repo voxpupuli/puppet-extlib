@@ -7,8 +7,9 @@
 
 * [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.
-* [`dump_args`](#dump_args): Prints the args to STDOUT in Pretty JSON format.
+* [`dump_args`](#dump_args): DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
 * [`echo`](#echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
+* [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
 * [`ip_to_cron`](#ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
@@ -89,27 +90,19 @@ The path to an .erb or .epp template file or `undef`.
 
 Type: Ruby 4.x API
 
-Prints the args to STDOUT in Pretty JSON format.
+DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
 
-Useful for debugging purposes only. Ideally you would use this in
-conjunction with a rspec-puppet unit test.  Otherwise the output will
-be shown during a puppet run when verbose/debug options are enabled.
+#### `dump_args(Any *$args)`
 
-#### `dump_args(Any $args)`
+DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
 
-Prints the args to STDOUT in Pretty JSON format.
+Returns: `Any`
 
-Useful for debugging purposes only. Ideally you would use this in
-conjunction with a rspec-puppet unit test.  Otherwise the output will
-be shown during a puppet run when verbose/debug options are enabled.
-
-Returns: `Undef` Returns nothing.
-
-##### `args`
+##### `*args`
 
 Data type: `Any`
 
-The data you want to dump as pretty JSON.
+
 
 ### echo
 
@@ -192,6 +185,32 @@ The value you want to inspect.
 Data type: `Optional[String]`
 
 An optional comment to prepend to the debug output.
+
+### extlib::dump_args
+
+Type: Ruby 4.x API
+
+Prints the args to STDOUT in Pretty JSON format.
+
+Useful for debugging purposes only. Ideally you would use this in
+conjunction with a rspec-puppet unit test.  Otherwise the output will
+be shown during a puppet run when verbose/debug options are enabled.
+
+#### `extlib::dump_args(Any $args)`
+
+Prints the args to STDOUT in Pretty JSON format.
+
+Useful for debugging purposes only. Ideally you would use this in
+conjunction with a rspec-puppet unit test.  Otherwise the output will
+be shown during a puppet run when verbose/debug options are enabled.
+
+Returns: `Undef` Returns nothing.
+
+##### `args`
+
+Data type: `Any`
+
+The data you want to dump as pretty JSON.
 
 ### extlib::has_module
 
