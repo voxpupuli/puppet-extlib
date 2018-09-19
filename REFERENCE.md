@@ -5,19 +5,98 @@
 
 **Functions**
 
-* [`cache_data`](#cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
-* [`default_content`](#default_content): Takes an optional content and an optional template name and returns the contents of a file.
-* [`dump_args`](#dump_args): Prints the args to STDOUT in Pretty JSON format.
-* [`echo`](#echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
+* [`cache_data`](#cache_data): DEPRECATED.  Use the namespaced function [`extlib::cache_data`](#extlibcache_data) instead.
+* [`default_content`](#default_content): DEPRECATED.  Use the namespaced function [`extlib::default_content`](#extlibdefault_content) instead.
+* [`dump_args`](#dump_args): DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
+* [`echo`](#echo): DEPRECATED.  Use the namespaced function [`extlib::echo`](#extlibecho) instead.
+* [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
+* [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
+* [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
+* [`extlib::echo`](#extlibecho): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
+* [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
+* [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
+* [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
-* [`ip_to_cron`](#ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
-* [`random_password`](#random_password): A function to return a string of arbitrary length that contains randomly selected characters.
-* [`resources_deep_merge`](#resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
+* [`ip_to_cron`](#ip_to_cron): DEPRECATED.  Use the namespaced function [`extlib::ip_to_cron`](#extlibip_to_cron) instead.
+* [`random_password`](#random_password): DEPRECATED.  Use the namespaced function [`extlib::random_password`](#extlibrandom_password) instead.
+* [`resources_deep_merge`](#resources_deep_merge): DEPRECATED.  Use the namespaced function [`extlib::resources_deep_merge`](#extlibresources_deep_merge) instead.
 
 ## Functions
 
 ### cache_data
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::cache_data`](#extlibcache_data) instead.
+
+#### `cache_data(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::cache_data`](#extlibcache_data) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
+
+### default_content
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::default_content`](#extlibdefault_content) instead.
+
+#### `default_content(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::default_content`](#extlibdefault_content) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
+
+### dump_args
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
+
+#### `dump_args(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
+
+### echo
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::echo`](#extlibecho) instead.
+
+#### `echo(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::echo`](#extlibecho) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
+
+### extlib::cache_data
 
 Type: Ruby 4.x API
 
@@ -29,7 +108,7 @@ Useful for having data that's randomly generated once on the master side
 stored on the master on disk, it doesn't work when you use mulitple Puppet
 masters that don't share their vardir.
 
-#### `cache_data(String[1] $namespace, String[1] $name, Any $initial_data)`
+#### `extlib::cache_data(String[1] $namespace, String[1] $name, Any $initial_data)`
 
 Retrieves data from a cache file, or creates it with supplied data if the
 file doesn't exist
@@ -59,15 +138,15 @@ Data type: `Any`
 
 The data for when there is no cache yet
 
-### default_content
+### extlib::default_content
 
 Type: Ruby 4.x API
 
 Takes an optional content and an optional template name and returns the contents of a file.
 
-#### `default_content(Optional[String] $content, Optional[String] $template_name)`
+#### `extlib::default_content(Optional[String] $content, Optional[String] $template_name)`
 
-The default_content function.
+The extlib::default_content function.
 
 Returns: `Optional[String]` Returns the value of the content parameter if it's a non empty string.
 Otherwise returns the rendered output from `template_name`.
@@ -85,7 +164,7 @@ Data type: `Optional[String]`
 
 The path to an .erb or .epp template file or `undef`.
 
-### dump_args
+### extlib::dump_args
 
 Type: Ruby 4.x API
 
@@ -95,7 +174,7 @@ Useful for debugging purposes only. Ideally you would use this in
 conjunction with a rspec-puppet unit test.  Otherwise the output will
 be shown during a puppet run when verbose/debug options are enabled.
 
-#### `dump_args(Any $args)`
+#### `extlib::dump_args(Any $args)`
 
 Prints the args to STDOUT in Pretty JSON format.
 
@@ -111,7 +190,7 @@ Data type: `Any`
 
 The data you want to dump as pretty JSON.
 
-### echo
+### extlib::echo
 
 Type: Ruby 4.x API
 
@@ -146,7 +225,7 @@ My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x
 (String) "12345"
 ```
 
-#### `echo(Any $value, Optional[String] $comment)`
+#### `extlib::echo(Any $value, Optional[String] $comment)`
 
 This function outputs the variable content and its type to the
 debug log. It's similiar to the `notice` function but provides
@@ -212,25 +291,7 @@ Data type: `Pattern[/\A\w+[-\/]\w+\z/]`
 The full name of the module you want to know exists or not.
 Namespace and modulename can be separated with either '-' or '/'.
 
-### extlib::sort_by_version
-
-Type: Ruby 4.x API
-
-A function that sorts an array of version numbers
-
-#### `extlib::sort_by_version(Array[String] $versions)`
-
-The extlib::sort_by_version function.
-
-Returns: `Array` Returns the sorted array.
-
-##### `versions`
-
-Data type: `Array[String]`
-
-An array of version strings you want sorted
-
-### ip_to_cron
+### extlib::ip_to_cron
 
 Type: Ruby 4.x API
 
@@ -245,7 +306,7 @@ ip_to_cron(1800) - returns [ '*', an array of two values between 0..59 ]
 ip_to_cron(7200) - returns [ an array of twelve values between 0..23, one value between 0..59 ]
 ```
 
-#### `ip_to_cron(Optional[Integer[1]] $runinterval)`
+#### `extlib::ip_to_cron(Optional[Integer[1]] $runinterval)`
 
 Provides a "random" value to cron based on the last bit of the machine IP address.
 used to avoid starting a certain cron job at the same time on all servers.
@@ -266,13 +327,13 @@ Data type: `Optional[Integer[1]]`
 
 The number of seconds to use as the run interval
 
-### random_password
+### extlib::random_password
 
 Type: Ruby 4.x API
 
 A function to return a string of arbitrary length that contains randomly selected characters.
 
-#### `random_password(Integer[1] $length)`
+#### `extlib::random_password(Integer[1] $length)`
 
 A function to return a string of arbitrary length that contains randomly selected characters.
 
@@ -284,7 +345,7 @@ Data type: `Integer[1]`
 
 The length of random password you want generated.
 
-### resources_deep_merge
+### extlib::resources_deep_merge
 
 Type: Ruby 4.x API
 
@@ -354,7 +415,7 @@ $result_hash = {
 }
 ```
 
-#### `resources_deep_merge(Hash $resources, Hash $defaults)`
+#### `extlib::resources_deep_merge(Hash $resources, Hash $defaults)`
 
 Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 
@@ -435,4 +496,76 @@ The hash of resources.
 Data type: `Hash`
 
 The hash of defaults to merge.
+
+### extlib::sort_by_version
+
+Type: Ruby 4.x API
+
+A function that sorts an array of version numbers
+
+#### `extlib::sort_by_version(Array[String] $versions)`
+
+The extlib::sort_by_version function.
+
+Returns: `Array` Returns the sorted array.
+
+##### `versions`
+
+Data type: `Array[String]`
+
+An array of version strings you want sorted
+
+### ip_to_cron
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::ip_to_cron`](#extlibip_to_cron) instead.
+
+#### `ip_to_cron(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::ip_to_cron`](#extlibip_to_cron) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
+
+### random_password
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::random_password`](#extlibrandom_password) instead.
+
+#### `random_password(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::random_password`](#extlibrandom_password) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
+
+### resources_deep_merge
+
+Type: Ruby 4.x API
+
+DEPRECATED.  Use the namespaced function [`extlib::resources_deep_merge`](#extlibresources_deep_merge) instead.
+
+#### `resources_deep_merge(Any *$args)`
+
+DEPRECATED.  Use the namespaced function [`extlib::resources_deep_merge`](#extlibresources_deep_merge) instead.
+
+Returns: `Any`
+
+##### `*args`
+
+Data type: `Any`
+
+
 
