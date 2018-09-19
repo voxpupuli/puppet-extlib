@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'echo', type: :puppet_function do
+describe 'echo' do
   describe 'signature validation' do
     it 'exists' do
       is_expected.not_to be_nil
