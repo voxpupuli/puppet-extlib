@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-describe 'dump_args' do
+describe 'extlib::dump_args' do
   it 'exists' do
     is_expected.not_to be_nil
   end

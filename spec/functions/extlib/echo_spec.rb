@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'echo' do
+describe 'extlib::echo' do
   describe 'signature validation' do
     it 'exists' do
       is_expected.not_to be_nil

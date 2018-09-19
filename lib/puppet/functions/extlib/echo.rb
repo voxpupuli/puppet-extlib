@@ -28,7 +28,7 @@
 # My structure (Hash) {"b"=>{"b"=>["1", "2", "3"], "c"=>true, "d"=>{"x"=>"y"}}, "x"=>"y", "z"=>["1", "2", "3", "4", "5", "6"]}
 # (String) "12345"
 # ```
-Puppet::Functions.create_function(:echo) do
+Puppet::Functions.create_function(:'extlib::echo') do
   # @param value The value you want to inspect.
   # @param comment An optional comment to prepend to the debug output.
   # @return [Undef] Returns nothing.

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'cache_data' do
+describe 'extlib::cache_data' do
   let(:initial_data) { 'original_password' }
   let(:data_name) { 'mysql_password' }
   let(:namespace) { 'data_cache' }

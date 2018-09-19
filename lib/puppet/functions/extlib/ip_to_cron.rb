@@ -8,7 +8,7 @@
 # ip_to_cron(1800) - returns [ '*', an array of two values between 0..59 ]
 # ip_to_cron(7200) - returns [ an array of twelve values between 0..23, one value between 0..59 ]
 # ```
-Puppet::Functions.create_function(:ip_to_cron) do
+Puppet::Functions.create_function(:'extlib::ip_to_cron') do
   # @param runinterval The number of seconds to use as the run interval
   # return [Array] Returns an array of the form `[hour, minute]`
   dispatch :ip_to_cron do

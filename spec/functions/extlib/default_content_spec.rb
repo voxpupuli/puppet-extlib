@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'default_content' do
+describe 'extlib::default_content' do
   it { is_expected.not_to eq(nil) }
   it { is_expected.to run.with_params.and_raise_error(ArgumentError) }
   it { is_expected.to run.with_params(:undef, :undef).and_return(:undef) }

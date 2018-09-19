@@ -1,4 +1,4 @@
-Puppet::Functions.create_function(:default_content) do
+Puppet::Functions.create_function(:'extlib::default_content') do
   # @summary Takes an optional content and an optional template name and returns the contents of a file.
   #
   # @param content

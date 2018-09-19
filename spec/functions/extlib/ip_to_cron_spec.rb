@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'ip_to_cron' do
+describe 'extlib::ip_to_cron' do
   it 'exists' do
     is_expected.not_to be_nil
   end

@@ -17,7 +17,7 @@ require 'etc'
 #
 # @example With a random password
 #   $password = cache_data('mysql', 'mysql_password', random_password())
-Puppet::Functions.create_function(:cache_data) do
+Puppet::Functions.create_function(:'extlib::cache_data') do
   # @param namespace Namespace for the cache
   # @param name Cache key within the namespace
   # @param initial_data The data for when there is no cache yet

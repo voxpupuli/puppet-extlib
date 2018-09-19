@@ -37,7 +37,7 @@
 # ```
 
 # A function to return a string of arbitrary length that contains randomly selected characters.
-Puppet::Functions.create_function(:random_password) do
+Puppet::Functions.create_function(:'extlib::random_password') do
   # @param length The length of random password you want generated.
   # @return [String] The random string returned consists of alphanumeric characters excluding 'look-alike' characters.
   # @example Calling the function

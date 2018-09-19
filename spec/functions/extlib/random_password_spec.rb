@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'random_password' do
+describe 'extlib::random_password' do
   it 'exists' do
     is_expected.not_to be_nil
   end

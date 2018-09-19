@@ -65,7 +65,7 @@
 #   }
 # }
 # ```
-Puppet::Functions.create_function(:resources_deep_merge) do
+Puppet::Functions.create_function(:'extlib::resources_deep_merge') do
   # Deep-merges defaults into a resources hash
   # @param resources The hash of resources.
   # @param defaults The hash of defaults to merge.
