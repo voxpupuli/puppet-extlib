@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'resources_deep_merge' do
+describe 'extlib::resources_deep_merge' do
   let(:resources) do
     {
       'one' => {
