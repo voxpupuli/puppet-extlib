@@ -27,42 +27,14 @@ Some of them are even intrinsically tied to stdlib.
 
 ## Usage
 
-### resources\_deep\_merge
+Since `puppet/extlib` version 3, all functions are provided under the `extlib` namespace.
+Non namespaced versions are available in this release, but deprecated and will be removed in the next major release.
 
-See [REFERENCE.md](REFERENCE.md#resources_deep_merge)
-
-### echo
-
-See [REFERENCE.md](REFERENCE.md#echo)
-
-### cache\_data
-
-See [REFERENCE.md](REFERENCE.md#cache_data)
-
-### random\_password
-
-See [REFERENCE.md](REFERENCE.md#random_password)
-
-### default\_content
-
-See [REFERENCE.md](REFERENCE.md#default_content)
-
-### ip\_to\_cron
-
-See [REFERENCE.md](REFERENCE.md#ip_to_cron)
-
-### extlib::has\_module
-
-See [REFERENCE.md](REFERENCE.md#extlibhas_module)
-
-### dump\_args
-
-See [REFERENCE.md](REFERENCE.md#dump_args)
+All functions are documented in [REFERENCE.md](REFERENCE.md)
 
 ## Limitations
 
-This module requires puppetlabs-stdlib >=3.2.1, which is when `deep_merge()`
-was introduced.
+Some functions require puppetlabs-stdlib (>= 4.6.0) and all functions are only compatible with Puppet 4.7 and later.
 
 ## Development
 
@@ -70,16 +42,8 @@ We highly welcome new contributions to this module, especially those that
 include documentation, and rspec tests ;) but will happily guide you through
 the process, so, yes, please submit that pull request!
 
-This module uses [blacksmith](https://github.com/maestrodev/puppet-blacksmith)
-for releasing and rspec for tests.
-
-To release a new version please make sure tests pass! Then,
-
-```shell
-% rake travis_release
+Reference documentation is generated using puppet-strings.
+To regenerate it, please run the rake task as follows.
+```console
+ % bundle exec rake strings:generate\['lib/puppet/functions/extlib/*.rb,,,,false,true']
 ```
-
-This will tag the current state under the version number described in
-metadata.json, and then bump the version there so we're ready for the next
-iteration. Finally it will `git push --tags` so travis can pick it up and
-release it to the forge!
