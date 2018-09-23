@@ -1,14 +1,15 @@
 require 'json'
 
+# A function that lets you know whether a specific module is on your modulepath.
 Puppet::Functions.create_function(:'extlib::has_module') do
-  # @summary A function that lets you know whether a specific module is on your modulepath.
   # @param module_name The full name of the module you want to know exists or not.
-  #   Namespace and modulename can be separated with either '-' or '/'.
-  # @return [Boolean] Returns true or false.
+  #   Namespace and modulename can be separated with either `-` or `/`.
+  # @return Returns `true` or `false`.
   # @example Calling the function
   #   extlib::has_module('camptocamp/systemd')
   dispatch :has_module do
     param 'Pattern[/\A\w+[-\/]\w+\z/]', :module_name
+    return_type 'Boolean'
   end
 
   def has_module(module_name) # rubocop:disable Style/PredicateName

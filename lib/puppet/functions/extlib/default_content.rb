@@ -1,6 +1,5 @@
+# Takes an optional content and an optional template name and returns the contents of a file.
 Puppet::Functions.create_function(:'extlib::default_content') do
-  # @summary Takes an optional content and an optional template name and returns the contents of a file.
-  #
   # @param content
   # @param template_name
   #   The path to an .erb or .epp template file or `undef`.

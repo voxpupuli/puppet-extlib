@@ -5,10 +5,6 @@
 
 **Functions**
 
-* [`cache_data`](#cache_data): DEPRECATED.  Use the namespaced function [`extlib::cache_data`](#extlibcache_data) instead.
-* [`default_content`](#default_content): DEPRECATED.  Use the namespaced function [`extlib::default_content`](#extlibdefault_content) instead.
-* [`dump_args`](#dump_args): DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
-* [`echo`](#echo): DEPRECATED.  Use the namespaced function [`extlib::echo`](#extlibecho) instead.
 * [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
@@ -17,84 +13,9 @@
 * [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
-* [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers
-* [`ip_to_cron`](#ip_to_cron): DEPRECATED.  Use the namespaced function [`extlib::ip_to_cron`](#extlibip_to_cron) instead.
-* [`random_password`](#random_password): DEPRECATED.  Use the namespaced function [`extlib::random_password`](#extlibrandom_password) instead.
-* [`resources_deep_merge`](#resources_deep_merge): DEPRECATED.  Use the namespaced function [`extlib::resources_deep_merge`](#extlibresources_deep_merge) instead.
+* [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers.
 
 ## Functions
-
-### cache_data
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::cache_data`](#extlibcache_data) instead.
-
-#### `cache_data(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::cache_data`](#extlibcache_data) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
-
-### default_content
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::default_content`](#extlibdefault_content) instead.
-
-#### `default_content(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::default_content`](#extlibdefault_content) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
-
-### dump_args
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
-
-#### `dump_args(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::dump_args`](#extlibdump_args) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
-
-### echo
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::echo`](#extlibecho) instead.
-
-#### `echo(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::echo`](#extlibecho) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
 
 ### extlib::cache_data
 
@@ -146,7 +67,7 @@ Takes an optional content and an optional template name and returns the contents
 
 #### `extlib::default_content(Optional[String] $content, Optional[String] $template_name)`
 
-The extlib::default_content function.
+Takes an optional content and an optional template name and returns the contents of a file.
 
 Returns: `Optional[String]` Returns the value of the content parameter if it's a non empty string.
 Otherwise returns the rendered output from `template_name`.
@@ -280,16 +201,16 @@ A function that lets you know whether a specific module is on your modulepath.
 
 #### `extlib::has_module(Pattern[/\A\w+[-\/]\w+\z/] $module_name)`
 
-The extlib::has_module function.
+A function that lets you know whether a specific module is on your modulepath.
 
-Returns: `Boolean` Returns true or false.
+Returns: `Boolean` Returns `true` or `false`.
 
 ##### `module_name`
 
 Data type: `Pattern[/\A\w+[-\/]\w+\z/]`
 
 The full name of the module you want to know exists or not.
-Namespace and modulename can be separated with either '-' or '/'.
+Namespace and modulename can be separated with either `-` or `/`.
 
 ### extlib::ip_to_cron
 
@@ -501,71 +422,17 @@ The hash of defaults to merge.
 
 Type: Ruby 4.x API
 
-A function that sorts an array of version numbers
+A function that sorts an array of version numbers.
 
 #### `extlib::sort_by_version(Array[String] $versions)`
 
-The extlib::sort_by_version function.
+A function that sorts an array of version numbers.
 
-Returns: `Array` Returns the sorted array.
+Returns: `Array[String]` Returns the sorted array.
 
 ##### `versions`
 
 Data type: `Array[String]`
 
-An array of version strings you want sorted
-
-### ip_to_cron
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::ip_to_cron`](#extlibip_to_cron) instead.
-
-#### `ip_to_cron(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::ip_to_cron`](#extlibip_to_cron) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
-
-### random_password
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::random_password`](#extlibrandom_password) instead.
-
-#### `random_password(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::random_password`](#extlibrandom_password) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
-
-### resources_deep_merge
-
-Type: Ruby 4.x API
-
-DEPRECATED.  Use the namespaced function [`extlib::resources_deep_merge`](#extlibresources_deep_merge) instead.
-
-#### `resources_deep_merge(Any *$args)`
-
-DEPRECATED.  Use the namespaced function [`extlib::resources_deep_merge`](#extlibresources_deep_merge) instead.
-
-Returns: `Any`
-
-##### `*args`
-
-Data type: `Any`
-
-
+An array of version strings you want sorted.
 
