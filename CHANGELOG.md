@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v3.0.0) (2018-09-23)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.3.1...v3.0.0)
+
+In this release, all functions have been moved to the `extlib::` namespace and converted to the 4.X function API.  Non name-spaced versions are still available, but deprecated and will be removed in a future major release.
+
+During the conversion work, a couple of functions have minor but technically breaking changes.  These are documented below.
+
+**Breaking changes:**
+
+- Convert `random\_password` to API 4 function [\#112](https://github.com/voxpupuli/puppet-extlib/pull/112) ([alexjfisher](https://github.com/alexjfisher))
+- Convert `ip\_to\_cron` to API 4 function [\#111](https://github.com/voxpupuli/puppet-extlib/pull/111) ([alexjfisher](https://github.com/alexjfisher))
+
+**Closed issues:**
+
+- cache\_data\(\) stores data locally on puppetserver [\#80](https://github.com/voxpupuli/puppet-extlib/issues/80)
+- Document ip\_to\_cron in README [\#58](https://github.com/voxpupuli/puppet-extlib/issues/58)
+
+**Merged pull requests:**
+
+- Clean up documentation [\#121](https://github.com/voxpupuli/puppet-extlib/pull/121) ([alexjfisher](https://github.com/alexjfisher))
+- Namespace functions [\#120](https://github.com/voxpupuli/puppet-extlib/pull/120) ([alexjfisher](https://github.com/alexjfisher))
+- Convert `dump\_args` to API 4.x function [\#118](https://github.com/voxpupuli/puppet-extlib/pull/118) ([alexjfisher](https://github.com/alexjfisher))
+- Use Optional\[String\] in default\_content\(\) [\#117](https://github.com/voxpupuli/puppet-extlib/pull/117) ([ekohl](https://github.com/ekohl))
+- Convert `resources\_deep\_merge` to API 4.x function [\#116](https://github.com/voxpupuli/puppet-extlib/pull/116) ([alexjfisher](https://github.com/alexjfisher))
+- Rewrite cache\_data to 4.x API [\#114](https://github.com/voxpupuli/puppet-extlib/pull/114) ([ekohl](https://github.com/ekohl))
+- Convert `echo` function to 4.x API [\#109](https://github.com/voxpupuli/puppet-extlib/pull/109) ([alexjfisher](https://github.com/alexjfisher))
+- Fix default\_content puppet-strings tags [\#108](https://github.com/voxpupuli/puppet-extlib/pull/108) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v2.3.1](https://github.com/voxpupuli/puppet-extlib/tree/v2.3.1) (2018-08-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.3.0...v2.3.1)
