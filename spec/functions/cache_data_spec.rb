@@ -21,7 +21,6 @@ describe 'cache_data' do
     end
     after do
       # Since rspec-puppet won't be removing the vardir, we'd better do that ourselves.
-      File.unstub
       FileUtils.rm_rf(vardir) if File.directory?(vardir)
     end
 
