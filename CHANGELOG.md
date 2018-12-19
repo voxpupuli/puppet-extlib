@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v3.0.0) (2018-09-23)
+## [v3.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v3.1.0) (2018-12-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v3.0.0...v3.1.0)
+
+**Implemented enhancements:**
+
+- Mark Debian 9 and Ubuntu 18.04 as supported [\#126](https://github.com/voxpupuli/puppet-extlib/pull/126) ([ekohl](https://github.com/ekohl))
+- allow puppet 6.x and modulesync 2.1.0 [\#124](https://github.com/voxpupuli/puppet-extlib/pull/124) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v3.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v3.0.0) (2018-09-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v2.3.1...v3.0.0)
 
