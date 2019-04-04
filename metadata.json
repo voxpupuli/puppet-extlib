@@ -8,11 +8,7 @@
   "license": "Apache-2.0",
   "summary": "extlib provides functions out of scope puppetlabs/stdlib",
   "description": "extlib provides functions out of scope puppetlabs/stdlib",
-  "tags": [
-    "voxpupuli",
-    "extlib",
-    "stdlib"
-  ],
+  "tags": ["voxpupuli", "extlib", "stdlib"],
   "requirements": [
     {
       "name": "puppet",
@@ -28,39 +24,23 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
+      "operatingsystemrelease": ["6", "7"]
     },
     {
       "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
+      "operatingsystemrelease": ["6", "7"]
     },
     {
       "operatingsystem": "Scientific",
-      "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
+      "operatingsystemrelease": ["6", "7"]
     },
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": [
-        "8",
-        "9"
-      ]
+      "operatingsystemrelease": ["8", "9"]
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [
-        "14.04",
-        "16.04",
-        "18.04"
-      ]
+      "operatingsystemrelease": ["14.04", "16.04", "18.04"]
     }
   ]
 }

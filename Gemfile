@@ -36,6 +36,7 @@ group :development do
   gem 'travis-lint',              :require => false
   gem 'guard-rake',               :require => false
   gem 'overcommit', '>= 0.39.1',  :require => false
+  gem 'puppet-debugger',          :require => false
 end
 
 group :system_tests do

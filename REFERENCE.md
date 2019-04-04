@@ -6,6 +6,7 @@
 **Functions**
 
 * [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
+* [`extlib::debug::break`](#extlibdebugbreak): Injects a puppet debugger session where the break point was placed.
 * [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`extlib::dir_split`](#extlibdir_split): Splits the given directory or directories into individual paths.
 * [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
@@ -90,6 +91,112 @@ Cache key within the namespace
 Data type: `Any`
 
 The data for when there is no cache yet
+
+### extlib::debug::break
+
+Type: Ruby 4.x API
+
+This function allows you to set a breakpoint and break into the puppet compiler
+allowing you to interact with the puppet manifest.  Think of this like a 
+interactive manifest where the scope, facts and code is setup for you to play
+with in real time. This function is similar to binding.pry for ruby but instead
+is use solely  with the puppet debugger which is just for puppet code only.
+
+```ruby
+Ruby Version: 2.5.1
+Puppet Version: 6.4.0
+Puppet Debugger Version: 0.10.3
+Created by: NWOps <corey@nwops.io>
+Type "commands" for a list of debugger commands
+or "help" to show the help screen.
+
+        8:   service{'httpd': ensure => running}
+        9:    $var2 = ['value1', 'value2'] 
+        10:   # how to find values with an empheral scope
+        11:   $var2.each | String $item | {
+        12:     file{"/tmp/${item}": ensure => present}
+     => 13:     extlib::debug::break()
+        14:   }
+        15:   extlib::debug::break()
+        16:   if $var1 == 'value1' {
+        17:     extlib::debug::break()
+        18:   }
+1:>> $item
+=> "value1"
+````
+
+#### Examples
+
+##### How to find values with an empheral scope.
+
+```puppet
+$var2.each | String $item | {
+  file{"/tmp/${item}": ensure => present}
+  extlib::debug::break()
+}
+```
+
+##### - Insert a breakpoint anywhere in your puppet code.
+
+```puppet
+extlib::debug::break()
+```
+
+#### `extlib::debug::break(Optional[Hash] $options)`
+
+This function allows you to set a breakpoint and break into the puppet compiler
+allowing you to interact with the puppet manifest.  Think of this like a 
+interactive manifest where the scope, facts and code is setup for you to play
+with in real time. This function is similar to binding.pry for ruby but instead
+is use solely  with the puppet debugger which is just for puppet code only.
+
+```ruby
+Ruby Version: 2.5.1
+Puppet Version: 6.4.0
+Puppet Debugger Version: 0.10.3
+Created by: NWOps <corey@nwops.io>
+Type "commands" for a list of debugger commands
+or "help" to show the help screen.
+
+        8:   service{'httpd': ensure => running}
+        9:    $var2 = ['value1', 'value2'] 
+        10:   # how to find values with an empheral scope
+        11:   $var2.each | String $item | {
+        12:     file{"/tmp/${item}": ensure => present}
+     => 13:     extlib::debug::break()
+        14:   }
+        15:   extlib::debug::break()
+        16:   if $var1 == 'value1' {
+        17:     extlib::debug::break()
+        18:   }
+1:>> $item
+=> "value1"
+````
+
+Returns: `Integer` - returns the nunber of debugger instances currently alive
+
+##### Examples
+
+###### How to find values with an empheral scope.
+
+```puppet
+$var2.each | String $item | {
+  file{"/tmp/${item}": ensure => present}
+  extlib::debug::break()
+}
+```
+
+###### - Insert a breakpoint anywhere in your puppet code.
+
+```puppet
+extlib::debug::break()
+```
+
+##### `options`
+
+Data type: `Optional[Hash]`
+
+- a hash of puppet debugger options, not required
 
 ### extlib::default_content
 
