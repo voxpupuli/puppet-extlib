@@ -9,3 +9,4 @@ spec/spec_helper.rb:
 Rakefile:
   puppet_strings_patterns:
     - lib/puppet/functions/extlib/*.rb
+    - functions/*.pp

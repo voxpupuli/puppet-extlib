@@ -9,10 +9,10 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-3. [Setup - The basics of getting started with extlib](#setup)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+2. [Setup - The basics of getting started with extlib](#setup)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Limitations - OS compatibility, etc.](#limitations)
+5. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
@@ -44,6 +44,7 @@ the process, so, yes, please submit that pull request!
 
 Reference documentation is generated using puppet-strings.
 To regenerate it, please run the rake task as follows.
+
 ```console
 bundle exec rake reference
 ```
