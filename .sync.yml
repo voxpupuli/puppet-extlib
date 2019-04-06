@@ -2,7 +2,6 @@
 .travis.yml:
   secure: "IkrfAnec7ovZLMvhvXt8ZihyYdAJTC/nm7KDm4u2G/uD2NGaMdHNOAenkwIwC1vfCzHKcgC5u/lAYFrYvHpQpJW0kHLKnk1SpndfWX9kd5SlDDzEP5mJGjMZeTY6H9sV5fsB6Pt7l/sw5ACL/0bFDl0mYBnVhGv6UxZZ5xMQIUw="
 spec/spec_helper.rb:
-  mock_with: ':rspec'
   spec_overrides: "require 'spec_helper_methods'"
 .gitignore:
   paths:
