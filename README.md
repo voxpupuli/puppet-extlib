@@ -45,5 +45,5 @@ the process, so, yes, please submit that pull request!
 Reference documentation is generated using puppet-strings.
 To regenerate it, please run the rake task as follows.
 ```console
- % bundle exec rake strings:generate\['lib/puppet/functions/extlib/*.rb,,,,false,true']
+bundle exec rake reference
 ```
