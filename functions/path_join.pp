@@ -3,10 +3,12 @@
 # will format a windows path into a equilivent unix like path.  This type of unix like
 # path will work on windows.
 #
-# @param dirs [Array[String]] - Joins two or more directories by file separator.
-# @return [Stdlib::Absolutepath] - The joined path
-# @example extlib::path_join('/tmp', 'test', 'libs') returns '/tmp/test/libs'
-# @example extlib::path_join('c:', 'test', 'libs') returns '/c/test/libs'
+# @param dirs Joins two or more directories by file separator.
+# @return [Stdlib::Absolutepath] The joined path
+# @example Joining Unix paths to return `/tmp/test/libs`
+#   extlib::path_join('/tmp', 'test', 'libs')
+# @example Joining Windows paths to return `/c/test/libs`
+#   extlib::path_join('c:', 'test', 'libs')
 function extlib::path_join(Array[String] $dirs) >> Stdlib::Absolutepath {
   $unix_sep = '/'
   $sep_regex = /\/|\\/

@@ -436,16 +436,16 @@ path will work on windows.
 
 #### Examples
 
-##### extlib::path_join('/tmp', 'test', 'libs') returns '/tmp/test/libs'
+##### Joining Unix paths to return `/tmp/test/libs`
 
 ```puppet
-
+extlib::path_join('/tmp', 'test', 'libs')
 ```
 
-##### extlib::path_join('c:', 'test', 'libs') returns '/c/test/libs'
+##### Joining Windows paths to return `/c/test/libs`
 
 ```puppet
-
+extlib::path_join('c:', 'test', 'libs')
 ```
 
 #### `extlib::path_join(Array[String] $dirs)`
@@ -454,27 +454,27 @@ Because in how windows uses a different separator this function
 will format a windows path into a equilivent unix like path.  This type of unix like
 path will work on windows.
 
-Returns: `Stdlib::Absolutepath` - The joined path
+Returns: `Stdlib::Absolutepath` The joined path
 
 ##### Examples
 
-###### extlib::path_join('/tmp', 'test', 'libs') returns '/tmp/test/libs'
+###### Joining Unix paths to return `/tmp/test/libs`
 
 ```puppet
-
+extlib::path_join('/tmp', 'test', 'libs')
 ```
 
-###### extlib::path_join('c:', 'test', 'libs') returns '/c/test/libs'
+###### Joining Windows paths to return `/c/test/libs`
 
 ```puppet
-
+extlib::path_join('c:', 'test', 'libs')
 ```
 
 ##### `dirs`
 
 Data type: `Array[String]`
 
-- Joins two or more directories by file separator.
+Joins two or more directories by file separator.
 
 ### extlib::random_password
 
