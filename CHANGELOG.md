@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v4.0.0) (2019-05-29)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v3.1.0...v4.0.0)
+
+**Breaking changes:**
+
+-  modulesync 2.7.0 &  Drop puppet4; require at least Puppet 5.5.8 [\#132](https://github.com/voxpupuli/puppet-extlib/pull/132) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Allow `puppetlabs/stdlib` 6.x [\#134](https://github.com/voxpupuli/puppet-extlib/pull/134) ([alexjfisher](https://github.com/alexjfisher))
+- Add new file based functions [\#129](https://github.com/voxpupuli/puppet-extlib/pull/129) ([logicminds](https://github.com/logicminds))
+
+**Merged pull requests:**
+
+- Improve `extlib::path\_join` docs formatting [\#133](https://github.com/voxpupuli/puppet-extlib/pull/133) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v3.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v3.1.0) (2018-12-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v3.0.0...v3.1.0)
