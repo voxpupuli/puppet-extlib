@@ -16,6 +16,7 @@
 * [`extlib::mkdir_p`](#extlibmkdir_p): Like the unix command mkdir_p except with puppet code.
 * [`extlib::path_join`](#extlibpath_join): Take one or more paths and join them together using the os specific separator.
 * [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
+* [`extlib::read_url`](#extlibread_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
 * [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers.
 
@@ -509,6 +510,52 @@ random_password(42)
 Data type: `Integer[1]`
 
 The length of random password you want generated.
+
+### extlib::read_url
+
+Type: Ruby 4.x API
+
+Fetch a string from a URL (should only be used with 'small' remote files).
+
+This function should only be used with trusted/internal sources.
+This is especially important if using it in conjunction with `inline_template`
+or `inline_epp`.
+The current implementation is also very basic.  No thought has gone into timeouts,
+support for redirects, CA paths etc.
+
+#### Examples
+
+##### Calling the function
+
+```puppet
+extlib::read_url('https://example.com/sometemplate.epp')
+```
+
+#### `extlib::read_url(Stdlib::HTTPUrl $url)`
+
+Fetch a string from a URL (should only be used with 'small' remote files).
+
+This function should only be used with trusted/internal sources.
+This is especially important if using it in conjunction with `inline_template`
+or `inline_epp`.
+The current implementation is also very basic.  No thought has gone into timeouts,
+support for redirects, CA paths etc.
+
+Returns: `String` Returns the contents of the url as a string
+
+##### Examples
+
+###### Calling the function
+
+```puppet
+extlib::read_url('https://example.com/sometemplate.epp')
+```
+
+##### `url`
+
+Data type: `Stdlib::HTTPUrl`
+
+The URL to read from
 
 ### extlib::resources_deep_merge
 
