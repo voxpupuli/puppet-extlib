@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v4.1.0) (2019-11-07)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v4.0.0...v4.1.0)
+
+**Implemented enhancements:**
+
+- Add experimental `extlib::read_url` function [\#137](https://github.com/voxpupuli/puppet-extlib/pull/137) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v4.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v4.0.0) (2019-05-29)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v3.1.0...v4.0.0)
@@ -19,7 +27,7 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
-- Improve `extlib::path\_join` docs formatting [\#133](https://github.com/voxpupuli/puppet-extlib/pull/133) ([alexjfisher](https://github.com/alexjfisher))
+- Improve `extlib::path_join` docs formatting [\#133](https://github.com/voxpupuli/puppet-extlib/pull/133) ([alexjfisher](https://github.com/alexjfisher))
 
 ## [v3.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v3.1.0) (2018-12-19)
 
@@ -40,8 +48,8 @@ During the conversion work, a couple of functions have minor but technically bre
 
 **Breaking changes:**
 
-- Convert `random\_password` to API 4 function [\#112](https://github.com/voxpupuli/puppet-extlib/pull/112) ([alexjfisher](https://github.com/alexjfisher))
-- Convert `ip\_to\_cron` to API 4 function [\#111](https://github.com/voxpupuli/puppet-extlib/pull/111) ([alexjfisher](https://github.com/alexjfisher))
+- Convert `random_password` to API 4 function [\#112](https://github.com/voxpupuli/puppet-extlib/pull/112) ([alexjfisher](https://github.com/alexjfisher))
+- Convert `ip_to_cron` to API 4 function [\#111](https://github.com/voxpupuli/puppet-extlib/pull/111) ([alexjfisher](https://github.com/alexjfisher))
 
 **Closed issues:**
 
@@ -52,9 +60,9 @@ During the conversion work, a couple of functions have minor but technically bre
 
 - Clean up documentation [\#121](https://github.com/voxpupuli/puppet-extlib/pull/121) ([alexjfisher](https://github.com/alexjfisher))
 - Namespace functions [\#120](https://github.com/voxpupuli/puppet-extlib/pull/120) ([alexjfisher](https://github.com/alexjfisher))
-- Convert `dump\_args` to API 4.x function [\#118](https://github.com/voxpupuli/puppet-extlib/pull/118) ([alexjfisher](https://github.com/alexjfisher))
+- Convert `dump_args` to API 4.x function [\#118](https://github.com/voxpupuli/puppet-extlib/pull/118) ([alexjfisher](https://github.com/alexjfisher))
 - Use Optional\[String\] in default\_content\(\) [\#117](https://github.com/voxpupuli/puppet-extlib/pull/117) ([ekohl](https://github.com/ekohl))
-- Convert `resources\_deep\_merge` to API 4.x function [\#116](https://github.com/voxpupuli/puppet-extlib/pull/116) ([alexjfisher](https://github.com/alexjfisher))
+- Convert `resources_deep_merge` to API 4.x function [\#116](https://github.com/voxpupuli/puppet-extlib/pull/116) ([alexjfisher](https://github.com/alexjfisher))
 - Rewrite cache\_data to 4.x API [\#114](https://github.com/voxpupuli/puppet-extlib/pull/114) ([ekohl](https://github.com/ekohl))
 - Convert `echo` function to 4.x API [\#109](https://github.com/voxpupuli/puppet-extlib/pull/109) ([alexjfisher](https://github.com/alexjfisher))
 - Fix default\_content puppet-strings tags [\#108](https://github.com/voxpupuli/puppet-extlib/pull/108) ([alexjfisher](https://github.com/alexjfisher))
