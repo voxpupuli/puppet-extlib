@@ -20,6 +20,10 @@
 * [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers.
 
+**Facts**
+
+* [`puppet_config`](#puppet_config): A fact to expose puppet settings on the agent, unlike `$settings::<setting_name>` which is resolved on the puppet master
+
 ## Functions
 
 ### extlib::cache_data
@@ -714,6 +718,30 @@ The hash of defaults to merge.
 Type: Ruby 4.x API
 
 A function that sorts an array of version numbers.
+
+## Facts
+
+### puppet\_config
+
+This facts exposes some facts from both the main and master section of the puppet agent configueration.  The following facts are supported
+
+```
+{
+  main => {
+    hostpubkey,
+    hostprivkey,
+    hostcert,
+    localcacert,
+    ssldir,
+    vardir,
+    server,
+  },
+  master => {
+    localcacert,
+    ssldir,
+  }
+}
+```
 
 #### Examples
 
