@@ -1,16 +1,16 @@
 desired_settings = {
-  master: %i[
-    localcacert
-    ssldir
+  master: [
+    :localcacert,
+    :ssldir
   ],
-  main: %i[
-    hostpubkey
-    hostprivkey
-    hostcert
-    localcacert
-    ssldir
-    vardir
-    server
+  main: [
+    :hostpubkey,
+    :hostprivkey,
+    :hostcert,
+    :localcacert,
+    :ssldir,
+    :vardir,
+    :server
   ]
 }
 Facter.add(:puppet_config) do

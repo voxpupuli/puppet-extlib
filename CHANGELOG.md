@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.2.0](https://github.com/voxpupuli/puppet-extlib/tree/v4.2.0) (2020-01-25)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v4.1.0...v4.2.0)
+
+**Implemented enhancements:**
+
+- This PR adds a new fact puppet\_config [\#143](https://github.com/voxpupuli/puppet-extlib/pull/143) ([b4ldr](https://github.com/b4ldr))
+
+**Merged pull requests:**
+
+- Remove duplicate CONTRIBUTING.md file [\#141](https://github.com/voxpupuli/puppet-extlib/pull/141) ([dhoppe](https://github.com/dhoppe))
+- drop Ubuntu 14.04 support [\#140](https://github.com/voxpupuli/puppet-extlib/pull/140) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v4.1.0) (2019-11-07)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v4.0.0...v4.1.0)
