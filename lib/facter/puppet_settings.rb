@@ -13,7 +13,7 @@ desired_settings = {
     :server
   ]
 }
-Facter.add(:puppet_config) do
+Facter.add(:puppet_settings) do
   confine kernel: 'Linux'
   puppet_config = {}
   setcode do

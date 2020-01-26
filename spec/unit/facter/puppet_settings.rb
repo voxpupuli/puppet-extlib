@@ -17,10 +17,10 @@ settings = {
     'ssldir' => '/dev/null/ssl'
   }
 }
-describe 'puppet_config' do
+describe 'puppet_settings' do
   context 'when puppet' do
     it 'puppet_config' do
-      expect(Facter.fact(:puppet_config).value).to eq(settings)
+      expect(Facter.fact(:puppet_settings).value).to eq(settings)
     end
   end
 end
