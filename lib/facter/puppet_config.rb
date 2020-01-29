@@ -14,7 +14,6 @@ desired_settings = {
   ]
 }
 Facter.add(:puppet_config) do
-  confine kernel: 'Linux'
   puppet_config = {}
   setcode do
     desired_settings.each_pair do |section, settings|
