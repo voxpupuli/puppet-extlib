@@ -28,7 +28,7 @@ Some of them are even intrinsically tied to stdlib.
 ## Usage
 
 Since `puppet/extlib` version 3, all functions are provided under the `extlib` namespace.
-Non namespaced versions are available in this release, but deprecated and will be removed in the next major release.
+Non namespaced versions were removed in version 5.
 
 All functions are documented in [REFERENCE.md](REFERENCE.md)
 
