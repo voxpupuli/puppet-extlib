@@ -32,6 +32,34 @@ Non namespaced versions are available in this release, but deprecated and will b
 
 All functions are documented in [REFERENCE.md](REFERENCE.md)
 
+### Facts
+
+All facts in this module are combined under a single toplevel `extlib` structured fact.
+
+#### `extlib['puppet_config']`
+
+A fact to expose puppet *agent* settings, (unlike `$settings::<setting_name>` which is resolved on the puppet master).
+
+The following sections/settings are included.
+
+```
+{
+  main => {
+    hostpubkey,
+    hostprivkey,
+    hostcert,
+    localcacert,
+    ssldir,
+    vardir,
+    server,
+  },
+  master => {
+    localcacert,
+    ssldir,
+  }
+}
+```
+
 ## Limitations
 
 Some functions require puppetlabs-stdlib (>= 4.6.0) and all functions are only compatible with Puppet 4.7 and later.
