@@ -51,7 +51,7 @@ end
 
 desc 'Generate REFERENCE.md'
 task :reference, [:debug, :backtrace] do |t, args|
-  patterns = 'lib/puppet/functions/extlib/*.rb functions/*.pp'
+  patterns = ''
   Rake::Task['strings:generate:reference'].invoke(patterns, args[:debug], args[:backtrace])
 end
 
