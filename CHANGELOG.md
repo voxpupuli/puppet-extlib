@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v5.0.0) (2020-03-31)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v4.2.0...v5.0.0)
+
+**Breaking changes:**
+
+- Rename `puppet_config` fact to `extlib__puppet_config` [\#156](https://github.com/voxpupuli/puppet-extlib/pull/156) ([alexjfisher](https://github.com/alexjfisher))
+- Remove deprecated functions [\#153](https://github.com/voxpupuli/puppet-extlib/pull/153) ([alexjfisher](https://github.com/alexjfisher))
+
+**Fixed bugs:**
+
+- puppet\_config / puppet\_settings fact confined to Linux [\#150](https://github.com/voxpupuli/puppet-extlib/issues/150)
+
+**Closed issues:**
+
+- Module conflicts with puppetlabs/puppet\_agent [\#148](https://github.com/voxpupuli/puppet-extlib/issues/148)
+
+**Merged pull requests:**
+
+- Remove strings patterns [\#155](https://github.com/voxpupuli/puppet-extlib/pull/155) ([ekohl](https://github.com/ekohl))
+- Mark Red Hat 8, CentOS 8 and Debian 10 as supported [\#154](https://github.com/voxpupuli/puppet-extlib/pull/154) ([ekohl](https://github.com/ekohl))
+- puppet\_config: no need to confine to linux [\#151](https://github.com/voxpupuli/puppet-extlib/pull/151) ([b4ldr](https://github.com/b4ldr))
+- update repo links to https [\#147](https://github.com/voxpupuli/puppet-extlib/pull/147) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.2.0](https://github.com/voxpupuli/puppet-extlib/tree/v4.2.0) (2020-01-25)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v4.1.0...v4.2.0)
