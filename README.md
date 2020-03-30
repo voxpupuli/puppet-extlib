@@ -32,6 +32,35 @@ Non namespaced versions were removed in version 5.
 
 All functions are documented in [REFERENCE.md](REFERENCE.md)
 
+### Facts
+
+All facts in this module are namespaced and begin `extlib__`.
+Facter 4 users can also find all facts under a single `extlib` toplevel structured fact.
+
+#### `extlib__puppet_config` (or `extlib['puppet_config']` when using facter 4).
+
+A fact to expose puppet.conf settings. These are resolved on the agent, (unlike `$settings::<setting_name>` which is resolved on the puppet master).
+
+The following sections/settings are included.
+
+```
+{
+  main => {
+    hostpubkey,
+    hostprivkey,
+    hostcert,
+    localcacert,
+    ssldir,
+    vardir,
+    server,
+  },
+  master => {
+    localcacert,
+    ssldir,
+  }
+}
+```
+
 ## Limitations
 
 Some functions require puppetlabs-stdlib (>= 4.6.0) and all functions are only compatible with Puppet 4.7 and later.
