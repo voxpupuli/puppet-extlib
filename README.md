@@ -6,13 +6,13 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
 
-#### Table of Contents
+## Table of Contents
 
 1. [Overview](#overview)
-2. [Setup - The basics of getting started with extlib](#setup)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+1. [Setup - The basics of getting started with extlib](#setup)
+1. [Usage - Configuration options and additional functionality](#usage)
+1. [Limitations - OS compatibility, etc.](#limitations)
+1. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
@@ -35,11 +35,13 @@ All functions are documented in [REFERENCE.md](REFERENCE.md)
 ### Facts
 
 All facts in this module are namespaced and begin `extlib__`.
-Facter 4 users can also find all facts under a single `extlib` toplevel structured fact.
+Facter 4 users can also find all facts under a single `extlib` toplevel
+structured fact.
 
-#### `extlib__puppet_config` (or `extlib['puppet_config']` when using facter 4).
+#### `extlib__puppet_config` (or `extlib['puppet_config']` when using facter 4)
 
-A fact to expose puppet.conf settings. These are resolved on the agent, (unlike `$settings::<setting_name>` which is resolved on the puppet master).
+A fact to expose puppet.conf settings. These are resolved on the agent, (unlike
+`$settings::<setting_name>` which is resolved on the puppet master).
 
 The following sections/settings are included.
 
@@ -63,7 +65,8 @@ The following sections/settings are included.
 
 ## Limitations
 
-Some functions require puppetlabs-stdlib (>= 4.6.0) and all functions are only compatible with Puppet 4.7 and later.
+Some functions require puppetlabs-stdlib (>= 4.6.0) and all functions are only
+compatible with Puppet 4.7 and later.
 
 ## Development
 
