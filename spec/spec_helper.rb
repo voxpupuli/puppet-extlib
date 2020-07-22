@@ -16,5 +16,3 @@ if File.exist?(File.join(__dir__, 'default_module_facts.yml'))
     end
   end
 end
-
-require 'spec_helper_methods'
