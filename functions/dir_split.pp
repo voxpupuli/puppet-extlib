@@ -12,14 +12,14 @@ function extlib::dir_split(Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutep
 
   $dirs_array = [$dirs].flatten.unique.map | Stdlib::Absolutepath $dir | {
     $dir.split(shell_escape($sep)).reduce([]) |Array $acc, $value  | {
-        $counter = $acc.length - 1
-        $acc_value = ($acc[$counter] =~ Undef) ? { true => '', false => $acc[$counter] }
-        unless empty($value) {
-          $acc + extlib::path_join([$acc_value, $value])
-        } else {
-          $acc
-        }
+      $counter = $acc.length - 1
+      $acc_value = ($acc[$counter] =~ Undef) ? { true => '', false => $acc[$counter] }
+      unless empty($value) {
+        $acc + extlib::path_join([$acc_value, $value])
+      } else {
+        $acc
       }
+    }
   }
   $dirs_array.flatten.unique
 }
