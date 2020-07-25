@@ -12,7 +12,7 @@
 # @note if you wish to create the directories manually you can use the extlib::dir_split() function in the same manner
 function extlib::mkdir_p(Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]] $dirs) >> Array[Stdlib::Absolutepath] {
   $dirs_array = extlib::dir_split($dirs)
-  @file{$dirs_array:
+  @file { $dirs_array:
     ensure => directory,
   }
   realize(File[$dirs_array])
