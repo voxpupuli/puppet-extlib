@@ -7,6 +7,7 @@
 ### Functions
 
 * [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
+* [`extlib::cidr_to_range`](#extlibcidr_to_range): Converts an CIDR address of the form 192.168.0.1/24 into a range of IP address excluding the network and broadcast addresses.
 * [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`extlib::dir_split`](#extlibdir_split): Splits the given directory or directories into individual paths.
 * [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
@@ -92,6 +93,40 @@ Cache key within the namespace
 Data type: `Any`
 
 The data for when there is no cache yet
+
+### `extlib::cidr_to_range`
+
+Type: Ruby 4.x API
+
+Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
+
+#### Examples
+
+##### calling the function
+
+```puppet
+extlib::cidr_to_range('127.0.0.1/8')
+```
+
+#### `extlib::cidr_to_range(Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR] $ip)`
+
+Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
+
+Returns: `Variant[Array[Stdlib::IP::Address::V4::Nosubnet],Array[Stdlib::IP::Address::V6::Nosubnet]]` IPv6 or IPv4 ip range without net/broadcast
+
+##### Examples
+
+###### calling the function
+
+```puppet
+extlib::cidr_to_range('127.0.0.1/8')
+```
+
+##### `ip`
+
+Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]`
+
+IPv6 or IPv4 address in CIDR notation
 
 ### `extlib::default_content`
 
