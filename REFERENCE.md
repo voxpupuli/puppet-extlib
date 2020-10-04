@@ -15,6 +15,7 @@
 * [`extlib::file_separator`](#extlibfile_separator): Returns the os specific file path separator.
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
+* [`extlib::last_in_cidr`](#extliblast_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
 * [`extlib::mkdir_p`](#extlibmkdir_p): Like the unix command mkdir_p except with puppet code.
 * [`extlib::path_join`](#extlibpath_join): Take one or more paths and join them together using the os specific separator.
 * [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
@@ -420,6 +421,40 @@ Returns: `Array`
 Data type: `Optional[Integer[1]]`
 
 The number of seconds to use as the run interval
+
+### `extlib::last_in_cidr`
+
+Type: Ruby 4.x API
+
+Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
+
+#### Examples
+
+##### calling the function
+
+```puppet
+extlib::last_in_cidr('127.0.0.1/8')
+```
+
+#### `extlib::last_in_cidr(Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR] $ip)`
+
+Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
+
+Returns: `Variant[Stdlib::IP::Address::V4::Nosubnet,Stdlib::IP::Address::V6::Nosubnet]` last address in the network
+
+##### Examples
+
+###### calling the function
+
+```puppet
+extlib::last_in_cidr('127.0.0.1/8')
+```
+
+##### `ip`
+
+Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]`
+
+IP address in CIDR notation
 
 ### `extlib::mkdir_p`
 
