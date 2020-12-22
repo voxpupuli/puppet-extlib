@@ -476,13 +476,13 @@ path will work on windows.
 ##### Joining Unix paths to return `/tmp/test/libs`
 
 ```puppet
-extlib::path_join('/tmp', 'test', 'libs')
+extlib::path_join(['/tmp', 'test', 'libs'])
 ```
 
 ##### Joining Windows paths to return `/c/test/libs`
 
 ```puppet
-extlib::path_join('c:', 'test', 'libs')
+extlib::path_join(['c:', 'test', 'libs'])
 ```
 
 #### `extlib::path_join(Array[String] $dirs)`
@@ -498,13 +498,13 @@ Returns: `Stdlib::Absolutepath` The joined path
 ###### Joining Unix paths to return `/tmp/test/libs`
 
 ```puppet
-extlib::path_join('/tmp', 'test', 'libs')
+extlib::path_join(['/tmp', 'test', 'libs'])
 ```
 
 ###### Joining Windows paths to return `/c/test/libs`
 
 ```puppet
-extlib::path_join('c:', 'test', 'libs')
+extlib::path_join(['c:', 'test', 'libs'])
 ```
 
 ##### `dirs`
