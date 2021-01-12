@@ -7,10 +7,11 @@
 # @return [Array[String]] - an array of absolute paths after being cut into individual paths.
 # @example calling the function
 #  extlib::dir_split('/opt/puppetlabs') => ['/opt', '/opt/puppetlabs']
-function extlib::dir_split(Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]] $dirs) >> Array[String] {
+function extlib::dir_split(Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]] *$values) >> Array[String] {
+  $dirs = $values.flatten.unique
   $sep = extlib::file_separator()
 
-  $dirs_array = [$dirs].flatten.unique.map | Stdlib::Absolutepath $dir | {
+  $dirs_array = $dirs.map | Stdlib::Absolutepath $dir | {
     $dir.split(shell_escape($sep)).reduce([]) |Array $acc, $value  | {
       $counter = $acc.length - 1
       $acc_value = ($acc[$counter] =~ Undef) ? { true => '', false => $acc[$counter] }
