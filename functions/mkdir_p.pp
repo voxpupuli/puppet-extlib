@@ -10,11 +10,17 @@
 #  extlib::mkdir_p('/opt/puppetlabs/bin') => ['/opt', '/opt/puppetlabs', '/opt/puppetlabs/bin']
 # @note splits the given directories into paths that are then created using file resources
 # @note if you wish to create the directories manually you can use the extlib::dir_split() function in the same manner
-function extlib::mkdir_p(Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]] $dirs) >> Array[Stdlib::Absolutepath] {
-  $dirs_array = extlib::dir_split($dirs)
-  @file { $dirs_array:
-    ensure => directory,
+function extlib::mkdir_p(
+  Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]] $dirs,
+  Hash                                                       $parms = {},
+) >> Array[Stdlib::Absolutepath] {
+  $all_dirs = extlib::dir_split($dirs)
+  # ensure all parent directories exist
+  ensure_resource('file', $all_dirs, {'ensure' => 'directory'})
+  [$dirs].flatten.unique.each |$dir| {
+    File[$dir] {
+      * => $params,
+    }
   }
-  realize(File[$dirs_array])
-  $dirs_array
+  $all_dirs
 }
