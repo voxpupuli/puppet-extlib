@@ -1,9 +1,9 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
 group :test do
-  gem 'voxpupuli-test', '~> 2.1',  :require => false
-  gem 'coveralls',                 :require => false
-  gem 'simplecov-console',         :require => false
+  gem 'voxpupuli-test',    :require => false, :git => 'https://github.com/alexjfisher/voxpupuli-test.git', :branch => 'new_rubocop'
+  gem 'coveralls',         :require => false
+  gem 'simplecov-console', :require => false
 end
 
 group :development do

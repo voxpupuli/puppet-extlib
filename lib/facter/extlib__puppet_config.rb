@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 Facter.add(:extlib__puppet_config) do
   setcode do
     puppet_config = {}
 
     desired_settings = {
-      master: [
-        :localcacert,
-        :ssldir
+      master: %i[
+        localcacert
+        ssldir
       ],
-      main: [
-        :hostpubkey,
-        :hostprivkey,
-        :hostcert,
-        :localcacert,
-        :ssldir,
-        :vardir,
-        :server
+      main: %i[
+        hostpubkey
+        hostprivkey
+        hostcert
+        localcacert
+        ssldir
+        vardir
+        server
       ]
     }
 

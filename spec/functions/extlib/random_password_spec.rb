@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::random_password' do
   it 'exists' do
-    is_expected.not_to be_nil
+    expect(subject).not_to be_nil
   end
 
   context 'when called with no parameters' do

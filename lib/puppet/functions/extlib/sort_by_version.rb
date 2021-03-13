@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A function that sorts an array of version numbers.
 Puppet::Functions.create_function(:'extlib::sort_by_version') do
   # @param versions An array of version strings you want sorted.

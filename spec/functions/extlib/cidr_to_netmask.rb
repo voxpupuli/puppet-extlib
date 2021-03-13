@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::cidr_to_netmask' do
   it 'exists' do
-    is_expected.not_to be_nil
+    expect(subject).not_to be_nil
   end
 
   context 'when called with no parameters' do
@@ -17,11 +19,11 @@ describe 'extlib::cidr_to_netmask' do
     it { is_expected.to run.with_params('42').and_raise_error(ArgumentError) }
   end
 
-  context 'when called with an IP Address that is not in the CIDR notation' do
+  context 'when called with an IPv4 Address that is not in the CIDR notation' do
     it { is_expected.to run.with_params('127.0.0.1').and_raise_error(ArgumentError) }
   end
 
-  context 'when called with an IP Address that is not in the CIDR notation' do
+  context 'when called with an IPv6 Address that is not in the CIDR notation' do
     it { is_expected.to run.with_params('fe80::800:27ff:fe00:0').and_raise_error(ArgumentError) }
   end
 
