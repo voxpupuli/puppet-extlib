@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
 #
 # @summary Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 # @summary Prints the args to STDOUT in Pretty JSON format.

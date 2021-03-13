@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @summary Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 #
 # Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.

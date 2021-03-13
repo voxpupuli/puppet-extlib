@@ -1,39 +1,57 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::echo' do
   describe 'signature validation' do
     it 'exists' do
-      is_expected.not_to be_nil
+      expect(subject).not_to be_nil
     end
+
     it 'requires at least one argument' do
-      is_expected.to run.with_params.and_raise_error(ArgumentError)
+      expect(subject).to run.with_params.and_raise_error(ArgumentError)
     end
   end
 
-  context 'should output a correct debug string for' do
-    it 'a string' do
+  context 'with a string' do
+    it 'outputs a correct debug string' do
       allow(scope).to receive(:debug).with '(String) "test"'
-      is_expected.to run.with_params('test')
+      expect(subject).to run.with_params('test')
     end
-    it 'a string with a comment' do
+  end
+
+  context 'with a string with a comment' do
+    it 'outputs a correct debug string' do
       allow(scope).to receive(:debug).with 'My String (String) "test"'
-      is_expected.to run.with_params('test', 'My String')
+      expect(subject).to run.with_params('test', 'My String')
     end
-    it 'and array' do
+  end
+
+  context 'with an array' do
+    it 'outputs a correct debug string' do
       allow(scope).to receive(:debug).with 'My Array (Array) ["1", "2", "3"]'
-      is_expected.to run.with_params(%w[1 2 3], 'My Array')
+      expect(subject).to run.with_params(%w[1 2 3], 'My Array')
     end
-    it 'a hash' do
+  end
+
+  context 'with a hash' do
+    it 'outputs a correct debug string' do
       allow(scope).to receive(:debug).with 'My Hash (Hash) {"a"=>"1"}'
-      is_expected.to run.with_params({ 'a' => '1' }, 'My Hash')
+      expect(subject).to run.with_params({ 'a' => '1' }, 'My Hash')
     end
-    it 'a boolean value' do
+  end
+
+  context 'with a boolean value' do
+    it 'outputs a correct debug string' do
       allow(scope).to receive(:debug).with 'My Boolean (FalseClass) false'
-      is_expected.to run.with_params(false, 'My Boolean')
+      expect(subject).to run.with_params(false, 'My Boolean')
     end
-    it 'an undefind value' do
+  end
+
+  context 'with an undefind value' do
+    it 'outputs a correct debug string' do
       allow(scope).to receive(:debug).with 'Undefined Value (NilClass) nil'
-      is_expected.to run.with_params(nil, 'Undefined Value')
+      expect(subject).to run.with_params(nil, 'Undefined Value')
     end
   end
 end

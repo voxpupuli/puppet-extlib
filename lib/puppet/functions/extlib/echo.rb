@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This function outputs the variable content and its type to the
 # debug log. It's similiar to the `notice` function but provides
 # a better output format useful to trace variable types and values

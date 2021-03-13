@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::cache_data' do
@@ -14,14 +16,14 @@ describe 'extlib::cache_data' do
   describe 'data caching' do
     context 'when not in cache' do
       it 'returns supplied data' do
-        is_expected.to run.with_params(namespace, data_name, initial_data).and_return(initial_data)
+        expect(subject).to run.with_params(namespace, data_name, initial_data).and_return(initial_data)
       end
     end
 
     context 'when cached' do
       it 'returns cached data' do
-        is_expected.to run.with_params(namespace, data_name, initial_data).and_return(initial_data)
-        is_expected.to run.with_params(namespace, data_name, 'new_password').and_return(initial_data)
+        expect(subject).to run.with_params(namespace, data_name, initial_data).and_return(initial_data)
+        expect(subject).to run.with_params(namespace, data_name, 'new_password').and_return(initial_data)
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Fetch a string from a URL (should only be used with 'small' remote files).
 #
 # This function should only be used with trusted/internal sources.

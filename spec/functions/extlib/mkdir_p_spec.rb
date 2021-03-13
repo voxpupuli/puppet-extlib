@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::mkdir_p' do
@@ -12,9 +14,9 @@ describe 'extlib::mkdir_p' do
     end
 
     it {
-      is_expected.to run.with_params(dirs).and_return(['/c', '/c/windows', '/c/windows/puppetlabs',
-                                                       '/c/windows/puppetlabs/puppet', '/c/windows/puppetlabs/puppet/embedded',
-                                                       '/c/windows/puppetlabs/puppet/embedded/gems'])
+      expect(subject).to run.with_params(dirs).and_return(['/c', '/c/windows', '/c/windows/puppetlabs',
+                                                           '/c/windows/puppetlabs/puppet', '/c/windows/puppetlabs/puppet/embedded',
+                                                           '/c/windows/puppetlabs/puppet/embedded/gems'])
     }
 
     describe 'multiple_dirs' do
@@ -23,9 +25,9 @@ describe 'extlib::mkdir_p' do
       end
 
       it {
-        is_expected.to run.with_params(dirs).and_return(['/c', '/c/windows', '/c/windows/puppetlabs',
-                                                         '/c/windows/puppetlabs/puppet', '/c/windows/puppetlabs/puppet/embedded',
-                                                         '/c/windows/puppetlabs/puppet/embedded/gems', '/c/temp', '/c/temp/gems'])
+        expect(subject).to run.with_params(dirs).and_return(['/c', '/c/windows', '/c/windows/puppetlabs',
+                                                             '/c/windows/puppetlabs/puppet', '/c/windows/puppetlabs/puppet/embedded',
+                                                             '/c/windows/puppetlabs/puppet/embedded/gems', '/c/temp', '/c/temp/gems'])
       }
     end
   end
@@ -41,8 +43,8 @@ describe 'extlib::mkdir_p' do
     end
 
     it {
-      is_expected.to run.with_params(dirs).and_return(['/opt', '/opt/puppetlabs', '/opt/puppetlabs/puppet',
-                                                       '/opt/puppetlabs/puppet/embedded', '/opt/puppetlabs/puppet/embedded/bin', '/opt/puppetlabs/puppet/embedded/bin/gems'])
+      expect(subject).to run.with_params(dirs).and_return(['/opt', '/opt/puppetlabs', '/opt/puppetlabs/puppet',
+                                                           '/opt/puppetlabs/puppet/embedded', '/opt/puppetlabs/puppet/embedded/bin', '/opt/puppetlabs/puppet/embedded/bin/gems'])
     }
 
     describe 'multiple_dirs' do

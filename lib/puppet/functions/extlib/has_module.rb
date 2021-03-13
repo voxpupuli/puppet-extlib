@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 # A function that lets you know whether a specific module is on your modulepath.
@@ -28,6 +30,7 @@ Puppet::Functions.create_function(:'extlib::has_module') do
 
     metadata = JSON.parse(File.read(metadata_json))
     return true if metadata['name'] == full_module_name
+
     false
   end
 end

@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::ip_to_cron' do
   it 'exists' do
-    is_expected.not_to be_nil
+    expect(subject).not_to be_nil
   end
 
-  describe 'when runinterval is 1 hour' do
+  context 'when runinterval is 1 hour' do
     let(:runinterval) { 3600 }
 
-    context 'and IP address is 10.0.0.150' do
+    context 'with IP address 10.0.0.150' do
       let(:facts) { { networking: { ip: '10.0.0.150' } } }
 
       it { is_expected.to run.with_params(runinterval).and_return(['*', [30]]) }
     end
 
-    context 'and IP address is 10.0.0.160' do
+    context 'with IP address 10.0.0.160' do
       let(:facts) { { networking: { ip: '10.0.0.160' } } }
 
       it { is_expected.to run.with_params(runinterval).and_return(['*', [40]]) }
