@@ -27,7 +27,6 @@ Puppet::Functions.create_function(:'extlib::has_module') do
     return false unless File.exist?(metadata_json)
 
     metadata = JSON.parse(File.read(metadata_json))
-    return true if metadata['name'] == full_module_name
-    false
+    metadata['name'] == full_module_name
   end
 end
