@@ -9,9 +9,10 @@
 #   extlib::path_join(['/tmp', 'test', 'libs'])
 # @example Joining Windows paths to return `/c/test/libs`
 #   extlib::path_join(['c:', 'test', 'libs'])
-function extlib::path_join(Array[String] $dirs) >> Stdlib::Absolutepath {
+function extlib::path_join(Variant[String, Array[String]] *$values) >> Stdlib::Absolutepath {
   $unix_sep = '/'
   $sep_regex = /\/|\\/
+  $dirs = $values.flatten
   $first_value = $dirs[0]
   # when first value is absolute path, append all other elements
   # by breaking the path into pieces first, then joining
