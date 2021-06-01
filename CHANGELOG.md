@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v5.1.0) (2021-06-01)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v5.0.0...v5.1.0)
+
+**Implemented enhancements:**
+
+- Mark compatible with puppetlabs/stdlib 7.x [\#180](https://github.com/voxpupuli/puppet-extlib/pull/180) ([ekohl](https://github.com/ekohl))
+- Support Puppet 7 [\#179](https://github.com/voxpupuli/puppet-extlib/pull/179) ([mattock](https://github.com/mattock))
+- Use a shorter syntax to return [\#178](https://github.com/voxpupuli/puppet-extlib/pull/178) ([ekohl](https://github.com/ekohl))
+- new function dir\_clean and refactor [\#176](https://github.com/voxpupuli/puppet-extlib/pull/176) ([b4ldr](https://github.com/b4ldr))
+- Add ability to specify extra args to path functions [\#175](https://github.com/voxpupuli/puppet-extlib/pull/175) ([logicminds](https://github.com/logicminds))
+- Add cidr\_to\_netmask function [\#166](https://github.com/voxpupuli/puppet-extlib/pull/166) ([bastelfreak](https://github.com/bastelfreak))
+- Add last\_in\_cidr function [\#165](https://github.com/voxpupuli/puppet-extlib/pull/165) ([bastelfreak](https://github.com/bastelfreak))
+- mark Ubuntu 20.04 as supported [\#161](https://github.com/voxpupuli/puppet-extlib/pull/161) ([mmoll](https://github.com/mmoll))
+
+**Fixed bugs:**
+
+- path\_join: fix examples [\#173](https://github.com/voxpupuli/puppet-extlib/pull/173) ([kenyon](https://github.com/kenyon))
+
+**Closed issues:**
+
+- import add sorted\_json function from  solarkennedy/puppet-consul [\#174](https://github.com/voxpupuli/puppet-extlib/issues/174)
+
+**Merged pull requests:**
+
+- update REFERENCE.md [\#169](https://github.com/voxpupuli/puppet-extlib/pull/169) ([bastelfreak](https://github.com/bastelfreak))
+- Remove cache\_data helper methods in tests [\#163](https://github.com/voxpupuli/puppet-extlib/pull/163) ([ekohl](https://github.com/ekohl))
+- Fix several markdown lint issues [\#160](https://github.com/voxpupuli/puppet-extlib/pull/160) ([dhoppe](https://github.com/dhoppe))
+
 ## [v5.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v5.0.0) (2020-03-31)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v4.2.0...v5.0.0)
