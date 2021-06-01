@@ -9,6 +9,7 @@
 * [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`extlib::cidr_to_netmask`](#extlibcidr_to_netmask): Converts an CIDR address of the form 192.168.0.1/24 into its netmask.
 * [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
+* [`extlib::dir_clean`](#extlibdir_clean): Take a path and normalise it to its Unix form.
 * [`extlib::dir_split`](#extlibdir_split): Splits the given directory or directories into individual paths.
 * [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
 * [`extlib::echo`](#extlibecho): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
@@ -17,7 +18,7 @@
 * [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`extlib::last_in_cidr`](#extliblast_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
 * [`extlib::mkdir_p`](#extlibmkdir_p): Like the unix command mkdir_p except with puppet code.
-* [`extlib::path_join`](#extlibpath_join): Take one or more paths and join them together using the os specific separator.
+* [`extlib::path_join`](#extlibpath_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::read_url`](#extlibread_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
 * [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
@@ -25,7 +26,7 @@
 
 ## Functions
 
-### `extlib::cache_data`
+### <a name="extlibcache_data"></a>`extlib::cache_data`
 
 Type: Ruby 4.x API
 
@@ -95,7 +96,7 @@ Data type: `Any`
 
 The data for when there is no cache yet
 
-### `extlib::cidr_to_netmask`
+### <a name="extlibcidr_to_netmask"></a>`extlib::cidr_to_netmask`
 
 Type: Ruby 4.x API
 
@@ -129,7 +130,7 @@ Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]
 
 IPv6 or IPv4 address in CIDR notation
 
-### `extlib::default_content`
+### <a name="extlibdefault_content"></a>`extlib::default_content`
 
 Type: Ruby 4.x API
 
@@ -179,7 +180,61 @@ Data type: `Optional[String]`
 
 The path to an .erb or .epp template file or `undef`.
 
-### `extlib::dir_split`
+### <a name="extlibdir_clean"></a>`extlib::dir_clean`
+
+Type: Puppet Language
+
+Instead of having to deal with the different separators between Unix and Windows this
+function instead formats Windows paths a equivalent Unix like path.
+
+$dir is defined as a Variant to support cleaning 'c:' which is not a valid
+Stdlib::Absolutepath
+
+#### Examples
+
+##### clean Unix paths to return `/tmp/test/libs` (i.e. noop)
+
+```puppet
+extlib::dir_clean('/tmp/test/libs')
+```
+
+##### Clean Windows paths to return `/c/test/libs`
+
+```puppet
+extlib::dir_clean('c:\\'test\\libs')
+```
+
+#### `extlib::dir_clean(Variant[Stdlib::Absolutepath, Pattern[/\A[a-zA-Z]:\z/]] $dir)`
+
+Instead of having to deal with the different separators between Unix and Windows this
+function instead formats Windows paths a equivalent Unix like path.
+
+$dir is defined as a Variant to support cleaning 'c:' which is not a valid
+Stdlib::Absolutepath
+
+Returns: `Stdlib::Unixpath` Stdlib::Unixpath The cleaned path
+
+##### Examples
+
+###### clean Unix paths to return `/tmp/test/libs` (i.e. noop)
+
+```puppet
+extlib::dir_clean('/tmp/test/libs')
+```
+
+###### Clean Windows paths to return `/c/test/libs`
+
+```puppet
+extlib::dir_clean('c:\\'test\\libs')
+```
+
+##### `dir`
+
+Data type: `Variant[Stdlib::Absolutepath, Pattern[/\A[a-zA-Z]:\z/]]`
+
+The path to clean
+
+### <a name="extlibdir_split"></a>`extlib::dir_split`
 
 Type: Puppet Language
 
@@ -215,7 +270,7 @@ Data type: `Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]]`
 
 - either an absolute path or a array of absolute paths.
 
-### `extlib::dump_args`
+### <a name="extlibdump_args"></a>`extlib::dump_args`
 
 Type: Ruby 4.x API
 
@@ -241,7 +296,7 @@ Data type: `Any`
 
 The data you want to dump as pretty JSON.
 
-### `extlib::echo`
+### <a name="extlibecho"></a>`extlib::echo`
 
 Type: Ruby 4.x API
 
@@ -323,7 +378,7 @@ Data type: `Optional[String]`
 
 An optional comment to prepend to the debug output.
 
-### `extlib::file_separator`
+### <a name="extlibfile_separator"></a>`extlib::file_separator`
 
 Type: Puppet Language
 
@@ -351,7 +406,7 @@ Returns: `String` - The os specific path separator.
 extlib::file_separator() => '/'
 ```
 
-### `extlib::has_module`
+### <a name="extlibhas_module"></a>`extlib::has_module`
 
 Type: Ruby 4.x API
 
@@ -386,7 +441,7 @@ Data type: `Pattern[/\A\w+[-\/]\w+\z/]`
 The full name of the module you want to know exists or not.
 Namespace and modulename can be separated with either `-` or `/`.
 
-### `extlib::ip_to_cron`
+### <a name="extlibip_to_cron"></a>`extlib::ip_to_cron`
 
 Type: Ruby 4.x API
 
@@ -422,7 +477,7 @@ Data type: `Optional[Integer[1]]`
 
 The number of seconds to use as the run interval
 
-### `extlib::last_in_cidr`
+### <a name="extliblast_in_cidr"></a>`extlib::last_in_cidr`
 
 Type: Ruby 4.x API
 
@@ -456,7 +511,7 @@ Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]
 
 IP address in CIDR notation
 
-### `extlib::mkdir_p`
+### <a name="extlibmkdir_p"></a>`extlib::mkdir_p`
 
 Type: Puppet Language
 
@@ -498,13 +553,12 @@ Data type: `Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]]`
 
 - the path(s) to create
 
-### `extlib::path_join`
+### <a name="extlibpath_join"></a>`extlib::path_join`
 
 Type: Puppet Language
 
-Because in how windows uses a different separator this function
-will format a windows path into a equilivent unix like path.  This type of unix like
-path will work on windows.
+This function will format a windows paths into equivalent unix like paths.
+This type of unix like path should work on windows.
 
 #### Examples
 
@@ -520,11 +574,10 @@ extlib::path_join(['/tmp', 'test', 'libs'])
 extlib::path_join(['c:', 'test', 'libs'])
 ```
 
-#### `extlib::path_join(Array[String] $dirs)`
+#### `extlib::path_join(Variant[String, Array[String]] $dirs)`
 
-Because in how windows uses a different separator this function
-will format a windows path into a equilivent unix like path.  This type of unix like
-path will work on windows.
+This function will format a windows paths into equivalent unix like paths.
+This type of unix like path should work on windows.
 
 Returns: `Stdlib::Absolutepath` The joined path
 
@@ -544,11 +597,11 @@ extlib::path_join(['c:', 'test', 'libs'])
 
 ##### `dirs`
 
-Data type: `Array[String]`
+Data type: `Variant[String, Array[String]]`
 
 Joins two or more directories by file separator.
 
-### `extlib::random_password`
+### <a name="extlibrandom_password"></a>`extlib::random_password`
 
 Type: Ruby 4.x API
 
@@ -582,7 +635,7 @@ Data type: `Integer[1]`
 
 The length of random password you want generated.
 
-### `extlib::read_url`
+### <a name="extlibread_url"></a>`extlib::read_url`
 
 Type: Ruby 4.x API
 
@@ -628,7 +681,7 @@ Data type: `Stdlib::HTTPUrl`
 
 The URL to read from
 
-### `extlib::resources_deep_merge`
+### <a name="extlibresources_deep_merge"></a>`extlib::resources_deep_merge`
 
 Type: Ruby 4.x API
 
@@ -780,7 +833,7 @@ Data type: `Hash`
 
 The hash of defaults to merge.
 
-### `extlib::sort_by_version`
+### <a name="extlibsort_by_version"></a>`extlib::sort_by_version`
 
 Type: Ruby 4.x API
 
