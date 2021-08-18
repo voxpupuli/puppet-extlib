@@ -30,10 +30,3 @@ Facter.add(:extlib__puppet_config) do
     puppet_config
   end
 end
-
-# Facter 4 namespaced version
-Facter.add(:'extlib.puppet_config') do
-  setcode do
-    Facter.value(:extlib__puppet_config)
-  end
-end
