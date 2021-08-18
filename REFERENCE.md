@@ -8,6 +8,7 @@
 
 * [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`extlib::cidr_to_netmask`](#extlibcidr_to_netmask): Converts an CIDR address of the form 192.168.0.1/24 into its netmask.
+* [`extlib::cidr_to_network`](#extlibcidr_to_network): Converts a CIDR address of the form 2001:DB8::/32 or 192.0.2.0/24 into their network address (also known as net address)
 * [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`extlib::dir_clean`](#extlibdir_clean): Take a path and normalise it to its Unix form.
 * [`extlib::dir_split`](#extlibdir_split): Splits the given directory or directories into individual paths.
@@ -122,6 +123,40 @@ Returns: `Variant[Stdlib::IP::Address::V4::Nosubnet,Stdlib::IP::Address::V6::Nos
 
 ```puppet
 extlib::cidr_to_netmask('127.0.0.1/8')
+```
+
+##### `ip`
+
+Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]`
+
+IPv6 or IPv4 address in CIDR notation
+
+### <a name="extlibcidr_to_network"></a>`extlib::cidr_to_network`
+
+Type: Ruby 4.x API
+
+Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
+
+#### Examples
+
+##### calling the function
+
+```puppet
+extlib::cidr_to_network('2001:DB8::/32')
+```
+
+#### `extlib::cidr_to_network(Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR] $ip)`
+
+Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
+
+Returns: `Variant[Stdlib::IP::Address::V4::Nosubnet,Stdlib::IP::Address::V6::Nosubnet]` IPv6 or IPv4 network/net address
+
+##### Examples
+
+###### calling the function
+
+```puppet
+extlib::cidr_to_network('2001:DB8::/32')
 ```
 
 ##### `ip`
