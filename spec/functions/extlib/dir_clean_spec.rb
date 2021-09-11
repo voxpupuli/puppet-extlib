@@ -9,6 +9,7 @@ describe 'extlib::dir_clean' do
         '/opt/puppetlabs/puppet/embedded/bin/gems' => '/opt/puppetlabs/puppet/embedded/bin/gems',
       }
     end
+
     it 'valid dirs' do
       dirs.each_pair do |input, output|
         is_expected.to run.with_params(input).and_return(output)
