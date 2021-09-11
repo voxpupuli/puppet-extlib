@@ -23,10 +23,10 @@ describe 'extlib::mkdir_p' do
       end
 
       it {
-        is_expected.to run.with_params(dirs).and_return(["/c", "/c/temp", "/c/temp/gems",
-           "/c/windows", "/c/windows/puppetlabs", "/c/windows/puppetlabs/puppet",
-           "/c/windows/puppetlabs/puppet/embedded",
-           "/c/windows/puppetlabs/puppet/embedded/gems"])
+        is_expected.to run.with_params(dirs).and_return(['/c', '/c/temp', '/c/temp/gems',
+                                                         '/c/windows', '/c/windows/puppetlabs', '/c/windows/puppetlabs/puppet',
+                                                         '/c/windows/puppetlabs/puppet/embedded',
+                                                         '/c/windows/puppetlabs/puppet/embedded/gems'])
       }
     end
   end
@@ -60,7 +60,6 @@ describe 'extlib::mkdir_p' do
     end
 
     describe 'multiple_dirs with comma' do
-      
       let(:expected_dirs) do
         ['/opt', '/opt/puppetlabs', '/opt/puppetlabs/puppet',
          '/opt/puppetlabs/puppet/embedded', '/opt/puppetlabs/puppet/embedded/bin',

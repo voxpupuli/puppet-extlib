@@ -60,8 +60,8 @@ describe 'extlib::dir_split' do
     describe 'multiple_dirs using comma' do
       it {
         is_expected.to run.with_params('/opt/puppetlabs/puppet/embedded/bin/gems', '/tmp/gems').and_return(['/opt', '/opt/puppetlabs', '/opt/puppetlabs/puppet',
-                                                         '/opt/puppetlabs/puppet/embedded', '/opt/puppetlabs/puppet/embedded/bin',
-                                                         '/opt/puppetlabs/puppet/embedded/bin/gems', '/tmp', '/tmp/gems'])
+                                                                                                            '/opt/puppetlabs/puppet/embedded', '/opt/puppetlabs/puppet/embedded/bin',
+                                                                                                            '/opt/puppetlabs/puppet/embedded/bin/gems', '/tmp', '/tmp/gems'])
       }
     end
   end
