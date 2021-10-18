@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.3.0](https://github.com/voxpupuli/puppet-extlib/tree/v5.3.0) (2021-10-18)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v5.2.1...v5.3.0)
+
+**Implemented enhancements:**
+
+- add netmask\_to\_cidr function [\#190](https://github.com/voxpupuli/puppet-extlib/pull/190) ([foxxx0](https://github.com/foxxx0))
+- Add support for Debian 11 [\#187](https://github.com/voxpupuli/puppet-extlib/pull/187) ([smortex](https://github.com/smortex))
+
 ## [v5.2.1](https://github.com/voxpupuli/puppet-extlib/tree/v5.2.1) (2021-08-25)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v5.2.0...v5.2.1)
@@ -306,15 +315,15 @@ During the conversion work, a couple of functions have minor but technically bre
 
 ## [v0.10.2](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.2) (2015-10-05)
 
-[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.1...v0.10.2)
-
-## [v0.10.1](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.1) (2015-10-05)
-
-[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/0.10.1...v0.10.1)
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/0.10.1...v0.10.2)
 
 ## [0.10.1](https://github.com/voxpupuli/puppet-extlib/tree/0.10.1) (2015-10-05)
 
-[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.0...0.10.1)
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.1...0.10.1)
+
+## [v0.10.1](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.1) (2015-10-05)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v0.10.0...v0.10.1)
 
 ## [v0.10.0](https://github.com/voxpupuli/puppet-extlib/tree/v0.10.0) (2015-10-05)
 

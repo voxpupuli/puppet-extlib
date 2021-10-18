@@ -19,6 +19,8 @@
 * [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`extlib::last_in_cidr`](#extliblast_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
 * [`extlib::mkdir_p`](#extlibmkdir_p): Like the unix command mkdir_p except with puppet code.
+* [`extlib::netmask_to_cidr`](#extlibnetmask_to_cidr): Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
+Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlibpath_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::read_url`](#extlibread_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
@@ -587,6 +589,41 @@ extlib::mkdir_p('/opt/puppetlabs/bin') => ['/opt', '/opt/puppetlabs', '/opt/pupp
 Data type: `Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]]`
 
 - the path(s) to create
+
+### <a name="extlibnetmask_to_cidr"></a>`extlib::netmask_to_cidr`
+
+Type: Ruby 4.x API
+
+Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
+Thus making it directly usable with the values from facter.
+
+#### Examples
+
+##### calling the function
+
+```puppet
+extlib::netmask_to_cidr('255.0.0.0')
+```
+
+#### `extlib::netmask_to_cidr(Stdlib::IP::Address::Nosubnet $netmask)`
+
+The extlib::netmask_to_cidr function.
+
+Returns: `Integer[0, 128]` CIDR / prefix length
+
+##### Examples
+
+###### calling the function
+
+```puppet
+extlib::netmask_to_cidr('255.0.0.0')
+```
+
+##### `netmask`
+
+Data type: `Stdlib::IP::Address::Nosubnet`
+
+IPv6 or IPv4 netmask in octet notation
 
 ### <a name="extlibpath_join"></a>`extlib::path_join`
 
