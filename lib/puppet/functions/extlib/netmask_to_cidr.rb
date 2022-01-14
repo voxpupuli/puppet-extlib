@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @summary Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
 #          Thus making it directly usable with the values from facter.
 #

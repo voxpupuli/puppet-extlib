@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'json'
 
@@ -14,7 +16,7 @@ describe 'extlib::dump_args' do
     let(:hash) { { 'param_one' => 'value', 'param_two' => 42 } }
 
     it 'puts pretty JSON' do
-      allow(STDOUT).to receive(:puts).with(JSON.pretty_generate(hash))
+      allow($stdout).to receive(:puts).with(JSON.pretty_generate(hash))
       is_expected.to run.with_params(hash)
     end
   end
@@ -23,7 +25,7 @@ describe 'extlib::dump_args' do
     let(:int) { 42 }
 
     it 'puts pretty JSON' do
-      allow(STDOUT).to receive(:puts).with(JSON.pretty_generate(int))
+      allow($stdout).to receive(:puts).with(JSON.pretty_generate(int))
       is_expected.to run.with_params(int)
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
 #
 # @summary Converts a CIDR address of the form 2001:DB8::/32 or 192.0.2.0/24 into their network address (also known as net address)

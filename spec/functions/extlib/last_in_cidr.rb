@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'extlib::last_in_cidr' do
@@ -17,11 +19,11 @@ describe 'extlib::last_in_cidr' do
     it { is_expected.to run.with_params('42').and_raise_error(ArgumentError) }
   end
 
-  context 'when called with an IP Address that is not in the CIDR notation' do
+  context 'when called with an IPv4 Address that is not in the CIDR notation' do
     it { is_expected.to run.with_params('127.0.0.1').and_raise_error(ArgumentError) }
   end
 
-  context 'when called with an IP Address that is not in the CIDR notation' do
+  context 'when called with an IPv6 Address that is not in the CIDR notation' do
     it { is_expected.to run.with_params('fe80::800:27ff:fe00:0').and_raise_error(ArgumentError) }
   end
 

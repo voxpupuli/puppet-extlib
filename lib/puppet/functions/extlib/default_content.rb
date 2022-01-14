@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Takes an optional content and an optional template name and returns the contents of a file.
 Puppet::Functions.create_function(:'extlib::default_content') do
   # @param content
@@ -20,8 +22,8 @@ Puppet::Functions.create_function(:'extlib::default_content') do
     return_type 'Optional[String]'
   end
 
-  def emptyish(x)
-    x.nil? || x.empty? || x == :undef
+  def emptyish(param)
+    param.nil? || param.empty? || param == :undef
   end
 
   def default_content(content = :undef, template_name = :undef)
@@ -29,6 +31,7 @@ Puppet::Functions.create_function(:'extlib::default_content') do
 
     unless emptyish(template_name)
       return call_function('template', template_name) unless template_name.end_with?('.epp')
+
       return call_function('epp', template_name)
     end
 

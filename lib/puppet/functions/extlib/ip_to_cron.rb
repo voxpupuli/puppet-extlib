@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Provides a "random" value to cron based on the last bit of the machine IP address.
 # used to avoid starting a certain cron job at the same time on all servers.
 # Takes the runinterval in seconds as parameter and returns an array of [hour, minute]

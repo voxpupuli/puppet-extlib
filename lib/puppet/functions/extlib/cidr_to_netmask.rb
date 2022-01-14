@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Imported by Tim 'bastelfreak' Meusel into voxpupuli/extlib because Yelp/netstdlib got abandoned
 #
 # @summary Converts an CIDR address of the form 192.168.0.1/24 into its netmask.
@@ -14,6 +16,6 @@ Puppet::Functions.create_function(:'extlib::cidr_to_netmask') do
 
   def cidr_to_netmask(ip)
     # IPAddr has no getter for the subnetmask, but inspect() returns it
-    IPAddr.new(ip).inspect.gsub(%r{.*\/(.*)>}, '\1')
+    IPAddr.new(ip).inspect.gsub(%r{.*/(.*)>}, '\1')
   end
 end
