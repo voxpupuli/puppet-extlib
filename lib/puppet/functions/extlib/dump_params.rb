@@ -1,22 +1,16 @@
 # frozen_string_literal: true
 
 # @summary this function is used to get a list of parameters passed to or resource.
-# @example The main two use cases the author envisage for this function are:
-#   * Passing Parameters from a profile straight though to a base class
-#   We Often aver profiles that pass all, or almost all parameters directly to a base class,
-#   this function allows us to more easily pass theses parameters through with out a lot of addtional
-#   copy and paste e.g.
+# @example Passing Parameters from a profile straight though to a base class
 #
-#       class profile::foobar ($param1, $param2) {
+#    class profile::foobar ($param1, $param2) {
 #       class { 'foobar':
 #         *                => extlib::dump_params,
 #         additional_param => 'foobar',
 #       }
 #     }
 #
-#   * Passing parmaters directly to a config file.
-#     Another pattern one often sees, are classes where the majority of parameters get passed straight
-#     through to some config file.  This function allows us to more easily manage such templating e.g.
+# @example Passing parameters directly to a config file.
 #
 #     class foobar ($app_param1, $app_param2, $class_param1) {
 #       file { '/etc/foo/config.yaml':
