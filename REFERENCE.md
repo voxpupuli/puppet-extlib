@@ -13,6 +13,7 @@
 * [`extlib::dir_clean`](#extlibdir_clean): Take a path and normalise it to its Unix form.
 * [`extlib::dir_split`](#extlibdir_split): Splits the given directory or directories into individual paths.
 * [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
+* [`extlib::dump_params`](#extlibdump_params): this function is used to get a list of parameters passed to or resource.
 * [`extlib::echo`](#extlibecho): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
 * [`extlib::file_separator`](#extlibfile_separator): Returns the os specific file path separator.
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
@@ -332,6 +333,84 @@ Returns: `Undef` Returns nothing.
 Data type: `Any`
 
 The data you want to dump as pretty JSON.
+
+### <a name="extlibdump_params"></a>`extlib::dump_params`
+
+Type: Ruby 4.x API
+
+this function is used to get a list of parameters passed to or resource.
+
+#### Examples
+
+##### The main two use cases the author envisage for this function are:
+
+```puppet
+* Passing Parameters from a profile straight though to a base class
+We Often aver profiles that pass all, or almost all parameters directly to a base class,
+this function allows us to more easily pass theses parameters through with out a lot of addtional
+copy and paste e.g.
+
+    class profile::foobar ($param1, $param2) {
+    class { 'foobar':
+      *                => extlib::dump_params,
+      additional_param => 'foobar',
+    }
+  }
+
+* Passing parmaters directly to a config file.
+  Another pattern one often sees, are classes where the majority of parameters get passed straight
+  through to some config file.  This function allows us to more easily manage such templating e.g.
+
+  class foobar ($app_param1, $app_param2, $class_param1) {
+    file { '/etc/foo/config.yaml':
+      ensure => file,
+      # class param and name are not understoof by the foo app
+      content => extlib::dump_params(['name', 'class_param1']).to_yaml
+    }
+  }
+```
+
+#### `extlib::dump_params(Optional[Array[String[1]]] $filter_keys)`
+
+The extlib::dump_params function.
+
+Returns: `Any`
+
+##### Examples
+
+###### The main two use cases the author envisage for this function are:
+
+```puppet
+* Passing Parameters from a profile straight though to a base class
+We Often aver profiles that pass all, or almost all parameters directly to a base class,
+this function allows us to more easily pass theses parameters through with out a lot of addtional
+copy and paste e.g.
+
+    class profile::foobar ($param1, $param2) {
+    class { 'foobar':
+      *                => extlib::dump_params,
+      additional_param => 'foobar',
+    }
+  }
+
+* Passing parmaters directly to a config file.
+  Another pattern one often sees, are classes where the majority of parameters get passed straight
+  through to some config file.  This function allows us to more easily manage such templating e.g.
+
+  class foobar ($app_param1, $app_param2, $class_param1) {
+    file { '/etc/foo/config.yaml':
+      ensure => file,
+      # class param and name are not understoof by the foo app
+      content => extlib::dump_params(['name', 'class_param1']).to_yaml
+    }
+  }
+```
+
+##### `filter_keys`
+
+Data type: `Optional[Array[String[1]]]`
+
+an optional parameters of keys to filter out.  default value is set to 'name'
 
 ### <a name="extlibecho"></a>`extlib::echo`
 
