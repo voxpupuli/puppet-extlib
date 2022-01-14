@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 # A function that lets you know whether a specific module is on your modulepath.
