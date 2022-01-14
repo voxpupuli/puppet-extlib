@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v6.0.0) (2022-01-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v5.3.0...v6.0.0)
+
+**Breaking changes:**
+
+- Drop EoL Ubuntu 16.04 [\#197](https://github.com/voxpupuli/puppet-extlib/pull/197) ([bastelfreak](https://github.com/bastelfreak))
+- Drop EoL Debian 8/9 [\#196](https://github.com/voxpupuli/puppet-extlib/pull/196) ([bastelfreak](https://github.com/bastelfreak))
+- Drop EoL RHEL/CentOS 6 support [\#195](https://github.com/voxpupuli/puppet-extlib/pull/195) ([bastelfreak](https://github.com/bastelfreak))
+- modulesync 5.1.0 [\#193](https://github.com/voxpupuli/puppet-extlib/pull/193) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- extlib::dump\_params: Return the parameters pass to the current resource [\#194](https://github.com/voxpupuli/puppet-extlib/pull/194) ([b4ldr](https://github.com/b4ldr))
+
 ## [v5.3.0](https://github.com/voxpupuli/puppet-extlib/tree/v5.3.0) (2021-10-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v5.2.1...v5.3.0)
