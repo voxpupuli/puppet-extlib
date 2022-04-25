@@ -27,6 +27,7 @@ Thus making it directly usable with the values from facter.
 * [`extlib::read_url`](#extlibread_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
 * [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers.
+* [`extlib::xml_encode`](#extlibxml_encode): Encode strings for XML files
 
 ## Functions
 
@@ -1011,4 +1012,62 @@ extlib::sort_by_version(['10.0.0b12', '10.0.0b3', '10.0.0a2', '9.0.10', '9.0.3']
 Data type: `Array[String]`
 
 An array of version strings you want sorted.
+
+### <a name="extlibxml_encode"></a>`extlib::xml_encode`
+
+Type: Ruby 4.x API
+
+This function can encode strings such that they can be used directly in XML files.
+It supports encoding for both XML text (CharData) or attribute values (AttValue).
+
+#### Examples
+
+##### Creating an XML file from a template
+
+```puppet
+file { '/path/to/config.xml':
+  ensure  => file,
+  content => epp(
+    'mymodule/config.xml.epp',
+    {
+      password => $password.extlib::xml_encode,
+    },
+  ),
+}
+```
+
+#### `extlib::xml_encode(String $str, Optional[Enum['text','attr']] $type)`
+
+This function can encode strings such that they can be used directly in XML files.
+It supports encoding for both XML text (CharData) or attribute values (AttValue).
+
+Returns: `String` Returns the encoded CharData or AttValue string suitable for use in XML
+
+##### Examples
+
+###### Creating an XML file from a template
+
+```puppet
+file { '/path/to/config.xml':
+  ensure  => file,
+  content => epp(
+    'mymodule/config.xml.epp',
+    {
+      password => $password.extlib::xml_encode,
+    },
+  ),
+}
+```
+
+##### `str`
+
+Data type: `String`
+
+The string to encode
+
+##### `type`
+
+Data type: `Optional[Enum['text','attr']]`
+
+Whether to encode for text or an attribute
 
