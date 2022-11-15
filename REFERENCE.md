@@ -18,6 +18,7 @@
 * [`extlib::file_separator`](#extlibfile_separator): Returns the os specific file path separator.
 * [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
+* [`extlib::is_in_cidr`](#extlibis_in_cidr): Returns a boolean indicating whether an IP address is part of a network CIDR
 * [`extlib::last_in_cidr`](#extliblast_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
 * [`extlib::mkdir_p`](#extlibmkdir_p): Like the unix command mkdir_p except with puppet code.
 * [`extlib::netmask_to_cidr`](#extlibnetmask_to_cidr): Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
@@ -586,6 +587,46 @@ Returns: `Array`
 Data type: `Optional[Integer[1]]`
 
 The number of seconds to use as the run interval
+
+### <a name="extlibis_in_cidr"></a>`extlib::is_in_cidr`
+
+Type: Ruby 4.x API
+
+Returns a boolean indicating whether an IP address is part of a network CIDR
+
+#### Examples
+
+##### Calling the function
+
+```puppet
+'192.0.2.42'.extlib::is_in_cidr('192.0.2.0/24')
+```
+
+#### `extlib::is_in_cidr(Stdlib::IP::Address::Nosubnet $ip, Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR] $cidr)`
+
+The extlib::is_in_cidr function.
+
+Returns: `Boolean`
+
+##### Examples
+
+###### Calling the function
+
+```puppet
+'192.0.2.42'.extlib::is_in_cidr('192.0.2.0/24')
+```
+
+##### `ip`
+
+Data type: `Stdlib::IP::Address::Nosubnet`
+
+IPv4 or IPv6 address
+
+##### `cidr`
+
+Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]`
+
+CIDR you want to check whether the IP address is in or not
 
 ### <a name="extliblast_in_cidr"></a>`extlib::last_in_cidr`
 
