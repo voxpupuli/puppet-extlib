@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v6.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v6.0.0) (2022-02-01)
+## [v6.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v6.1.0) (2022-11-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v6.0.0...v6.1.0)
+
+**Implemented enhancements:**
+
+- Add new `is_in_cidr` function [\#204](https://github.com/voxpupuli/puppet-extlib/pull/204) ([alexjfisher](https://github.com/alexjfisher))
+
+## [v6.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v6.0.0) (2022-02-02)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v5.3.0...v6.0.0)
 
