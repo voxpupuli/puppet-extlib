@@ -90,4 +90,24 @@ describe 'extlib::to_ini' do
 
     it { is_expected.to run.with_params(example_input, settings).and_return(output) }
   end
+
+  context 'default settings with empty sections' do
+    let(:example_input) do
+      {
+        'foo' => {},
+        'bar' => {}
+      }
+    end
+    let(:output) do
+      <<~EOS
+        # THIS FILE IS CONTROLLED BY PUPPET
+
+        [foo]
+
+        [bar]
+      EOS
+    end
+
+    it { is_expected.to run.with_params(example_input).and_return(output) }
+  end
 end
