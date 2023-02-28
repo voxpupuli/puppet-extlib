@@ -6,32 +6,35 @@
 
 ### Functions
 
-* [`extlib::cache_data`](#extlibcache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
-* [`extlib::cidr_to_netmask`](#extlibcidr_to_netmask): Converts an CIDR address of the form 192.168.0.1/24 into its netmask.
-* [`extlib::cidr_to_network`](#extlibcidr_to_network): Converts a CIDR address of the form 2001:DB8::/32 or 192.0.2.0/24 into their network address (also known as net address)
-* [`extlib::default_content`](#extlibdefault_content): Takes an optional content and an optional template name and returns the contents of a file.
-* [`extlib::dir_clean`](#extlibdir_clean): Take a path and normalise it to its Unix form.
-* [`extlib::dir_split`](#extlibdir_split): Splits the given directory or directories into individual paths.
-* [`extlib::dump_args`](#extlibdump_args): Prints the args to STDOUT in Pretty JSON format.
-* [`extlib::dump_params`](#extlibdump_params): this function is used to get a list of parameters passed to or resource.
-* [`extlib::echo`](#extlibecho): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
-* [`extlib::file_separator`](#extlibfile_separator): Returns the os specific file path separator.
-* [`extlib::has_module`](#extlibhas_module): A function that lets you know whether a specific module is on your modulepath.
-* [`extlib::ip_to_cron`](#extlibip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
-* [`extlib::is_in_cidr`](#extlibis_in_cidr): Returns a boolean indicating whether an IP address is part of a network CIDR
-* [`extlib::last_in_cidr`](#extliblast_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
-* [`extlib::mkdir_p`](#extlibmkdir_p): Like the unix command mkdir_p except with puppet code.
-* [`extlib::netmask_to_cidr`](#extlibnetmask_to_cidr): Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
+* [`extlib::cache_data`](#extlib--cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
+* [`extlib::cidr_to_netmask`](#extlib--cidr_to_netmask): Converts an CIDR address of the form 192.168.0.1/24 into its netmask.
+* [`extlib::cidr_to_network`](#extlib--cidr_to_network): Converts a CIDR address of the form 2001:DB8::/32 or 192.0.2.0/24 into their network address (also known as net address)
+* [`extlib::default_content`](#extlib--default_content): Takes an optional content and an optional template name and returns the contents of a file.
+* [`extlib::dir_clean`](#extlib--dir_clean): Take a path and normalise it to its Unix form.
+* [`extlib::dir_split`](#extlib--dir_split): Splits the given directory or directories into individual paths.
+* [`extlib::dump_args`](#extlib--dump_args): Prints the args to STDOUT in Pretty JSON format.
+* [`extlib::dump_params`](#extlib--dump_params): this function is used to get a list of parameters passed to or resource.
+* [`extlib::echo`](#extlib--echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
+* [`extlib::file_separator`](#extlib--file_separator): Returns the os specific file path separator.
+* [`extlib::has_module`](#extlib--has_module): A function that lets you know whether a specific module is on your modulepath.
+* [`extlib::ip_to_cron`](#extlib--ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
+* [`extlib::is_in_cidr`](#extlib--is_in_cidr): Returns a boolean indicating whether an IP address is part of a network CIDR
+* [`extlib::last_in_cidr`](#extlib--last_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
+* [`extlib::mkdir_p`](#extlib--mkdir_p): Like the unix command mkdir_p except with puppet code.
+* [`extlib::netmask_to_cidr`](#extlib--netmask_to_cidr): Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
 Thus making it directly usable with the values from facter.
-* [`extlib::path_join`](#extlibpath_join): Take one or more paths and join them together
-* [`extlib::random_password`](#extlibrandom_password): A function to return a string of arbitrary length that contains randomly selected characters.
-* [`extlib::read_url`](#extlibread_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
-* [`extlib::resources_deep_merge`](#extlibresources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
-* [`extlib::sort_by_version`](#extlibsort_by_version): A function that sorts an array of version numbers.
+* [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
+* [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
+* [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
+* [`extlib::resources_deep_merge`](#extlib--resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
+* [`extlib::sort_by_version`](#extlib--sort_by_version): A function that sorts an array of version numbers.
+* [`extlib::to_ini`](#extlib--to_ini): This converts a puppet hash to an INI string.
+
+Based on https://github.com/mmckinst/puppet-hash2stuff/blob/master/lib/puppet/parser/functions/hash2ini.rb
 
 ## Functions
 
-### <a name="extlibcache_data"></a>`extlib::cache_data`
+### <a name="extlib--cache_data"></a>`extlib::cache_data`
 
 Type: Ruby 4.x API
 
@@ -101,7 +104,7 @@ Data type: `Any`
 
 The data for when there is no cache yet
 
-### <a name="extlibcidr_to_netmask"></a>`extlib::cidr_to_netmask`
+### <a name="extlib--cidr_to_netmask"></a>`extlib::cidr_to_netmask`
 
 Type: Ruby 4.x API
 
@@ -135,7 +138,7 @@ Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]
 
 IPv6 or IPv4 address in CIDR notation
 
-### <a name="extlibcidr_to_network"></a>`extlib::cidr_to_network`
+### <a name="extlib--cidr_to_network"></a>`extlib::cidr_to_network`
 
 Type: Ruby 4.x API
 
@@ -169,7 +172,7 @@ Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]
 
 IPv6 or IPv4 address in CIDR notation
 
-### <a name="extlibdefault_content"></a>`extlib::default_content`
+### <a name="extlib--default_content"></a>`extlib::default_content`
 
 Type: Ruby 4.x API
 
@@ -219,7 +222,7 @@ Data type: `Optional[String]`
 
 The path to an .erb or .epp template file or `undef`.
 
-### <a name="extlibdir_clean"></a>`extlib::dir_clean`
+### <a name="extlib--dir_clean"></a>`extlib::dir_clean`
 
 Type: Puppet Language
 
@@ -273,7 +276,7 @@ Data type: `Variant[Stdlib::Absolutepath, Pattern[/\A[a-zA-Z]:\z/]]`
 
 The path to clean
 
-### <a name="extlibdir_split"></a>`extlib::dir_split`
+### <a name="extlib--dir_split"></a>`extlib::dir_split`
 
 Type: Puppet Language
 
@@ -309,7 +312,7 @@ Data type: `Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]]`
 
 - either an absolute path or a array of absolute paths.
 
-### <a name="extlibdump_args"></a>`extlib::dump_args`
+### <a name="extlib--dump_args"></a>`extlib::dump_args`
 
 Type: Ruby 4.x API
 
@@ -335,7 +338,7 @@ Data type: `Any`
 
 The data you want to dump as pretty JSON.
 
-### <a name="extlibdump_params"></a>`extlib::dump_params`
+### <a name="extlib--dump_params"></a>`extlib::dump_params`
 
 Type: Ruby 4.x API
 
@@ -407,7 +410,7 @@ Data type: `Optional[Array[String[1]]]`
 
 an optional parameters of keys to filter out.  default value is set to 'name'
 
-### <a name="extlibecho"></a>`extlib::echo`
+### <a name="extlib--echo"></a>`extlib::echo`
 
 Type: Ruby 4.x API
 
@@ -489,7 +492,7 @@ Data type: `Optional[String]`
 
 An optional comment to prepend to the debug output.
 
-### <a name="extlibfile_separator"></a>`extlib::file_separator`
+### <a name="extlib--file_separator"></a>`extlib::file_separator`
 
 Type: Puppet Language
 
@@ -517,7 +520,7 @@ Returns: `String` - The os specific path separator.
 extlib::file_separator() => '/'
 ```
 
-### <a name="extlibhas_module"></a>`extlib::has_module`
+### <a name="extlib--has_module"></a>`extlib::has_module`
 
 Type: Ruby 4.x API
 
@@ -552,7 +555,7 @@ Data type: `Pattern[/\A\w+[-\/]\w+\z/]`
 The full name of the module you want to know exists or not.
 Namespace and modulename can be separated with either `-` or `/`.
 
-### <a name="extlibip_to_cron"></a>`extlib::ip_to_cron`
+### <a name="extlib--ip_to_cron"></a>`extlib::ip_to_cron`
 
 Type: Ruby 4.x API
 
@@ -588,7 +591,7 @@ Data type: `Optional[Integer[1]]`
 
 The number of seconds to use as the run interval
 
-### <a name="extlibis_in_cidr"></a>`extlib::is_in_cidr`
+### <a name="extlib--is_in_cidr"></a>`extlib::is_in_cidr`
 
 Type: Ruby 4.x API
 
@@ -628,7 +631,7 @@ Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]
 
 CIDR you want to check whether the IP address is in or not
 
-### <a name="extliblast_in_cidr"></a>`extlib::last_in_cidr`
+### <a name="extlib--last_in_cidr"></a>`extlib::last_in_cidr`
 
 Type: Ruby 4.x API
 
@@ -662,7 +665,7 @@ Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]
 
 IP address in CIDR notation
 
-### <a name="extlibmkdir_p"></a>`extlib::mkdir_p`
+### <a name="extlib--mkdir_p"></a>`extlib::mkdir_p`
 
 Type: Puppet Language
 
@@ -704,7 +707,7 @@ Data type: `Variant[Stdlib::Absolutepath, Array[Stdlib::Absolutepath]]`
 
 - the path(s) to create
 
-### <a name="extlibnetmask_to_cidr"></a>`extlib::netmask_to_cidr`
+### <a name="extlib--netmask_to_cidr"></a>`extlib::netmask_to_cidr`
 
 Type: Ruby 4.x API
 
@@ -739,7 +742,7 @@ Data type: `Stdlib::IP::Address::Nosubnet`
 
 IPv6 or IPv4 netmask in octet notation
 
-### <a name="extlibpath_join"></a>`extlib::path_join`
+### <a name="extlib--path_join"></a>`extlib::path_join`
 
 Type: Puppet Language
 
@@ -787,7 +790,7 @@ Data type: `Variant[String, Array[String]]`
 
 Joins two or more directories by file separator.
 
-### <a name="extlibrandom_password"></a>`extlib::random_password`
+### <a name="extlib--random_password"></a>`extlib::random_password`
 
 Type: Ruby 4.x API
 
@@ -821,7 +824,7 @@ Data type: `Integer[1]`
 
 The length of random password you want generated.
 
-### <a name="extlibread_url"></a>`extlib::read_url`
+### <a name="extlib--read_url"></a>`extlib::read_url`
 
 Type: Ruby 4.x API
 
@@ -867,7 +870,7 @@ Data type: `Stdlib::HTTPUrl`
 
 The URL to read from
 
-### <a name="extlibresources_deep_merge"></a>`extlib::resources_deep_merge`
+### <a name="extlib--resources_deep_merge"></a>`extlib::resources_deep_merge`
 
 Type: Ruby 4.x API
 
@@ -1019,7 +1022,7 @@ Data type: `Hash`
 
 The hash of defaults to merge.
 
-### <a name="extlibsort_by_version"></a>`extlib::sort_by_version`
+### <a name="extlib--sort_by_version"></a>`extlib::sort_by_version`
 
 Type: Ruby 4.x API
 
@@ -1052,4 +1055,52 @@ extlib::sort_by_version(['10.0.0b12', '10.0.0b3', '10.0.0a2', '9.0.10', '9.0.3']
 Data type: `Array[String]`
 
 An array of version strings you want sorted.
+
+### <a name="extlib--to_ini"></a>`extlib::to_ini`
+
+Type: Ruby 4.x API
+
+This converts a puppet hash to an INI string.
+
+Based on https://github.com/mmckinst/puppet-hash2stuff/blob/master/lib/puppet/parser/functions/hash2ini.rb
+
+#### Examples
+
+##### How to output ini to a file
+
+```puppet
+file { '/tmp/config.ini':
+  ensure  => file,
+  content => extlib::to_ini($myhash),
+}
+```
+
+#### `extlib::to_ini(Hash $data, Optional[Hash] $settings)`
+
+The extlib::to_ini function.
+
+Returns: `String` Converted data as ini string
+
+##### Examples
+
+###### How to output ini to a file
+
+```puppet
+file { '/tmp/config.ini':
+  ensure  => file,
+  content => extlib::to_ini($myhash),
+}
+```
+
+##### `data`
+
+Data type: `Hash`
+
+Data structure which needs to be converted into ini
+
+##### `settings`
+
+Data type: `Optional[Hash]`
+
+Override default ini generation settings
 
