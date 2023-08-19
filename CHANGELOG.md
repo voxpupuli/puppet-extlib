@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.0.0) (2023-08-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v6.2.0...v7.0.0)
+
+**Breaking changes:**
+
+- Drop Puppet 6 support [\#210](https://github.com/voxpupuli/puppet-extlib/pull/210) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Puppet 8 support [\#213](https://github.com/voxpupuli/puppet-extlib/pull/213) ([bastelfreak](https://github.com/bastelfreak))
+- Allow puppetlabs-stdlib 9.x [\#212](https://github.com/voxpupuli/puppet-extlib/pull/212) ([smortex](https://github.com/smortex))
+
 ## [v6.2.0](https://github.com/voxpupuli/puppet-extlib/tree/v6.2.0) (2023-02-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v6.1.0...v6.2.0)
