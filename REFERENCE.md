@@ -9,6 +9,7 @@
 * [`extlib::cache_data`](#extlib--cache_data): Retrieves data from a cache file, or creates it with supplied data if the file doesn't exist
 * [`extlib::cidr_to_netmask`](#extlib--cidr_to_netmask): Converts an CIDR address of the form 192.168.0.1/24 into its netmask.
 * [`extlib::cidr_to_network`](#extlib--cidr_to_network): Converts a CIDR address of the form 2001:DB8::/32 or 192.0.2.0/24 into their network address (also known as net address)
+* [`extlib::compare_ip`](#extlib--compare_ip): A function that compares two IP addresses. To be used with the built-in sort() function.
 * [`extlib::default_content`](#extlib--default_content): Takes an optional content and an optional template name and returns the contents of a file.
 * [`extlib::dir_clean`](#extlib--dir_clean): Take a path and normalise it to its Unix form.
 * [`extlib::dir_split`](#extlib--dir_split): Splits the given directory or directories into individual paths.
@@ -171,6 +172,50 @@ extlib::cidr_to_network('2001:DB8::/32')
 Data type: `Variant[Stdlib::IP::Address::V4::CIDR,Stdlib::IP::Address::V6::CIDR]`
 
 IPv6 or IPv4 address in CIDR notation
+
+### <a name="extlib--compare_ip"></a>`extlib::compare_ip`
+
+Type: Ruby 4.x API
+
+A function that compares two IP addresses. To be used with the built-in sort()
+function.
+
+#### Examples
+
+##### Sorting the array of IP addresses
+
+```puppet
+$ip_addresses = ['10.1.1.1', '10.10.1.1', '10.2.1.1']
+$ip_addresses.sort |$a, $b| { extlib::compare_ip($a, $b) }
+```
+
+#### `extlib::compare_ip(Stdlib::IP::Address $left, Stdlib::IP::Address $right)`
+
+A function that compares two IP addresses. To be used with the built-in sort()
+function.
+
+Returns: `Integer[-1,1]` -1, 0 or 1 if left value is lesser, equal or greater than right value
+
+##### Examples
+
+###### Sorting the array of IP addresses
+
+```puppet
+$ip_addresses = ['10.1.1.1', '10.10.1.1', '10.2.1.1']
+$ip_addresses.sort |$a, $b| { extlib::compare_ip($a, $b) }
+```
+
+##### `left`
+
+Data type: `Stdlib::IP::Address`
+
+Left value
+
+##### `right`
+
+Data type: `Stdlib::IP::Address`
+
+Right value
 
 ### <a name="extlib--default_content"></a>`extlib::default_content`
 
