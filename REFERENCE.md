@@ -19,6 +19,7 @@
 * [`extlib::file_separator`](#extlib--file_separator): Returns the os specific file path separator.
 * [`extlib::has_module`](#extlib--has_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::ip_to_cron`](#extlib--ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
+* [`extlib::ip_to_reverse`](#extlib--ip_to_reverse): Returns the reverse of an IP address
 * [`extlib::is_in_cidr`](#extlib--is_in_cidr): Returns a boolean indicating whether an IP address is part of a network CIDR
 * [`extlib::last_in_cidr`](#extlib--last_in_cidr): Converts an IPv4 or IPv6 CIDR address of the form 192.0.2.1/24 or 2001:db8::1/64 into the last address in the network
 * [`extlib::mkdir_p`](#extlib--mkdir_p): Like the unix command mkdir_p except with puppet code.
@@ -635,6 +636,48 @@ Returns: `Array`
 Data type: `Optional[Integer[1]]`
 
 The number of seconds to use as the run interval
+
+### <a name="extlib--ip_to_reverse"></a>`extlib::ip_to_reverse`
+
+Type: Ruby 4.x API
+
+No actual query is done to the DNS server, it only calculate the record that
+could be added to a DNS zone file.
+
+If you want to effectively make a query, see Vox Pupuli dns-query module:
+https://github.com/voxpupuli/puppet-dnsquery
+
+#### Examples
+
+##### Calling the function
+
+```puppet
+extlib::ip_to_reverse('192.0.2.0')
+```
+
+#### `extlib::ip_to_reverse(Stdlib::IP::Address $ip)`
+
+No actual query is done to the DNS server, it only calculate the record that
+could be added to a DNS zone file.
+
+If you want to effectively make a query, see Vox Pupuli dns-query module:
+https://github.com/voxpupuli/puppet-dnsquery
+
+Returns: `String`
+
+##### Examples
+
+###### Calling the function
+
+```puppet
+extlib::ip_to_reverse('192.0.2.0')
+```
+
+##### `ip`
+
+Data type: `Stdlib::IP::Address`
+
+IPv4 or IPv6 address
 
 ### <a name="extlib--is_in_cidr"></a>`extlib::is_in_cidr`
 
