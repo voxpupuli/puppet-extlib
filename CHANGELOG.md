@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.1.0) (2024-06-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.0.0...v7.1.0)
+
+**Implemented enhancements:**
+
+- Add ip\_to\_reverse function [\#229](https://github.com/voxpupuli/puppet-extlib/pull/229) ([bigon](https://github.com/bigon))
+- Add `extlib::compare_ip()` function [\#221](https://github.com/voxpupuli/puppet-extlib/pull/221) ([jay7x](https://github.com/jay7x))
+
 ## [v7.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.0.0) (2023-08-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v6.2.0...v7.0.0)
