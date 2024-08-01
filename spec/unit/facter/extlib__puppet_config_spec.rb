@@ -14,11 +14,15 @@ describe 'extlib__puppet_config fact' do
         'localcacert' => '/dev/null/ssl/certs/ca.pem',
         'server' => 'puppet',
         'ssldir' => '/dev/null/ssl',
-        'vardir' => '/dev/null'
+        'vardir' => '/dev/null',
+        'environment' => 'production'
       },
       'master' => {
         'localcacert' => '/dev/null/ssl/certs/ca.pem',
         'ssldir' => '/dev/null/ssl'
+      },
+      'agent' => {
+        'environment' => 'production'
       }
     }
   end

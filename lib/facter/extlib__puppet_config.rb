@@ -17,7 +17,9 @@ Facter.add(:extlib__puppet_config) do
         ssldir
         vardir
         server
-      ]
+        environment
+      ],
+      agent: %i[environment],
     }
 
     desired_settings.each_pair do |section, settings|
