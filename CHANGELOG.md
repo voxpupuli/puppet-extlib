@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.3.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.3.0) (2024-12-09)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.2.0...v7.3.0)
+
+**Implemented enhancements:**
+
+- Add support for EL9 [\#236](https://github.com/voxpupuli/puppet-extlib/pull/236) ([ghoneycutt](https://github.com/ghoneycutt))
+
 ## [v7.2.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.2.0) (2024-08-01)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.1.0...v7.2.0)
