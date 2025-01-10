@@ -28,6 +28,7 @@ Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
+* [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server  If you need to query a PuppetDB server that is not connected to your Puppet Server 
 * [`extlib::resources_deep_merge`](#extlib--resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlib--sort_by_version): A function that sorts an array of version numbers.
 * [`extlib::to_ini`](#extlib--to_ini): This converts a puppet hash to an INI string.
@@ -957,6 +958,101 @@ extlib::read_url('https://example.com/sometemplate.epp')
 Data type: `Stdlib::HTTPUrl`
 
 The URL to read from
+
+### <a name="extlib--remote_pql_query"></a>`extlib::remote_pql_query`
+
+Type: Ruby 4.x API
+
+Perform a PuppetDB query on an arbitrary PuppetDB server
+
+If you need to query a PuppetDB server that is not connected to your Puppet
+Server (perhaps part of a separate Puppet installation that uses its own
+PKI), then this function is for you!
+
+The `puppetdb-ruby` gem _must_ be installed in your puppetserver's ruby
+environment before you can use this function!
+
+#### `extlib::remote_pql_query(String[1] $query, HTTPSUrl $url, String[1] $key, String[1] $cert, String[1] $cacert, Optional[Hash] $options)`
+
+The extlib::remote_pql_query function.
+
+Returns: `Array` Returns the PQL query response results
+
+##### `query`
+
+Data type: `String[1]`
+
+The PQL query to run
+
+##### `url`
+
+Data type: `HTTPSUrl`
+
+The PuppetDB HTTPS URL (SSL with cert-based authentication)
+
+##### `key`
+
+Data type: `String[1]`
+
+The client SSL key associated with the SSL client certificate
+
+##### `cert`
+
+Data type: `String[1]`
+
+The client SSL cert to present to PuppetDB
+
+##### `cacert`
+
+Data type: `String[1]`
+
+The CA certificate
+
+##### `options`
+
+Data type: `Optional[Hash]`
+
+PuppetDB query options. (See https://www.puppet.com/docs/puppetdb/8/api/query/v4/paging)
+
+#### `extlib::remote_pql_query(String[1] $query, HTTPUrl $url, Optional[Hash] $options)`
+
+The extlib::remote_pql_query function.
+
+Returns: `Array` Returns the PQL query response results
+
+##### Examples
+
+###### 'Collecting' exported resource defined type from a foreign PuppetDB
+
+```puppet
+$pql_results = extlib::remote_pql_query(
+  "resources[title,parameters] { type = \"My_Module::My_type\" and nodes { deactivated is null } and exported = true and parameters.collect_on = \"${trusted['certname']}\" }",
+  'http://puppetdb.example.com:8080',
+)
+$pql_results.each |$result| {
+  my_module::my_type { $result['title']:
+    * => $result['parameters']
+  }
+}
+```
+
+##### `query`
+
+Data type: `String[1]`
+
+The PQL query to run
+
+##### `url`
+
+Data type: `HTTPUrl`
+
+The PuppetDB HTTP URL (non SSL version)
+
+##### `options`
+
+Data type: `Optional[Hash]`
+
+PuppetDB query options. (See https://www.puppet.com/docs/puppetdb/8/api/query/v4/paging)
 
 ### <a name="extlib--resources_deep_merge"></a>`extlib::resources_deep_merge`
 
