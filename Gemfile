@@ -8,6 +8,7 @@ group :test do
   gem 'coveralls',                  :require => false
   gem 'simplecov-console',          :require => false
   gem 'puppet_metadata', '~> 4.0',  :require => false
+  gem 'puppetdb-ruby',              :require => false
 end
 
 group :development do
