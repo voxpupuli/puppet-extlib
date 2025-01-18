@@ -29,6 +29,7 @@ Thus making it directly usable with the values from facter.
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
 * [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server  If you need to query a PuppetDB server that is not connected to your Puppet Server 
+* [`extlib::remove_blank_lines`](#extlib--remove_blank_lines): Remove blank lines from a string
 * [`extlib::resources_deep_merge`](#extlib--resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlib--sort_by_version): A function that sorts an array of version numbers.
 * [`extlib::to_ini`](#extlib--to_ini): This converts a puppet hash to an INI string.
@@ -1053,6 +1054,24 @@ The PuppetDB HTTP URL (non SSL version)
 Data type: `Optional[Hash]`
 
 PuppetDB query options. (See https://www.puppet.com/docs/puppetdb/8/api/query/v4/paging)
+
+### <a name="extlib--remove_blank_lines"></a>`extlib::remove_blank_lines`
+
+Type: Puppet Language
+
+Remove blank lines from a string
+
+#### `extlib::remove_blank_lines(String[1] $content)`
+
+The extlib::remove_blank_lines function.
+
+Returns: `String[1]` The content with blank lines removed
+
+##### `content`
+
+Data type: `String[1]`
+
+The content to remove blank lines from
 
 ### <a name="extlib--resources_deep_merge"></a>`extlib::resources_deep_merge`
 
