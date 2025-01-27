@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.3.1](https://github.com/voxpupuli/puppet-extlib/tree/v7.3.1) (2025-01-27)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.3.0...v7.3.1)
+
+**Implemented enhancements:**
+
+- remove\_blank\_lines: Add a new function to remove blank Lines [\#239](https://github.com/voxpupuli/puppet-extlib/pull/239) ([b4ldr](https://github.com/b4ldr))
+- Add `remote_pql_query` function [\#238](https://github.com/voxpupuli/puppet-extlib/pull/238) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v7.3.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.3.0) (2024-12-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.2.0...v7.3.0)
