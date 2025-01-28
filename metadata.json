@@ -1,6 +1,6 @@
 {
   "name": "puppet-extlib",
-  "version": "7.4.0",
+  "version": "7.4.1-rc0",
   "source": "https://github.com/voxpupuli/puppet-extlib.git",
   "project_page": "https://github.com/voxpupuli/puppet-extlib",
   "issues_url": "https://github.com/voxpupuli/puppet-extlib/issues",
