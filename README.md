@@ -1,6 +1,6 @@
 # Extlib module for Puppet
 
-[![Build Status](https://travis-ci.org/voxpupuli/puppet-extlib.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-extlib)
+[![Build Status](https://github.com/voxpupuli/puppet-extlib/workflows/CI/badge.svg)](https://github.com/voxpupuli/puppet-extlib/actions?query=workflow%3ACI)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/extlib.svg)](https://forge.puppetlabs.com/puppet/extlib)
