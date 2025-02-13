@@ -23,7 +23,8 @@ describe 'extlib__puppet_config fact' do
       },
       'agent' => {
         'environment' => 'production'
-      }
+      },
+      'confdir' => '/dev/null'
     }
   end
 

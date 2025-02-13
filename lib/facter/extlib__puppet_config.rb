@@ -2,7 +2,9 @@
 
 Facter.add(:extlib__puppet_config) do
   setcode do
-    puppet_config = {}
+    puppet_config = {
+      'confdir' => Puppet.settings['confdir'],
+    }
 
     desired_settings = {
       master: %i[
