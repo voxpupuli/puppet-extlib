@@ -40,7 +40,8 @@ Puppet::Functions.create_function(:'extlib::remove_resource', Puppet::Functions:
   end
 
   def remove_resource(scope, resource, soft_fail = nil)
-    catalog_resource = scope.catalog.resource(resource.type_name, resource.title)
+    type = Puppet::Pops::Evaluator::Runtime3ResourceSupport.find_resource_type(scope, resource.type_name)
+    catalog_resource = scope.compiler.findresource(type, resource.title)
 
     if catalog_resource
       # To remove the resource, we reverse the actions from compiler.add_resource
