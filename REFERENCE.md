@@ -30,6 +30,7 @@ Thus making it directly usable with the values from facter.
 * [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
 * [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server.
 * [`extlib::remove_blank_lines`](#extlib--remove_blank_lines): Remove blank lines from a string
+* [`extlib::remove_resource`](#extlib--remove_resource): Removes a Resource or an Array of Resources from the catalog.
 * [`extlib::resources_deep_merge`](#extlib--resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlib--sort_by_version): A function that sorts an array of version numbers.
 * [`extlib::to_ini`](#extlib--to_ini): This converts a puppet hash to an INI string.
@@ -1070,6 +1071,57 @@ Returns: `String[1]` The content with blank lines removed
 Data type: `String[1]`
 
 The content to remove blank lines from
+
+### <a name="extlib--remove_resource"></a>`extlib::remove_resource`
+
+Type: Ruby 4.x API
+
+This function provides a mechanism for removing a resource from the catalog
+that has already been added. You should only consider using this function as
+a last resort. If you are able to not add the resource in the first place, do
+that!  If a third party module that you have no control over and don't want
+to fork, unconditionally adds a resource you don't want, then _maybe_ this
+function can help you out.
+
+It can only remove resources that have already been added at the time the
+function is called.  ie. It is Puppet manifest evaluation order dependent on
+whether it removes what you want it to!
+
+#### `extlib::remove_resource(Type[Resource] $resource, Optional[Boolean] $soft_fail)`
+
+The extlib::remove_resource function.
+
+Returns: `Undef` Returns nothing.
+
+##### `resource`
+
+Data type: `Type[Resource]`
+
+The Resource to remove
+
+##### `soft_fail`
+
+Data type: `Optional[Boolean]`
+
+When set to true, only a warning will be omitted if the resource can't be found. By default an error will be raised.
+
+#### `extlib::remove_resource(Array[Type[Resource]] $resources, Optional[Boolean] $soft_fail)`
+
+The extlib::remove_resource function.
+
+Returns: `Undef` Returns nothing.
+
+##### `resources`
+
+Data type: `Array[Type[Resource]]`
+
+The Resources to remove
+
+##### `soft_fail`
+
+Data type: `Optional[Boolean]`
+
+When set to true, only a warning will be omitted if the resource can't be found. By default an error will be raised.
 
 ### <a name="extlib--resources_deep_merge"></a>`extlib::resources_deep_merge`
 
