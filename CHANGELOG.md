@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.5.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.5.0) (2025-02-18)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.4.0...v7.5.0)
+
+**Implemented enhancements:**
+
+- Add `remove_resource` function [\#245](https://github.com/voxpupuli/puppet-extlib/pull/245) ([alexjfisher](https://github.com/alexjfisher))
+- Add `confdir` to extlib\_\_puppet\_config [\#244](https://github.com/voxpupuli/puppet-extlib/pull/244) ([jcpunk](https://github.com/jcpunk))
+
 ## [v7.4.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.4.0) (2025-01-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.3.0...v7.4.0)
