@@ -28,7 +28,7 @@ Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
-* [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server  If you need to query a PuppetDB server that is not connected to your Puppet Server 
+* [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server.
 * [`extlib::remove_blank_lines`](#extlib--remove_blank_lines): Remove blank lines from a string
 * [`extlib::resources_deep_merge`](#extlib--resources_deep_merge): Deeply merge a "defaults" hash into a "resources" hash like the ones expected by `create_resources()`.
 * [`extlib::sort_by_version`](#extlib--sort_by_version): A function that sorts an array of version numbers.
@@ -963,8 +963,6 @@ The URL to read from
 ### <a name="extlib--remote_pql_query"></a>`extlib::remote_pql_query`
 
 Type: Ruby 4.x API
-
-Perform a PuppetDB query on an arbitrary PuppetDB server
 
 If you need to query a PuppetDB server that is not connected to your Puppet
 Server (perhaps part of a separate Puppet installation that uses its own

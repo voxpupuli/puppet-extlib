@@ -2,7 +2,7 @@
 
 require 'tempfile'
 
-# Perform a PuppetDB query on an arbitrary PuppetDB server
+# @summary Perform a PuppetDB query on an arbitrary PuppetDB server.
 #
 # If you need to query a PuppetDB server that is not connected to your Puppet
 # Server (perhaps part of a separate Puppet installation that uses its own
