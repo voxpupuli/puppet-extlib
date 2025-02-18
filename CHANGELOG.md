@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.5.1](https://github.com/voxpupuli/puppet-extlib/tree/v7.5.1) (2025-02-18)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.5.0...v7.5.1)
+
+**Fixed bugs:**
+
+- Fix `remove_resource` `Attempt to redefine entity` [\#247](https://github.com/voxpupuli/puppet-extlib/pull/247) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v7.5.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.5.0) (2025-02-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.4.0...v7.5.0)
