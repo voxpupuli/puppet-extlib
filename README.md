@@ -63,6 +63,35 @@ The following sections/settings are included.
 }
 ```
 
+### EPP Templates
+
+You can include a standardized comment header in your `.epp` or `.erb` templates with the following:
+```puppet
+<%= scope.call_function('epp', ["extlib/puppet_managed.epp"]) %>
+```
+The EPP template takes the following optional parameters:
+- String  $message = 'WARNING This file is managed by puppet. Do not edit!',
+- String  $begin_line = '#',
+- String  $end_line = '',
+- Int     $line_length = 70,
+- String  $metadata_title = 'Metadata:',
+- Hash    $metadata = {}
+Example:
+```puppet
+<%= scope.call_function('epp', ["extlib/puppet_managed.epp"], {'metadata' => {'fqdn' => $::fqdn}}) %>
+```
+Should produce
+```shell
+#
+#
+# WARNING This file is managed by puppet. Do not edit!
+#
+# Metadata:
+#  fqdn=hostname.example.com
+#
+#
+```
+
 ## Limitations
 
 Some functions require puppetlabs-stdlib (>= 4.6.0) and all functions are only
