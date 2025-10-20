@@ -36,6 +36,9 @@ Thus making it directly usable with the values from facter.
 * [`extlib::to_ini`](#extlib--to_ini): This converts a puppet hash to an INI string.
 
 Based on https://github.com/mmckinst/puppet-hash2stuff/blob/master/lib/puppet/parser/functions/hash2ini.rb
+* [`extlib::version_latest_anitya`](#extlib--version_latest_anitya): Retrieves the latest version for a project on Anitya / release-monitoring.org
+* [`extlib::version_latest_endoflife`](#extlib--version_latest_endoflife): Retrieves the latest release name for a product tracked on endoflife.date
+* [`extlib::version_latest_github`](#extlib--version_latest_github): Retrieves the latest release tag for a GitHub project
 
 ## Functions
 
@@ -1356,4 +1359,166 @@ Data structure which needs to be converted into ini
 Data type: `Optional[Hash]`
 
 Override default ini generation settings
+
+### <a name="extlib--version_latest_anitya"></a>`extlib::version_latest_anitya`
+
+Type: Ruby 4.x API
+
+Retrieves the latest version for a project on Anitya / release-monitoring.org
+
+#### `extlib::version_latest_anitya(Integer[1] $project)`
+
+The extlib::version_latest_anitya function.
+
+Returns: `String` The latest version for the project
+
+##### Examples
+
+###### Get latest version
+
+```puppet
+extlib::version_latest_anitya(4223) # Project 4223 is Ruby
+# => 3.4.6
+```
+
+##### `project`
+
+Data type: `Integer[1]`
+
+The Anitya project to check for releases
+
+#### `extlib::version_latest_anitya(Integer[1] $project, SemVerRange $range)`
+
+The extlib::version_latest_anitya function.
+
+Returns: `String` The latest tag matching the provided range
+
+##### Examples
+
+###### Get latest version for a specified range
+
+```puppet
+extlib::version_latest_anitya(4223, '~3.3') # Project 4223 is Ruby
+# => 3.3.9
+```
+
+##### `project`
+
+Data type: `Integer[1]`
+
+The Anitya project to check for releases
+
+##### `range`
+
+Data type: `SemVerRange`
+
+The range of acceptable versions
+
+### <a name="extlib--version_latest_endoflife"></a>`extlib::version_latest_endoflife`
+
+Type: Ruby 4.x API
+
+Retrieves the latest release name for a product tracked on endoflife.date
+
+#### `extlib::version_latest_endoflife(String[1] $product)`
+
+The extlib::version_latest_endoflife function.
+
+Returns: `String` The latest version for the product
+
+##### Examples
+
+###### Get latest version
+
+```puppet
+extlib::version_latest_endoflife('ubuntu')
+# => 25.04
+```
+
+##### `product`
+
+Data type: `String[1]`
+
+The endoflife.date product to check for releases
+
+#### `extlib::version_latest_endoflife(String[1] $product, String[1] $cycle)`
+
+The extlib::version_latest_endoflife function.
+
+Returns: `String` The latest version for the product in the provided cycle
+
+##### Examples
+
+###### Get latest version for specified cycle
+
+```puppet
+extlib::version_latest_endoflife('ubuntu', '24.04')
+# => 24.04.3
+```
+
+##### `product`
+
+Data type: `String[1]`
+
+The endoflife.date product to check for releases
+
+##### `cycle`
+
+Data type: `String[1]`
+
+The release cycle to check
+
+### <a name="extlib--version_latest_github"></a>`extlib::version_latest_github`
+
+Type: Ruby 4.x API
+
+Retrieves the latest release tag for a GitHub project
+
+#### `extlib::version_latest_github(String[1] $project)`
+
+The extlib::version_latest_github function.
+
+Returns: `String` The latest tag for the project
+
+##### Examples
+
+###### Get latest version
+
+```puppet
+extlib::version_latest_github('OpenVoxProject/openvox')
+# => 8.23.1
+```
+
+##### `project`
+
+Data type: `String[1]`
+
+The GitHub project to check for releases
+
+#### `extlib::version_latest_github(String[1] $project, SemVerRange $range)`
+
+The extlib::version_latest_github function.
+
+Returns: `String` The latest tag matching the provided range
+
+##### Examples
+
+###### Get latest version for specified range
+
+```puppet
+extlib::version_latest_github('OpenVoxProject/openvox', '~7')
+# => 7.37.2
+```
+
+##### `project`
+
+Data type: `String[1]`
+
+The GitHub project to check for releases
+
+##### `range`
+
+Data type: `SemVerRange`
+
+The range of acceptable versions
 
