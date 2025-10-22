@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ipaddr'
+
 # @summary Retrieves an IP inside of a CIDR based on an index
 Puppet::Functions.create_function(:'extlib::get_ip_in_cidr') do
   # @example In 192.168.0.0/24
@@ -22,14 +24,18 @@ Puppet::Functions.create_function(:'extlib::get_ip_in_cidr') do
     return_type 'String'
   end
 
-  require 'ipaddr'
   def get_ip_in_cidr(cidr, index = 1)
-    cidr = cidr.first if cidr.is_a? Array
-
     if index.is_a? String
-      index = 1 if index == 'first'
-      index = 2 if index == 'second'
-      index = -1 if index == 'last'
+      index = case index
+              when 'first'
+                1
+              when 'second'
+                2
+              when 'last'
+                -1
+              else
+                raise ArgumentError, 'Invalid index'
+              end
     end
 
     ip = IPAddr.new(cidr)

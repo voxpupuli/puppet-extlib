@@ -7,6 +7,7 @@ describe 'extlib::get_ip_in_cidr' do
   it { is_expected.to run.with_params.and_raise_error(ArgumentError) }
   it { is_expected.to run.with_params('one').and_raise_error(ArgumentError) }
   it { is_expected.to run.with_params('192.168.0.0/24', 600).and_raise_error(ArgumentError) }
+  it { is_expected.to run.with_params('192.168.0.0/24', 'other').and_raise_error(ArgumentError) }
 
   it { is_expected.to run.with_params('172.0.0.0/8').and_return('172.0.0.1') }
   it { is_expected.to run.with_params('172.0.0.0/8', 'first').and_return('172.0.0.1') }
