@@ -17,6 +17,7 @@
 * [`extlib::dump_params`](#extlib--dump_params): this function is used to get a list of parameters passed to or resource.
 * [`extlib::echo`](#extlib--echo): This function outputs the variable content and its type to the debug log. It's similiar to the `notice` function but provides a better output
 * [`extlib::file_separator`](#extlib--file_separator): Returns the os specific file path separator.
+* [`extlib::get_ip_in_cidr`](#extlib--get_ip_in_cidr): Retrieves an IP inside of a CIDR based on an index
 * [`extlib::has_module`](#extlib--has_module): A function that lets you know whether a specific module is on your modulepath.
 * [`extlib::ip_to_cron`](#extlib--ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`extlib::ip_to_reverse`](#extlib--ip_to_reverse): Returns the reverse of an IP address
@@ -568,6 +569,60 @@ Returns: `String` - The os specific path separator.
 ```puppet
 extlib::file_separator() => '/'
 ```
+
+### <a name="extlib--get_ip_in_cidr"></a>`extlib::get_ip_in_cidr`
+
+Type: Ruby 4.x API
+
+Retrieves an IP inside of a CIDR based on an index
+
+#### Examples
+
+##### In 192.168.0.0/24
+
+```puppet
+extlib::get_ip_in_cidr('192.168.0.0/24', 'first')
+# => 192.168.0.1
+extlib::get_ip_in_cidr('192.168.0.0/24', 'second')
+# => 192.168.0.2
+extlib::get_ip_in_cidr('192.168.0.0/16', 600)
+# => 192.168.1.244
+extlib::get_ip_in_cidr('192.168.0.0/16', -2)
+# => 192.168.255.254
+```
+
+#### `extlib::get_ip_in_cidr(Variant[Stdlib::IP::Address::V4::CIDR, Stdlib::IP::Address::V6::CIDR] $cidr, Optional[Variant[Enum["first","second","last"], Integer]] $index)`
+
+The extlib::get_ip_in_cidr function.
+
+Returns: `String` The requested IP address index in the CIDR
+
+##### Examples
+
+###### In 192.168.0.0/24
+
+```puppet
+extlib::get_ip_in_cidr('192.168.0.0/24', 'first')
+# => 192.168.0.1
+extlib::get_ip_in_cidr('192.168.0.0/24', 'second')
+# => 192.168.0.2
+extlib::get_ip_in_cidr('192.168.0.0/16', 600)
+# => 192.168.1.244
+extlib::get_ip_in_cidr('192.168.0.0/16', -2)
+# => 192.168.255.254
+```
+
+##### `cidr`
+
+Data type: `Variant[Stdlib::IP::Address::V4::CIDR, Stdlib::IP::Address::V6::CIDR]`
+
+The CIDR to work on
+
+##### `index`
+
+Data type: `Optional[Variant[Enum["first","second","last"], Integer]]`
+
+The index of the IP to retrieve, retrieving from the end if negative
 
 ### <a name="extlib--has_module"></a>`extlib::has_module`
 
