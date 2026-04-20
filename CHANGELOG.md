@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.6.0](https://github.com/voxpupuli/puppet-extlib/tree/v7.6.0) (2026-04-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.5.1...v7.6.0)
+
+**Breaking changes:**
+
+- Drop puppet, update openvox minimum version to 8.19 [\#254](https://github.com/voxpupuli/puppet-extlib/pull/254) ([TheMeier](https://github.com/TheMeier))
+
+**Implemented enhancements:**
+
+- Add extlib::sort\_hash\_deep [\#267](https://github.com/voxpupuli/puppet-extlib/pull/267) ([jcpunk](https://github.com/jcpunk))
+- Add functions for retrieving latest versions from various services [\#259](https://github.com/voxpupuli/puppet-extlib/pull/259) ([ananace](https://github.com/ananace))
+- Add support for Debian 12 [\#256](https://github.com/voxpupuli/puppet-extlib/pull/256) ([smortex](https://github.com/smortex))
+- metadata.json: Add OpenVox [\#250](https://github.com/voxpupuli/puppet-extlib/pull/250) ([jstraw](https://github.com/jstraw))
+
+**Merged pull requests:**
+
+- Rubocop fixes [\#269](https://github.com/voxpupuli/puppet-extlib/pull/269) ([jcpunk](https://github.com/jcpunk))
+
 ## [v7.5.1](https://github.com/voxpupuli/puppet-extlib/tree/v7.5.1) (2025-02-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.5.0...v7.5.1)
