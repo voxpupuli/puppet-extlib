@@ -27,6 +27,7 @@
 * [`extlib::netmask_to_cidr`](#extlib--netmask_to_cidr): Converts an octet netmask address of the form 255.255.255.0 into its CIDR variant.
 Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
+* [`extlib::query_pdb_ast`](#extlib--query_pdb_ast): Execute raw PuppetDB AST queries with optional error handling
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
 * [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
 * [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server.
@@ -939,6 +940,264 @@ extlib::path_join(['c:', 'test', 'libs'])
 Data type: `Variant[String, Array[String]]`
 
 Joins two or more directories by file separator.
+
+### <a name="extlib--query_pdb_ast"></a>`extlib::query_pdb_ast`
+
+Type: Ruby 4.x API
+
+Sends a PuppetDB AST (Abstract Syntax Tree) query directly to PuppetDB and
+returns the unprocessed result. Supports optional graceful error handling
+via the `default` parameter.
+
+This function is intentionally unopinionated: it executes your query and
+returns whatever PuppetDB returns. Query construction is your responsibility.
+
+Unlike the native puppetdb_query, you may provide an optional rescue value.
+
+== Query Syntax (PuppetDB 4.0+ AST)
+
+PuppetDB 4.0+ AST queries must use the `from` operator as context, followed
+by optional filter clauses:
+
+  ["from", "entity_name", [filter1], [filter2], ...]
+
+Common comparison operators:
+
+- ["=", field, value]       - Equality
+- ["!=", field, value]      - Inequality
+- [">", field, value]       - Greater than
+- ["<", field, value]       - Less than
+- [">=", field, value]      - Greater than or equal
+- ["<=", field, value]      - Less than or equal
+- ["~", field, regex]       - Regex match
+- ["~>", path, pattern]     - Regex match on path arrays
+- ["null?", field, bool]    - Field is null/not null
+
+Boolean operators:
+
+- ["and", clause, clause, ...]  - All clauses must match
+- ["or", clause, clause, ...]   - Any clause must match
+- ["not", clause]               - Clause must not match
+
+Subqueries (implicit):
+
+- ["subquery", "entity", clause]  - Correlate data from related entity
+
+For complete operator reference (extract, group_by, limit, offset, etc.):
+https://www.puppet.com/docs/puppetdb/latest/api/query/v4/ast.html
+
+== Error Handling
+
+Without `default`: Query failures raise an error and halt compilation.
+With `default`: Query failures return the default value instead.
+
+You can safely use `default => undef` to make a query optional:
+  $data = extlib::query_pdb_ast(['from', 'nodes'], default => undef)
+  if $data { ... }
+
+#### Examples
+
+##### Query all nodes
+
+```puppet
+$all_nodes = extlib::query_pdb_ast(['from', 'nodes'])
+```
+
+##### With graceful fallback to empty array
+
+```puppet
+$nodes = extlib::query_pdb_ast(['from', 'nodes'], default => [])
+```
+
+##### Find resources by type
+
+```puppet
+$packages = extlib::query_pdb_ast([
+  'from', 'resources',
+  ['=', 'type', 'Package']
+])
+```
+
+##### Query facts with conditions
+
+```puppet
+$rhel_nodes = extlib::query_pdb_ast([
+  'from', 'facts',
+  ['and',
+    ['=', 'name', 'os.family'],
+    ['=', 'value', 'RedHat']
+  ]
+])
+```
+
+##### Class-based peer discovery with paging
+
+```puppet
+$elk_nodes = extlib::query_pdb_ast(
+  ['from', 'resources',
+    ['and',
+      ['=', 'type', 'Class'],
+      ['=', 'title', 'Elasticsearch'],
+      ['=', 'environment', $server_facts['environment']]
+    ],
+    ['order_by', [['certname', 'asc']]],
+    ['limit', 100]
+  ],
+  default => []
+).map |$r| { $r['certname'] }.unique
+```
+
+##### Optional query with subquery (graceful when PuppetDB down)
+
+```puppet
+$reports = extlib::query_pdb_ast(
+  ['from', 'reports',
+    ['=', 'environment', 'production'],
+    ['limit', 10]
+  ],
+  default => undef
+)
+if $reports {
+  notice("Found ${reports.length} reports")
+}
+```
+
+#### `extlib::query_pdb_ast(Array $query, Optional[Any] $default)`
+
+Sends a PuppetDB AST (Abstract Syntax Tree) query directly to PuppetDB and
+returns the unprocessed result. Supports optional graceful error handling
+via the `default` parameter.
+
+This function is intentionally unopinionated: it executes your query and
+returns whatever PuppetDB returns. Query construction is your responsibility.
+
+Unlike the native puppetdb_query, you may provide an optional rescue value.
+
+== Query Syntax (PuppetDB 4.0+ AST)
+
+PuppetDB 4.0+ AST queries must use the `from` operator as context, followed
+by optional filter clauses:
+
+  ["from", "entity_name", [filter1], [filter2], ...]
+
+Common comparison operators:
+
+- ["=", field, value]       - Equality
+- ["!=", field, value]      - Inequality
+- [">", field, value]       - Greater than
+- ["<", field, value]       - Less than
+- [">=", field, value]      - Greater than or equal
+- ["<=", field, value]      - Less than or equal
+- ["~", field, regex]       - Regex match
+- ["~>", path, pattern]     - Regex match on path arrays
+- ["null?", field, bool]    - Field is null/not null
+
+Boolean operators:
+
+- ["and", clause, clause, ...]  - All clauses must match
+- ["or", clause, clause, ...]   - Any clause must match
+- ["not", clause]               - Clause must not match
+
+Subqueries (implicit):
+
+- ["subquery", "entity", clause]  - Correlate data from related entity
+
+For complete operator reference (extract, group_by, limit, offset, etc.):
+https://www.puppet.com/docs/puppetdb/latest/api/query/v4/ast.html
+
+== Error Handling
+
+Without `default`: Query failures raise an error and halt compilation.
+With `default`: Query failures return the default value instead.
+
+You can safely use `default => undef` to make a query optional:
+  $data = extlib::query_pdb_ast(['from', 'nodes'], default => undef)
+  if $data { ... }
+
+Returns: `Any`
+
+Raises:
+
+* `Raises` PuppetDB errors as-is if query fails and no `default` provided. This includes connection errors, query syntax errors, and timeout errors.
+
+##### Examples
+
+###### Query all nodes
+
+```puppet
+$all_nodes = extlib::query_pdb_ast(['from', 'nodes'])
+```
+
+###### With graceful fallback to empty array
+
+```puppet
+$nodes = extlib::query_pdb_ast(['from', 'nodes'], default => [])
+```
+
+###### Find resources by type
+
+```puppet
+$packages = extlib::query_pdb_ast([
+  'from', 'resources',
+  ['=', 'type', 'Package']
+])
+```
+
+###### Query facts with conditions
+
+```puppet
+$rhel_nodes = extlib::query_pdb_ast([
+  'from', 'facts',
+  ['and',
+    ['=', 'name', 'os.family'],
+    ['=', 'value', 'RedHat']
+  ]
+])
+```
+
+###### Class-based peer discovery with paging
+
+```puppet
+$elk_nodes = extlib::query_pdb_ast(
+  ['from', 'resources',
+    ['and',
+      ['=', 'type', 'Class'],
+      ['=', 'title', 'Elasticsearch'],
+      ['=', 'environment', $server_facts['environment']]
+    ],
+    ['order_by', [['certname', 'asc']]],
+    ['limit', 100]
+  ],
+  default => []
+).map |$r| { $r['certname'] }.unique
+```
+
+###### Optional query with subquery (graceful when PuppetDB down)
+
+```puppet
+$reports = extlib::query_pdb_ast(
+  ['from', 'reports',
+    ['=', 'environment', 'production'],
+    ['limit', 10]
+  ],
+  default => undef
+)
+if $reports {
+  notice("Found ${reports.length} reports")
+}
+```
+
+##### `query`
+
+Data type: `Array`
+
+
+
+##### `default`
+
+Data type: `Optional[Any]`
+
+
 
 ### <a name="extlib--random_password"></a>`extlib::random_password`
 
