@@ -1,11 +1,21 @@
 # frozen_string_literal: true
 
+# @summary PuppetX namespace for puppet-extlib internal utilities
+#
+# Internal utilities for puppet-extlib. No end user visible behavior.
 module PuppetX
   # @summary A simple cache for storing data retrieved from external systems
+  #
+  # Provides a shared caching mechanism for storing data from external systems
+  # (e.g., HTTP API responses) with automatic expiration and corruption failsafes.
+  # Used internally by puppet-extlib functions for caching external API calls.
+  #
+  # Internal implementation detail. No end user visible behavior.
   module SimpleCache
     # Be a good internet citizen, perform a maximum of 10 queries per day
     DURATION = 2.5 * 60 * 60
 
+    # @return [String] Default cache directory path
     def self.default_cache_path
       File.join(Puppet[:vardir] || '/tmp/puppet', 'simple-cache')
     end
@@ -14,6 +24,7 @@ module PuppetX
     # @param duration How long the cached data should be considered valid - also accepts :forever
     # @param cache_path A custom path to store the cache under
     # @param _block The block to execute in order to retrieve the data requiring caching
+    # @return [Any] The cached or newly retrieved data
     def self.cache_data(identifier, duration: DURATION, cache_path: nil, &_block)
       uid = File.stat(Puppet[:vardir]).uid if Dir.exist?(Puppet[:vardir])
       cache_path ||= default_cache_path
