@@ -36,7 +36,7 @@ Puppet::Functions.create_function(:'extlib::cache_data') do
     cache = File.join(cache_dir, name)
 
     if File.exist? cache
-      YAML.safe_load(File.read(cache))
+      YAML.safe_load(File.read(cache), [Symbol, Puppet::Pops::Types::PSensitiveType::Sensitive])
     else
       FileUtils.mkdir_p(cache_dir)
       File.open(cache, 'w', 0o600) do |c|
