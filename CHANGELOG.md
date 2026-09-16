@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v8.1.0) (2026-09-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v8.0.0...v8.1.0)
+
+**Implemented enhancements:**
+
+- templates: Make some general purpose file format templates [\#276](https://github.com/voxpupuli/puppet-extlib/pull/276) ([jcpunk](https://github.com/jcpunk))
+- Add some AWS related functions [\#275](https://github.com/voxpupuli/puppet-extlib/pull/275) ([alexjfisher](https://github.com/alexjfisher))
+- Add get\_ip\_in\_cidr function, extracted from puppet-k8s [\#262](https://github.com/voxpupuli/puppet-extlib/pull/262) ([ananace](https://github.com/ananace))
+
 ## [v8.0.0](https://github.com/voxpupuli/puppet-extlib/tree/v8.0.0) (2026-04-20)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v7.5.1...v8.0.0)
