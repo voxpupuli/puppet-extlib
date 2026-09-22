@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.2.0](https://github.com/voxpupuli/puppet-extlib/tree/v8.2.0) (2026-09-22)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v8.1.0...v8.2.0)
+
+**Implemented enhancements:**
+
+- Add the ability to force sort keys within json/yaml templates [\#278](https://github.com/voxpupuli/puppet-extlib/pull/278) ([jcpunk](https://github.com/jcpunk))
+
 ## [v8.1.0](https://github.com/voxpupuli/puppet-extlib/tree/v8.1.0) (2026-09-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v8.0.0...v8.1.0)
