@@ -1,9 +1,14 @@
 <%- |
   Hash $data,
   Boolean $pretty = false,
+  Boolean $sort_keys = false,
 | -%>
+<%- $serialized_data = $sort_keys ? {
+  true  => extlib::sort_hash_deep($data),
+  false => $data,
+} -%>
 <% if $pretty { -%>
-<%= unwrap(stdlib::to_json_pretty($data)) -%>
+<%= unwrap(stdlib::to_json_pretty($serialized_data)) -%>
 <% } else { -%>
-<%= unwrap(stdlib::to_json($data)) %>
+<%= unwrap(stdlib::to_json($serialized_data)) %>
 <% } -%>
