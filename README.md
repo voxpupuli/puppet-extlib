@@ -82,14 +82,15 @@ file { '/etc/myapp/config.yaml':
 
 #### `extlib/json.epp`
 
-Render a hash as JSON. The optional `pretty` parameter defaults to `false`.
+Render a hash as JSON. The optional `pretty` parameter defaults to `false`. The optional `sort_keys` parameter defaults to `false`; when set to `true`, the data is passed through `extlib::sort_hash_deep` before serialization so that hash keys are rendered in deterministic sorted order.
 
 ```puppet
 file { '/etc/myapp/config.json':
   ensure  => file,
   content => epp('extlib/json.epp', {
-    'data'   => { 'key' => 'value', 'count' => 42 },
-    'pretty' => true,
+    'data'      => { 'key' => 'value', 'count' => 42 },
+    'pretty'    => true,
+    'sort_keys' => true,
   }),
 }
 ```
@@ -110,14 +111,15 @@ file { '/etc/myapp/config.toml':
 
 #### `extlib/yaml.epp`
 
-Render a scalar, array, or hash as plain YAML. The output uses a single leading `---` document marker. The optional `comments` parameter accepts a single string or an array of strings.
+Render a scalar, array, or hash as plain YAML. The output uses a single leading `---` document marker. The optional `comments` parameter accepts a single string or an array of strings. The optional `sort_keys` parameter defaults to `false`; when set to `true` and the top-level data is a hash, the data is passed through `extlib::sort_hash_deep` before serialization so that hash keys are rendered in deterministic sorted order. Scalars and arrays are not reordered.
 
 ```puppet
 file { '/etc/myapp/config.yaml':
   ensure  => file,
   content => epp('extlib/yaml.epp', {
-    'data'     => { 'key' => 'value' },
-    'comments' => 'Managed by Puppet',
+    'data'      => { 'key' => 'value' },
+    'comments'  => 'Managed by Puppet',
+    'sort_keys' => true,
   }),
 }
 ```

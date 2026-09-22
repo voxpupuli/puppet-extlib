@@ -1,6 +1,7 @@
 <%- |
   Variant[Scalar, Array, Hash] $data,
   Optional[Variant[String, Array[String]]] $comments = undef,
+  Boolean $sort_keys = false,
 | -%>
 <%- if $comments =~ String {
   $comment_lines = [$comments]
@@ -18,5 +19,12 @@
 <% } -%>
 <% } -%>
 #
-<%- $body = regsubst(unwrap(stdlib::to_yaml($data)), '^---\s', '') -%>
+<%- $serialized_data = $sort_keys ? {
+  true  => $data ? {
+    Hash    => extlib::sort_hash_deep($data),
+    default => $data,
+  },
+  false => $data,
+} -%>
+<%- $body = regsubst(unwrap(stdlib::to_yaml($serialized_data)), '^---\s', '') -%>
 <%= $body -%>

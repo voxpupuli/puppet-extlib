@@ -7,10 +7,12 @@ describe 'test_json', type: :class do
     <<~PUPPET
       class test_json (
         Boolean $pretty = false,
+        Boolean $sort_keys = false,
       ) {
         $content = epp('extlib/json.epp', {
-          'data'   => { 'b' => 2, 'a' => 1 },
-          'pretty' => $pretty,
+          'data'      => { 'b' => 2, 'a' => 1 },
+          'pretty'    => $pretty,
+          'sort_keys' => $sort_keys,
         })
 
         file { '/tmp/test-json':
@@ -53,6 +55,27 @@ describe 'test_json', type: :class do
   context 'with sensitive values' do
     it 'renders sensitive values as plain text' do
       is_expected.to contain_file('/tmp/test-json-sensitive').with_content("{\"password\":\"secret\"}\n")
+    end
+  end
+
+  context 'with sort_keys enabled' do
+    let(:params) { { 'sort_keys' => true } }
+
+    it 'renders compact JSON with keys in sorted order' do
+      is_expected.to contain_file('/tmp/test-json').with_content("{\"a\":1,\"b\":2}\n")
+    end
+  end
+
+  context 'with sort_keys enabled and pretty rendering' do
+    let(:params) { { 'pretty' => true, 'sort_keys' => true } }
+
+    it 'renders pretty JSON with keys in sorted order' do
+      is_expected.to contain_file('/tmp/test-json').with_content(<<~JSON)
+        {
+          "a": 1,
+          "b": 2
+        }
+      JSON
     end
   end
 end

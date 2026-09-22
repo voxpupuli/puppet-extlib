@@ -11,10 +11,12 @@ describe 'test_yaml', type: :class do
           'a' => { 'd' => 4, 'c' => 3 },
         },
         Optional[Variant[String, Array[String]]] $comments = undef,
+        Boolean $sort_keys = false,
       ) {
         $content = epp('extlib/yaml.epp', {
-          'data'     => $data,
-          'comments' => $comments,
+          'data'      => $data,
+          'comments'  => $comments,
+          'sort_keys' => $sort_keys,
         })
 
         file { '/tmp/test-yaml':
@@ -144,6 +146,36 @@ describe 'test_yaml', type: :class do
         # This file is managed with puppet
         #
         password: secret
+      YAML
+    end
+  end
+
+  context 'with sort_keys enabled' do
+    let(:params) { { 'sort_keys' => true } }
+
+    it 'renders hash keys in sorted order' do
+      is_expected.to contain_file('/tmp/test-yaml').with_content(<<~YAML)
+        ---
+        # This file is managed with puppet
+        #
+        a:
+          c: 3
+          d: 4
+        b: 2
+      YAML
+    end
+  end
+
+  context 'with sort_keys enabled and an array as top-level data is not sorted' do
+    let(:params) { { 'data' => %w[two one], 'sort_keys' => true } }
+
+    it 'preserves array element order' do
+      is_expected.to contain_file('/tmp/test-yaml').with_content(<<~YAML)
+        ---
+        # This file is managed with puppet
+        #
+        - two
+        - one
       YAML
     end
   end
