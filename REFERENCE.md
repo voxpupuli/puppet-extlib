@@ -33,7 +33,7 @@
 Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
-* [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
+* [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources.
 * [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server.
 * [`extlib::remove_blank_lines`](#extlib--remove_blank_lines): Remove blank lines from a string
 * [`extlib::remove_resource`](#extlib--remove_resource): Removes a Resource or an Array of Resources from the catalog.
@@ -1764,4 +1764,3 @@ The GitHub project to check for releases
 Data type: `SemVerRange`
 
 The range of acceptable versions
-
