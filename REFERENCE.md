@@ -786,11 +786,13 @@ Namespace and modulename can be separated with either `-` or `/`.
 
 Type: Ruby 4.x API
 
-Normalizes an IPv6 address for comparison
+Normalizes an IPv6 address for comparison to the shortened IPv6 notation.
+So we do not fall into the traps of :: and :0: or leading zeros.
 
 #### `extlib::ip6_normalize(Stdlib::IP::Address::V6 $ipv6)`
 
-The extlib::ip6_normalize function.
+Normalizes an IPv6 address for comparison to the shortened IPv6 notation.
+So we do not fall into the traps of :: and :0: or leading zeros.
 
 Returns: `Stdlib::IP::Address::V6` Returns a normalized IPv6 address
 

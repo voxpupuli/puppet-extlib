@@ -3,6 +3,10 @@
 require 'ipaddr'
 
 # @summary Normalizes an IPv6 address for comparison
+#
+# Normalizes an IPv6 address for comparison to the shortened IPv6 notation.
+# So we do not fall into the traps of :: and :0: or leading zeros.
+#
 Puppet::Functions.create_function(:'extlib::ip6_normalize') do
   # @param ipv6 The IPv6 address to normalize
   # @return Returns a normalized IPv6 address
