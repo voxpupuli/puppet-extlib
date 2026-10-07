@@ -23,6 +23,7 @@
 * [`extlib::file_separator`](#extlib--file_separator): Returns the os specific file path separator.
 * [`extlib::get_ip_in_cidr`](#extlib--get_ip_in_cidr): Retrieves an IP inside of a CIDR based on an index
 * [`extlib::has_module`](#extlib--has_module): A function that lets you know whether a specific module is on your modulepath.
+* [`extlib::ip6_normalize`](#extlib--ip6_normalize): Normalizes an IPv6 address for comparison
 * [`extlib::ip_to_cron`](#extlib--ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`extlib::ip_to_reverse`](#extlib--ip_to_reverse): Returns the reverse of an IP address
 * [`extlib::is_in_cidr`](#extlib--is_in_cidr): Returns a boolean indicating whether an IP address is part of a network CIDR
@@ -32,7 +33,7 @@
 Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
-* [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources. 
+* [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources.
 * [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server.
 * [`extlib::remove_blank_lines`](#extlib--remove_blank_lines): Remove blank lines from a string
 * [`extlib::remove_resource`](#extlib--remove_resource): Removes a Resource or an Array of Resources from the catalog.
@@ -780,6 +781,26 @@ Data type: `Pattern[/\A\w+[-\/]\w+\z/]`
 
 The full name of the module you want to know exists or not.
 Namespace and modulename can be separated with either `-` or `/`.
+
+### <a name="extlib--ip6_normalize"></a>`extlib::ip6_normalize`
+
+Type: Ruby 4.x API
+
+Normalizes an IPv6 address for comparison to the shortened IPv6 notation.
+So we do not fall into the traps of :: and :0: or leading zeros.
+
+#### `extlib::ip6_normalize(Stdlib::IP::Address::V6 $ipv6)`
+
+Normalizes an IPv6 address for comparison to the shortened IPv6 notation.
+So we do not fall into the traps of :: and :0: or leading zeros.
+
+Returns: `Stdlib::IP::Address::V6` Returns a normalized IPv6 address
+
+##### `ipv6`
+
+Data type: `Stdlib::IP::Address::V6`
+
+The IPv6 address to normalize
 
 ### <a name="extlib--ip_to_cron"></a>`extlib::ip_to_cron`
 
@@ -1745,4 +1766,3 @@ The GitHub project to check for releases
 Data type: `SemVerRange`
 
 The range of acceptable versions
-
