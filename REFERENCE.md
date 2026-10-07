@@ -23,6 +23,7 @@
 * [`extlib::file_separator`](#extlib--file_separator): Returns the os specific file path separator.
 * [`extlib::get_ip_in_cidr`](#extlib--get_ip_in_cidr): Retrieves an IP inside of a CIDR based on an index
 * [`extlib::has_module`](#extlib--has_module): A function that lets you know whether a specific module is on your modulepath.
+* [`extlib::ip6_normalize`](#extlib--ip6_normalize): Normalizes an IPv6 address for comparison
 * [`extlib::ip_to_cron`](#extlib--ip_to_cron): Provides a "random" value to cron based on the last bit of the machine IP address. used to avoid starting a certain cron job at the same time
 * [`extlib::ip_to_reverse`](#extlib--ip_to_reverse): Returns the reverse of an IP address
 * [`extlib::is_in_cidr`](#extlib--is_in_cidr): Returns a boolean indicating whether an IP address is part of a network CIDR
@@ -780,6 +781,24 @@ Data type: `Pattern[/\A\w+[-\/]\w+\z/]`
 
 The full name of the module you want to know exists or not.
 Namespace and modulename can be separated with either `-` or `/`.
+
+### <a name="extlib--ip6_normalize"></a>`extlib::ip6_normalize`
+
+Type: Ruby 4.x API
+
+Normalizes an IPv6 address for comparison
+
+#### `extlib::ip6_normalize(Stdlib::IP::Address::V6 $ipv6)`
+
+The extlib::ip6_normalize function.
+
+Returns: `Stdlib::IP::Address::V6` Returns a normalized IPv6 address
+
+##### `ipv6`
+
+Data type: `Stdlib::IP::Address::V6`
+
+The IPv6 address to normalize
 
 ### <a name="extlib--ip_to_cron"></a>`extlib::ip_to_cron`
 
