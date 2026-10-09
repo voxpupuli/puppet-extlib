@@ -6,6 +6,7 @@
 
 ### Functions
 
+* [`extlib::argparse`](#extlib--argparse): Takes a hash of argument names and values and returns a command-line string
 * [`extlib::aws::rds::db_instances`](#extlib--aws--rds--db_instances): Wraps Amazon RDS DescribeDBInstances to return detailed information on one or all RDS database instances.
 * [`extlib::aws::rds_master_secret`](#extlib--aws--rds_master_secret): Convenience wrapper function for retrieving the AWS managed master secret of an RDS database instance.
 * [`extlib::aws::region`](#extlib--aws--region): Returns the AWS region of the host running this function, read from its EC2 instance metadata (IMDS).
@@ -48,6 +49,66 @@ Based on https://github.com/mmckinst/puppet-hash2stuff/blob/master/lib/puppet/pa
 * [`extlib::version_latest_github`](#extlib--version_latest_github): Retrieves the latest release tag for a GitHub project
 
 ## Functions
+
+### <a name="extlib--argparse"></a>`extlib::argparse`
+
+Type: Puppet Language
+
+Takes a hash of argument names and values and returns a command-line string
+
+#### Examples
+
+#####
+
+```puppet
+extlib::argparse({hostname => 'foo.example.org', port => 8080, ssl => true}) =>
+ '--hostname foo.example.org --port 8080 --ssl'
+```
+
+#### `extlib::argparse(Hash[String[1], Variant[Boolean, String, Numeric, Array[Variant[String, Numeric]]]] $args, String $prefix = '', String[1, 1] $separator = ' ', String[1, 1] $array_join = ',', Optional[String[1, 2]] $arg_prefix = undef)`
+
+The extlib::argparse function.
+
+Returns: `String`
+
+##### Examples
+
+######
+
+```puppet
+extlib::argparse({hostname => 'foo.example.org', port => 8080, ssl => true}) =>
+ '--hostname foo.example.org --port 8080 --ssl'
+```
+
+##### `args`
+
+Data type: `Hash[String[1], Variant[Boolean, String, Numeric, Array[Variant[String, Numeric]]]]`
+
+the arguments to parse
+
+##### `prefix`
+
+Data type: `String`
+
+the prefix to put at the start of the command e.g. /usr/bin/binary
+
+##### `separator`
+
+Data type: `String[1, 1]`
+
+use to separator argument switches from the value
+
+##### `array_join`
+
+Data type: `String[1, 1]`
+
+the string to use to join array elements
+
+##### `arg_prefix`
+
+Data type: `Optional[String[1, 2]]`
+
+the prefix to put before each argument switch, e.g. '-', '--', or undef to auto-detect based on the argument name length
 
 ### <a name="extlib--aws--rds--db_instances"></a>`extlib::aws::rds::db_instances`
 
