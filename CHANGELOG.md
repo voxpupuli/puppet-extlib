@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.4.0](https://github.com/voxpupuli/puppet-extlib/tree/v8.4.0) (2026-10-09)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v8.3.0...v8.4.0)
+
+**Implemented enhancements:**
+
+- argparse: Add new argparse function [\#284](https://github.com/voxpupuli/puppet-extlib/pull/284) ([b4ldr](https://github.com/b4ldr))
+
+**Closed issues:**
+
+- Solving conflicting resources in mkdir\_p [\#202](https://github.com/voxpupuli/puppet-extlib/issues/202)
+
 ## [v8.3.0](https://github.com/voxpupuli/puppet-extlib/tree/v8.3.0) (2026-10-07)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-extlib/compare/v8.2.0...v8.3.0)
