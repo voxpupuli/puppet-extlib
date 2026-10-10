@@ -19,6 +19,9 @@ require 'etc'
 #
 # @example With a random password
 #   $password = cache_data('mysql', 'mysql_password', random_password())
+#
+# @example With an expensive initial data
+#   $password = cache_data('mysql', 'mysql_password') { random_password() }
 Puppet::Functions.create_function(:'extlib::cache_data') do
   # @param namespace Namespace for the cache
   # @param name Cache key within the namespace
@@ -32,12 +35,35 @@ Puppet::Functions.create_function(:'extlib::cache_data') do
   end
 
   def cache_data(namespace, name, initial_data)
+    implementation(namespace, name, initial_data)
+  end
+
+  # @param namespace Namespace for the cache
+  # @param name Cache key within the namespace
+  # @param initial_data The data for when there is no cache yet
+  # @return The cached value when it exists. The initial data when no cache exists
+  dispatch :cache_data do
+    param 'String[1]', :namespace
+    param 'String[1]', :name
+    block_param 'Any', :initial_data
+    return_type 'Any'
+  end
+
+  def cache_data(namespace, name, &initial_data)
+    implementation(namespace, name, initial_data)
+  end
+
+  private
+
+  def implementation(namespace, name, initial_data)
     cache_dir = File.join(Puppet[:vardir], namespace)
     cache = File.join(cache_dir, name)
 
     if File.exist? cache
       YAML.safe_load(File.read(cache))
     else
+      initial_data = initial_data.call if initial_data.respond_to?(:call)
+
       FileUtils.mkdir_p(cache_dir)
       File.open(cache, 'w', 0o600) do |c|
         c.write(YAML.dump(initial_data))
