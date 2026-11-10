@@ -3,3 +3,5 @@ Gemfile:
   optional:
     ':test':
       - gem: 'puppetdb-ruby'
+spec/spec_helper_acceptance.rb:
+  unmanaged: false
