@@ -7,6 +7,7 @@
 ### Functions
 
 * [`extlib::argparse`](#extlib--argparse): Takes a hash of argument names and values and returns a command-line string
+* [`extlib::array_to_ranges`](#extlib--array_to_ranges): Collapse non-negative integers into an array of "start-end" ranges
 * [`extlib::aws::rds::db_instances`](#extlib--aws--rds--db_instances): Wraps Amazon RDS DescribeDBInstances to return detailed information on one or all RDS database instances.
 * [`extlib::aws::rds_master_secret`](#extlib--aws--rds_master_secret): Convenience wrapper function for retrieving the AWS managed master secret of an RDS database instance.
 * [`extlib::aws::region`](#extlib--aws--region): Returns the AWS region of the host running this function, read from its EC2 instance metadata (IMDS).
@@ -34,6 +35,7 @@
 Thus making it directly usable with the values from facter.
 * [`extlib::path_join`](#extlib--path_join): Take one or more paths and join them together
 * [`extlib::random_password`](#extlib--random_password): A function to return a string of arbitrary length that contains randomly selected characters.
+* [`extlib::ranges_to_array`](#extlib--ranges_to_array): Expand list of "start-end" ranges into an array of numbers
 * [`extlib::read_url`](#extlib--read_url): Fetch a string from a URL (should only be used with 'small' remote files).  This function should only be used with trusted/internal sources.
 * [`extlib::remote_pql_query`](#extlib--remote_pql_query): Perform a PuppetDB query on an arbitrary PuppetDB server.
 * [`extlib::remove_blank_lines`](#extlib--remove_blank_lines): Remove blank lines from a string
@@ -109,6 +111,44 @@ the string to use to join array elements
 Data type: `Optional[String[1, 2]]`
 
 the prefix to put before each argument switch, e.g. '-', '--', or undef to auto-detect based on the argument name length
+
+### <a name="extlib--array_to_ranges"></a>`extlib::array_to_ranges`
+
+Type: Puppet Language
+
+Collapse non-negative integers into an array of "start-end" ranges
+
+#### Examples
+
+#####
+
+```puppet
+extlib::array_to_ranges([1,2,3,4,8,9])  # => ['1-4', '8-9']
+extlib::array_to_ranges([5])            # => ['5']
+extlib::array_to_ranges([3,1,2,1,5])    # => ['1-3', '5']
+```
+
+#### `extlib::array_to_ranges(Array[Integer[0]] $numbers)`
+
+The extlib::array_to_ranges function.
+
+Returns: `Array[String[1]]` Array of ranges, e.g. ["1-4", "8-9"].
+
+##### Examples
+
+######
+
+```puppet
+extlib::array_to_ranges([1,2,3,4,8,9])  # => ['1-4', '8-9']
+extlib::array_to_ranges([5])            # => ['5']
+extlib::array_to_ranges([3,1,2,1,5])    # => ['1-3', '5']
+```
+
+##### `numbers`
+
+Data type: `Array[Integer[0]]`
+
+The array of non-negative integers to collapse.
 
 ### <a name="extlib--aws--rds--db_instances"></a>`extlib::aws::rds::db_instances`
 
@@ -1173,6 +1213,45 @@ random_password(42)
 Data type: `Integer[1]`
 
 The length of random password you want generated.
+
+### <a name="extlib--ranges_to_array"></a>`extlib::ranges_to_array`
+
+Type: Puppet Language
+
+Expand list of "start-end" ranges into an array of numbers
+
+#### Examples
+
+#####
+
+```puppet
+extlib::ranges_to_array('1-4,8-9')       # => [1,2,3,4,8,9]
+extlib::ranges_to_array(['1-4', '8-9'])  # => [1,2,3,4,8,9]
+extlib::ranges_to_array(['5'])           # => [5]
+```
+
+#### `extlib::ranges_to_array(Variant[Array[String[1]], String[1]] $ranges)`
+
+The extlib::ranges_to_array function.
+
+Returns: `Array[Integer[0]]` The Array of integers (deduplicated and sorted).
+
+##### Examples
+
+######
+
+```puppet
+extlib::ranges_to_array('1-4,8-9')       # => [1,2,3,4,8,9]
+extlib::ranges_to_array(['1-4', '8-9'])  # => [1,2,3,4,8,9]
+extlib::ranges_to_array(['5'])           # => [5]
+```
+
+##### `ranges`
+
+Data type: `Variant[Array[String[1]], String[1]]`
+
+Either an Array of ranges, e.g. ["1-4", "8-9"] or a String with
+comma-separated ranges list
 
 ### <a name="extlib--read_url"></a>`extlib::read_url`
 
